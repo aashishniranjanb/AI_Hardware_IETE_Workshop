@@ -1,0 +1,281 @@
+/* =========================================================================
+   MISSION 02 — CLEAR INTELLIGENT SYSTEM ARCHITECTURE
+   ========================================================================= */
+
+.mental-model-scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #02050A;
+  color: #F8FAFC;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, sans-serif;
+  container-type: size; /* cqw/cqh below resolve to the 16:9 frame, not the window */
+  user-select: none;
+}
+
+.mm-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center right, black 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Title on the Left */
+.mm-header {
+  position: absolute;
+  top: 30cqh;
+  left: 6cqw;
+  width: 35cqw;
+  z-index: 10;
+}
+
+.mm-eyebrow {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: #38bdf8;
+  margin-bottom: 16px;
+}
+
+.mm-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(32px, 4cqw, 55px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.mm-title span {
+  color: #38bdf8;
+}
+
+/* Architecture on the Right */
+.mm-stage {
+  position: absolute;
+  top: 4cqh;
+  right: 2cqw;
+  width: 60cqw;
+  height: 84cqh; /* bottom row (POWER) ends above the deck controls */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.mm-system-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 900px;
+  max-height: 800px;
+}
+
+/* Hardware Modules */
+.mm-module {
+  position: absolute;
+  background: #0B1120;
+  border: 2px solid #1e293b;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 12px;
+  opacity: 0; /* GSAP will reveal */
+  transition: opacity 0.3s, border-color 0.3s;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.mm-module:hover {
+  border-color: #38bdf8;
+}
+
+/* Dimming effect when a block is hovered */
+.mm-system-canvas.has-hover .mm-module.dimmed {
+  opacity: 0.3 !important;
+  border-color: #1e293b !important;
+}
+.mm-system-canvas.has-hover .mm-path.dimmed,
+.mm-system-canvas.has-hover .mm-arrow.dimmed {
+  opacity: 0.15 !important;
+}
+
+.mm-mod-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #f1f5f9;
+}
+
+.mm-mod-sub {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #94A3B8;
+  margin-top: 6px;
+}
+
+/* Specific Positions & Sizes */
+
+#mod-compute {
+  width: 280px;
+  height: 120px;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  border-color: #38bdf8;
+  background: linear-gradient(180deg, #0f172a, #020617);
+  border-width: 3px;
+  z-index: 15;
+}
+#mod-compute .mm-mod-title { font-size: 20px; color: #38bdf8; }
+#mod-compute .mm-mod-sub { font-size: 13px; color: #f8fafc; }
+
+#mod-sensors {
+  width: 200px;
+  height: 70px;
+  left: 50%;
+  top: 15%;
+  transform: translate(-50%, -50%);
+}
+
+#mod-memory {
+  width: 200px;
+  height: 80px;
+  left: 22%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+}
+
+#mod-interconnect {
+  width: 200px;
+  height: 80px;
+  left: 78%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+}
+
+#mod-io {
+  width: 240px;
+  height: 70px;
+  left: 50%;
+  top: 75%;
+  transform: translate(-50%, -50%);
+}
+
+#mod-actuators {
+  width: 200px;
+  height: 70px;
+  left: 50%;
+  top: 90%;
+  transform: translate(-50%, -50%);
+}
+
+#mod-power {
+  width: 90%;
+  height: 60px;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(180deg, #1f1406, #0f0a03);
+  border-color: #f59e0b;
+}
+#mod-power .mm-mod-title { color: #f59e0b; }
+
+/* Real World labels */
+.mm-world-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  opacity: 0;
+}
+.world-top { top: 2%; }
+.world-bottom { top: 108%; } /* Below actuators/power */
+
+
+/* --- SVG Data Paths --- */
+.mm-paths-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.mm-path {
+  fill: none;
+  stroke: #38bdf8;
+  stroke-width: 3;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.mm-path-high-speed {
+  stroke-width: 4;
+  stroke: #60a5fa;
+}
+
+.mm-arrow {
+  fill: #38bdf8;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.mm-path.mm-path-power, .mm-arrow.mm-arrow-power {
+  stroke: #f59e0b;
+  fill: #f59e0b;
+}
+
+.mm-path.mm-path-thermal, .mm-arrow.mm-arrow-thermal {
+  stroke: #22d3ee;
+  fill: #22d3ee;
+}
+
+/* Particles */
+.mm-particle {
+  fill: #22d3ee;
+  filter: drop-shadow(0 0 6px #22d3ee);
+  opacity: 0;
+}
+
+.mm-particle-power {
+  fill: #f59e0b;
+  filter: drop-shadow(0 0 6px #f59e0b);
+}
+
+.mm-particle-thermal {
+  fill: #ef4444;
+  filter: drop-shadow(0 0 6px #ef4444);
+}
+
+/* Text message at the end */
+.mm-message {
+  position: absolute;
+  bottom: 8cqh;
+  left: 6cqw;
+  width: 35cqw;
+  text-align: left;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #f8fafc;
+  opacity: 0;
+  z-index: 20;
+}

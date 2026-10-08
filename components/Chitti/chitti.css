@@ -1,0 +1,772 @@
+/* =========================================================================
+   CHITTI MISSION 01 — CINEMATIC ENGINEERING EXPLODED VIEW STYLES
+   ========================================================================= */
+
+.chitti-workbench {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* --- Left Command Column --- */
+.chitti-cmd-col {
+  width: 440px;
+  min-width: 400px;
+  height: 100%;
+  padding: 3cqh 0 6cqh 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 20;
+  position: relative;
+}
+
+.chitti-cmd-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.mission-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 5px 12px;
+  border-radius: 6px;
+  width: fit-content;
+  text-transform: uppercase;
+}
+
+.chitti-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: clamp(38px, 4.2cqw, 68px);
+  line-height: 0.95;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin: 18px 0 24px;
+  color: #f1f5f9;
+}
+
+.chitti-title span {
+  color: #38bdf8;
+  text-shadow: 0 0 35px rgba(56, 189, 248, 0.4);
+}
+
+.challenge-box {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.85), rgba(7, 12, 22, 0.95));
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 16px;
+  padding: 22px 24px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.challenge-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #38bdf8, #22d3ee);
+}
+
+.challenge-lbl {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #38bdf8;
+  text-transform: uppercase;
+}
+
+.challenge-q {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f8fafc;
+  line-height: 1.35;
+  margin: 10px 0 10px;
+}
+
+.challenge-desc {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.chitti-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-primary-explode {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #f8fafc;
+  border: 1px solid #38bdf8;
+  border-radius: 12px;
+  padding: 14px 22px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+}
+
+.btn-primary-explode:hover {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  box-shadow: 0 0 45px rgba(56, 189, 248, 0.55);
+  transform: translateY(-2px);
+}
+
+.btn-row-secondary {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-sec {
+  flex: 1;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #cbd5e1;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-sec:hover {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: #38bdf8;
+  color: #fff;
+}
+
+.keyboard-hints {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: #64748b;
+  letter-spacing: 0.06em;
+  padding-top: 12px;
+}
+
+.kbd-badge {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: #94a3b8;
+  font-weight: 700;
+  font-size: 10px;
+}
+
+/* Status / telemetry badge */
+.telemetry-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-family: monospace;
+  color: #38bdf8;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(56, 189, 248, 0.05);
+  border: 1px dashed rgba(56, 189, 248, 0.2);
+  margin-top: 12px;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 10px #38bdf8;
+  animation: pulse-dot-anim 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse-dot-anim {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* --- Center & Right 3D Robot Stage --- */
+.chitti-stage {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.chitti-viewport-3d {
+  position: relative;
+  width: 580px;
+  height: 760px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Scanning Plane Effect */
+.scan-laser-line {
+  position: absolute;
+  left: -20%;
+  width: 140%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #38bdf8 30%, #22d3ee 50%, #38bdf8 70%, transparent 100%);
+  box-shadow: 0 0 25px 5px rgba(56, 189, 248, 0.85), 0 0 50px 10px rgba(34, 211, 238, 0.4);
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.scan-laser-glow {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  transform: translateY(-50%);
+  background: linear-gradient(to bottom, rgba(56, 189, 248, 0.15), transparent);
+  pointer-events: none;
+}
+
+/* Robot Anatomical Skeleton & Shell layers */
+.robot-root {
+  position: relative;
+  width: 320px;
+  height: 680px;
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.7));
+}
+
+/* --- Modular Robot Parts with 3D Exploded Offsets --- */
+
+.part-layer {
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s ease,
+              filter 0.4s ease;
+  will-change: transform, opacity;
+}
+
+/* Head Assembly */
+.layer-head {
+  top: 0;
+  width: 150px;
+  height: 155px;
+  z-index: 15;
+}
+
+/* Vision / Camera optic module inside head */
+.layer-vision {
+  top: 40px;
+  width: 110px;
+  height: 50px;
+  z-index: 25;
+}
+
+/* Audio Mic array */
+.layer-audio {
+  top: 105px;
+  width: 130px;
+  height: 25px;
+  z-index: 22;
+}
+
+/* Neck Joint */
+.layer-neck {
+  top: 145px;
+  width: 60px;
+  height: 40px;
+  z-index: 10;
+}
+
+/* Torso Outer Shell (Pectoral armor) */
+.layer-chest-shell-l {
+  top: 175px;
+  left: 35px;
+  width: 115px;
+  height: 145px;
+  z-index: 20;
+}
+
+.layer-chest-shell-r {
+  top: 175px;
+  right: 35px;
+  width: 115px;
+  height: 145px;
+  z-index: 20;
+}
+
+/* AI Compute Core (The Brain in the Chest) */
+.layer-compute-core {
+  top: 195px;
+  width: 124px;
+  height: 120px;
+  z-index: 30;
+}
+
+/* Memory Modules (HBM flanking) */
+.layer-memory-l {
+  top: 205px;
+  left: 5px;
+  width: 48px;
+  height: 95px;
+  z-index: 28;
+}
+
+.layer-memory-r {
+  top: 205px;
+  right: 5px;
+  width: 48px;
+  height: 95px;
+  z-index: 28;
+}
+
+/* Thermal Vapor Chamber (behind compute) */
+.layer-thermal {
+  top: 185px;
+  width: 180px;
+  height: 140px;
+  z-index: 5;
+}
+
+/* Power / Battery Pack */
+.layer-battery {
+  top: 330px;
+  width: 170px;
+  height: 110px;
+  z-index: 18;
+}
+
+/* Communication Antenna */
+.layer-communication {
+  top: 165px;
+  width: 80px;
+  height: 50px;
+  z-index: 12;
+}
+
+/* Shoulders & Arms */
+.layer-arm-l {
+  top: 175px;
+  left: -45px;
+  width: 75px;
+  height: 310px;
+  z-index: 14;
+  transform-origin: top center;
+}
+
+.layer-arm-r {
+  top: 175px;
+  right: -45px;
+  width: 75px;
+  height: 310px;
+  z-index: 14;
+  transform-origin: top center;
+}
+
+/* Pelvis & Legs */
+.layer-pelvis {
+  top: 425px;
+  width: 180px;
+  height: 80px;
+  z-index: 12;
+}
+
+.layer-legs {
+  top: 480px;
+  width: 220px;
+  height: 200px;
+  z-index: 8;
+}
+
+/* --- Exploded Transforms when .is-exploded is active --- */
+.is-exploded .layer-head {
+  transform: translate3d(0, -75px, 60px) rotateX(8deg);
+}
+
+.is-exploded .layer-vision {
+  transform: translate3d(0, -95px, 140px);
+}
+
+.is-exploded .layer-audio {
+  transform: translate3d(0, -45px, 90px);
+}
+
+.is-exploded .layer-chest-shell-l {
+  transform: translate3d(-110px, -20px, 70px) rotateY(-28deg);
+}
+
+.is-exploded .layer-chest-shell-r {
+  transform: translate3d(110px, -20px, 70px) rotateY(28deg);
+}
+
+.is-exploded .layer-compute-core {
+  transform: translate3d(0, -10px, 180px) scale(1.12);
+}
+
+.is-exploded .layer-memory-l {
+  transform: translate3d(-125px, 15px, 110px) rotateY(-15deg);
+}
+
+.is-exploded .layer-memory-r {
+  transform: translate3d(125px, 15px, 110px) rotateY(15deg);
+}
+
+.is-exploded .layer-thermal {
+  transform: translate3d(0, 0, -110px) scale(1.05);
+}
+
+.is-exploded .layer-battery {
+  transform: translate3d(0, 95px, 70px);
+}
+
+.is-exploded .layer-communication {
+  transform: translate3d(0, -50px, -60px) scale(1.1);
+}
+
+.is-exploded .layer-arm-l {
+  transform: translate3d(-85px, 20px, 40px) rotateZ(8deg);
+}
+
+.is-exploded .layer-arm-r {
+  transform: translate3d(85px, 20px, 40px) rotateZ(-8deg);
+}
+
+.is-exploded .layer-pelvis {
+  transform: translate3d(0, 50px, 20px);
+}
+
+.is-exploded .layer-legs {
+  transform: translate3d(0, 80px, -20px);
+}
+
+/* Highlighted state when a subsystem is selected */
+.is-subsystem-isolated .part-layer:not(.is-active-subsystem) {
+  opacity: 0.22;
+  filter: grayscale(0.8) blur(0.5px);
+}
+
+.is-active-subsystem {
+  filter: drop-shadow(0 0 25px #38bdf8) brightness(1.25) !important;
+  opacity: 1 !important;
+}
+
+/* SVG Leader Lines Container */
+.callout-lines-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 35;
+  overflow: visible;
+}
+
+.leader-path {
+  stroke: #38bdf8;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  fill: none;
+  opacity: 0.65;
+  transition: all 0.3s ease;
+}
+
+.leader-path.active {
+  stroke: #22d3ee;
+  stroke-width: 2.5;
+  stroke-dasharray: none;
+  opacity: 1;
+  filter: drop-shadow(0 0 8px #38bdf8);
+}
+
+.leader-node-dot {
+  fill: #38bdf8;
+  stroke: #0284c7;
+  stroke-width: 2;
+  r: 4;
+}
+
+/* Callout Cards Overlay */
+.callouts-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.callout-card {
+  position: absolute;
+  pointer-events: auto;
+  background: rgba(10, 18, 32, 0.88);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  backdrop-filter: blur(12px);
+  border-radius: 10px;
+  padding: 10px 14px;
+  width: 200px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.callout-card:hover, .callout-card.is-active {
+  background: rgba(15, 28, 50, 0.95);
+  border-color: #38bdf8;
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+}
+
+.callout-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.callout-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #38bdf8;
+  text-transform: uppercase;
+}
+
+.callout-detail-spec {
+  font-size: 9px;
+  color: #64748b;
+  font-family: monospace;
+}
+
+.callout-sub {
+  font-size: 11px;
+  font-weight: 600;
+  color: #e2e8f0;
+  line-height: 1.25;
+}
+
+.callout-role {
+  font-size: 10px;
+  color: #94a3b8;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+/* Specific Callout Positions around 1920x1080 stage */
+.pos-vision { top: 6%; right: 18%; }
+.pos-audio { top: 15%; right: 4%; }
+.pos-compute { top: 27%; right: 1%; }
+.pos-memory { top: 40%; right: 2%; }
+.pos-communication { top: 10%; left: 32%; }
+.pos-thermal { top: 24%; left: 24%; }
+.pos-power { top: 48%; left: 23%; }
+.pos-actuation { top: 62%; right: 12%; }
+.pos-sensors { top: 65%; left: 26%; }
+
+/* --- Data Flow Animation Overlay --- */
+.data-flow-path {
+  fill: none;
+  stroke: rgba(56, 189, 248, 0.35);
+  stroke-width: 2;
+  stroke-dasharray: 6 6;
+}
+
+.data-flow-particle {
+  fill: #38bdf8;
+  filter: drop-shadow(0 0 6px #38bdf8);
+}
+
+.data-packet-banner {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(3, 7, 18, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 30px;
+  padding: 6px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  font-family: monospace;
+  color: #7dd3fc;
+  box-shadow: 0 0 35px rgba(56, 189, 248, 0.2);
+  z-index: 45;
+  pointer-events: none;
+}
+
+.data-packet-banner b {
+  color: #fff;
+}
+
+/* --- Bottom Subsystem Navigation Strip --- */
+.subsystem-dock {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10, 16, 28, 0.92);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  backdrop-filter: blur(16px);
+  padding: 6px 14px;
+  border-radius: 40px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  z-index: 50;
+  max-width: 95cqw;
+  overflow-x: auto;
+}
+
+.dock-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #64748b;
+  margin-right: 6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.dock-pill {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  color: #94a3b8;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.dock-pill:hover {
+  background: rgba(56, 189, 248, 0.12);
+  color: #f1f5f9;
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.dock-pill.active {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #fff;
+  border-color: #38bdf8;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+}
+
+/* Subsystem Focus Card Drawer (when clicked) */
+.subsystem-detail-drawer {
+  position: absolute;
+  bottom: 65px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(145deg, rgba(13, 22, 38, 0.97), rgba(5, 10, 20, 0.98));
+  border: 1px solid #38bdf8;
+  border-radius: 14px;
+  padding: 16px 22px;
+  width: min(620px, 90cqw);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(56, 189, 248, 0.25);
+  z-index: 55;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.drawer-info h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.drawer-info h4 span {
+  color: #38bdf8;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+.drawer-info p {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.drawer-specs {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: monospace;
+  font-size: 10px;
+  color: #38bdf8;
+  white-space: nowrap;
+}
+
+.drawer-close {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.drawer-close:hover {
+  color: #fff;
+}
+
+/* Transition to Mental Model banner */
+.mental-model-hook {
+  margin-top: 16px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.04);
+  border-left: 3px solid #38bdf8;
+  font-size: 11px;
+  line-height: 1.45;
+  color: #94a3b8;
+}
+
+.mental-model-hook strong {
+  color: #e2e8f0;
+  display: block;
+  margin-bottom: 2px;
+}

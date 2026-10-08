@@ -1,0 +1,322 @@
+/* Slide 15: First FPGA Program Scene CSS */
+
+.first-fpga-scene-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #05070B;
+  color: #F4F7FA;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.ff-ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(39, 215, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(39, 215, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header */
+.ff-top-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2.2rem 4rem 1rem 4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.ff-editorial-title-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.ff-eyebrow-line {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #27D7FF;
+  text-transform: uppercase;
+}
+
+.ff-main-title {
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: #F4F7FA;
+  line-height: 1.1;
+}
+
+.ff-main-title span {
+  color: #27D7FF;
+}
+
+.ff-stage-caption {
+  font-size: 0.95rem;
+  color: #8B98A8;
+  max-width: 650px;
+  line-height: 1.45;
+  margin-top: 0.2rem;
+}
+
+.ff-header-accent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.ff-accent-logo {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  background: rgba(39, 215, 255, 0.12);
+  color: #27D7FF;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(39, 215, 255, 0.3);
+}
+
+.ff-teaching-point-pill {
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: rgba(87, 230, 165, 0.1);
+  color: #57E6A5;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(87, 230, 165, 0.25);
+  max-width: 380px;
+  text-align: right;
+}
+
+/* Main Viewport */
+.ff-main-viewport {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 4rem;
+  overflow: hidden;
+}
+
+/* Stage Wrap */
+.ff-wrap {
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Glass Card */
+.ff-card {
+  background: rgba(10, 15, 26, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Pipeline Flow */
+.ff-flow-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.ff-flow-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 22px;
+  border-radius: 10px;
+  background: #0B132B;
+  border: 1.5px solid rgba(39, 215, 255, 0.3);
+  min-width: 130px;
+  text-align: center;
+}
+
+.ff-flow-node.active {
+  border-color: #57E6A5;
+  box-shadow: 0 0 20px rgba(87, 230, 165, 0.25);
+}
+
+.ff-flow-arrow {
+  font-size: 20px;
+  color: #4B8DFF;
+  font-weight: 800;
+}
+
+/* Code Editor Window */
+.ff-editor-box {
+  background: #090E17;
+  border: 1px solid rgba(39, 215, 255, 0.25);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 680px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+}
+
+.ff-editor-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 11px;
+  color: #8B98A8;
+  font-family: monospace;
+}
+
+.ff-editor-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.ff-editor-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.ff-code-content {
+  padding: 16px 20px;
+  font-family: "JetBrains Mono", Consolas, "Fira Code", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #DCE6F4;
+  margin: 0;
+  overflow-x: auto;
+}
+
+/* Highlighted code lines */
+.ff-hl-kw { color: #8A7CFF; font-weight: 700; }
+.ff-hl-type { color: #27D7FF; }
+.ff-hl-var { color: #F4F7FA; font-weight: 600; }
+.ff-hl-op { color: #57E6A5; }
+.ff-hl-num { color: #FFB84D; }
+
+/* Large LED Glow animation */
+.ff-big-led-core {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  transition: all 0.25s ease-in-out;
+}
+
+.ff-big-led-core.on {
+  background: radial-gradient(circle, #57E6A5 20%, #10B981 70%, #064E3B 100%);
+  color: #022C22;
+  box-shadow: 0 0 50px #57E6A5, 0 0 100px rgba(87, 230, 165, 0.5);
+  border: 4px solid #A7F3D0;
+}
+
+.ff-big-led-core.off {
+  background: #0D1F17;
+  color: #064E3B;
+  border: 4px solid #1E3A2F;
+  box-shadow: none;
+}
+
+/* Check item in Stage 11 */
+.ff-check-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(87, 230, 165, 0.3);
+  border-radius: 8px;
+}
+
+.ff-check-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #57E6A5;
+  color: #05070B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 13px;
+}
+
+/* Bottom Bar */
+.ff-bottom-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 2rem 1.4rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ff-track {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 4px 8px;
+}
+
+.ff-step-btn {
+  background: transparent;
+  border: none;
+  color: #8B98A8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 5px 9px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.ff-step-btn:hover {
+  color: #F4F7FA;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ff-step-btn.step-active {
+  color: #27D7FF;
+  background: rgba(39, 215, 255, 0.12);
+  border: 1px solid rgba(39, 215, 255, 0.35);
+}
+
+.ff-divider {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 0.65rem;
+}

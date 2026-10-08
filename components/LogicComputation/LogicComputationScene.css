@@ -1,0 +1,470 @@
+/* =========================================================================
+   SLIDE 10 — FROM LOGIC GATES TO COMPUTATION
+   Styles for all 11 stages: Toolkit -> XOR+AND -> Half Adder -> Full Adder
+   -> Cascade -> 4-Bit Adder -> Scale Math -> ALU -> System -> Ladder -> Handoff
+   ========================================================================= */
+
+.logic-scene-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #05070B;
+  color: #F4F7FA;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.logic-ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(39, 215, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(39, 215, 255, 0.035) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, black 45%, transparent 95%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header */
+.logic-top-header {
+  position: relative;
+  z-index: 10;
+  padding: 22px 50px 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.logic-editorial-title-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.logic-eyebrow-line {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: #27D7FF;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logic-main-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(24px, 2.8cqw, 38px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.logic-main-title span {
+  color: #27D7FF;
+}
+
+.logic-stage-caption {
+  font-size: 13px;
+  color: #8B98A8;
+  font-weight: 600;
+  margin-top: 5px;
+  letter-spacing: 0.04em;
+}
+
+.logic-header-accent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.logic-accent-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #27D7FF;
+  text-shadow: 0 0 20px rgba(39, 215, 255, 0.5);
+}
+
+.logic-teaching-point-pill {
+  padding: 4px 12px;
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #57E6A5;
+}
+
+/* Viewport */
+.logic-main-viewport {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  padding: 0 40px;
+}
+
+.stage-wrap {
+  width: 100%;
+  max-width: 1150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Inputs */
+.logic-toggle-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  font-size: 32px;
+  font-weight: 800;
+  font-family: 'Space Grotesk', monospace;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #334155;
+  background: #0B1120;
+  color: #64748B;
+}
+
+.logic-toggle-btn.is-active {
+  background: rgba(39, 215, 255, 0.15);
+  border-color: #27D7FF;
+  color: #27D7FF;
+  box-shadow: 0 0 20px rgba(39, 215, 255, 0.35);
+}
+
+.logic-toggle-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  color: #8B98A8;
+}
+
+/* Results & Badges */
+.circuit-result-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: #0B1120;
+  border: 1px solid #334155;
+}
+
+.circuit-result-badge.highlight-sum {
+  border-color: #27D7FF;
+  color: #27D7FF;
+}
+
+.circuit-result-badge.highlight-carry {
+  border-color: #F59E0B;
+  color: #F59E0B;
+}
+
+.res-val {
+  font-size: 32px;
+  font-family: 'Space Grotesk', monospace;
+  font-weight: 800;
+}
+
+.res-lbl {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+/* Truth Table Card */
+.truth-table-card {
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 260px;
+}
+
+.truth-table-header {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #8B98A8;
+  border-bottom: 1px solid #1E293B;
+  padding-bottom: 8px;
+}
+
+.truth-table-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.truth-table-row.is-current {
+  background: rgba(39, 215, 255, 0.12);
+  color: #27D7FF;
+  font-weight: 800;
+}
+
+/* Gate Cards Grid (Stage 0) */
+.gate-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.gate-card {
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.25s ease;
+}
+
+.gate-card:hover {
+  border-color: #27D7FF;
+  transform: translateY(-2px);
+}
+
+.gate-card-title {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #27D7FF;
+}
+
+.gate-card-eq {
+  font-size: 11px;
+  font-family: 'Space Grotesk', monospace;
+  color: #8B98A8;
+}
+
+.gate-output-pill {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 20px;
+  font-weight: 800;
+  background: #020617;
+  border: 1px solid #334155;
+  color: #64748B;
+}
+
+.gate-output-pill.is-high {
+  background: rgba(39, 215, 255, 0.15);
+  border-color: #27D7FF;
+  color: #27D7FF;
+  box-shadow: 0 0 15px rgba(39, 215, 255, 0.3);
+}
+
+/* Circuit Box Diagram */
+.circuit-box-diagram {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 14px;
+  padding: 24px 30px;
+}
+
+/* 4-Bit Chain Container */
+.bit4-chain-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 14px;
+  padding: 20px 24px;
+}
+
+.bit4-unit-box {
+  background: #0B1120;
+  border: 1px solid #27D7FF;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 130px;
+}
+
+.bit4-unit-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #27D7FF;
+}
+
+/* ALU Stage Specific Styles */
+.alu-ops-selector {
+  display: flex;
+  gap: 10px;
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.alu-op-btn {
+  background: transparent;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #8B98A8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.alu-op-btn.is-selected {
+  background: #27D7FF;
+  color: #020617;
+  border-color: #27D7FF;
+  box-shadow: 0 0 12px rgba(39, 215, 255, 0.4);
+}
+
+/* Processor System Block View */
+.system-cpu-block {
+  display: flex;
+  gap: 24px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 16px;
+  padding: 24px;
+  align-items: center;
+}
+
+.cpu-module-box {
+  background: #0B1120;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 120px;
+}
+
+/* Pyramid / Ladder View */
+.ladder-chain-view {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 580px;
+}
+
+.ladder-step-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ladder-step-bar.highlight-top {
+  border-color: #27D7FF;
+  background: rgba(39, 215, 255, 0.1);
+  color: #27D7FF;
+}
+
+/* Platforms Handoff View */
+.handoff-platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.handoff-card {
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Bottom Progression */
+.logic-bottom-bar {
+  position: relative;
+  z-index: 10;
+  padding: 10px 50px 20px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.logic-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(11, 17, 32, 0.9);
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 1px solid #1E293B;
+  backdrop-filter: blur(10px);
+}
+
+.logic-step-btn {
+  background: transparent;
+  border: none;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  padding: 4px 8px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logic-step-btn:hover {
+  color: #F4F7FA;
+}
+
+.logic-step-btn.step-active {
+  color: #05070B;
+  background: #27D7FF;
+  font-weight: 800;
+  box-shadow: 0 0 10px rgba(39, 215, 255, 0.5);
+}
+
+.logic-divider {
+  color: #334155;
+  font-size: 9px;
+}

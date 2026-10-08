@@ -1,0 +1,1078 @@
+/* =========================================================================
+   MISSION 03 / SLIDE 04 — WHERE DOES THE AI RUN?
+   COMPUTE ENGINE ARCHITECTURE
+   ========================================================================= */
+
+.compute-engine-scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #02050A;
+  color: #F8FAFC;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background grid */
+.ce-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header Area */
+.ce-header {
+  position: relative;
+  z-index: 10;
+  padding: 40px 60px 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.ce-eyebrow {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: #38BDF8;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ce-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(28px, 3.2cqw, 48px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.ce-title span {
+  color: #38BDF8;
+}
+
+.ce-subtitle {
+  font-size: 16px;
+  color: #94A3B8;
+  font-weight: 500;
+  margin-top: 6px;
+  letter-spacing: 0.05em;
+}
+
+/* Stage Navigation Pills */
+.ce-stage-indicator-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.85);
+  padding: 6px 10px;
+  border-radius: 30px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.ce-nav-pill {
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: 20px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64748B;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ce-nav-pill:hover {
+  color: #F8FAFC;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ce-nav-pill.active {
+  color: #02050A;
+  background: #38BDF8;
+  font-weight: 800;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+}
+
+/* Main Viewport Stage */
+.ce-main-viewport {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  padding: 0 40px;
+}
+
+/* =========================================================================
+   STAGE 0: MENTAL MODEL TRANSITION OVERLAY
+   ========================================================================= */
+.ce-mental-model-mockup {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mock-system-container {
+  position: relative;
+  width: 750px;
+  height: 520px;
+}
+
+.mock-block {
+  position: absolute;
+  border-radius: 8px;
+  background: #0B1120;
+  border: 2px solid #1E293B;
+  color: #64748B;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.8s ease;
+}
+
+.mock-sensors { top: 0; left: 50%; transform: translateX(-50%); width: 180px; height: 50px; }
+.mock-memory { top: 38%; left: 5%; width: 160px; height: 60px; }
+.mock-interconnect { top: 38%; right: 5%; width: 160px; height: 60px; }
+.mock-io { bottom: 18%; left: 50%; transform: translateX(-50%); width: 180px; height: 50px; }
+.mock-actuators { bottom: 4%; left: 50%; transform: translateX(-50%); width: 180px; height: 50px; }
+.mock-power { bottom: -8%; left: 5%; right: 5%; height: 35px; border-color: #78350F; color: #D97706; }
+
+.ce-mental-model-mockup.dimmed .mock-block {
+  opacity: 0.15;
+  transform: scale(0.92);
+}
+
+/* Central Active Physical Package */
+.compute-physical-package {
+  position: relative;
+  width: min(880px, 86cqw);
+  height: min(520px, 62cqh);
+  background: #0B1120;
+  border-radius: 18px;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+}
+
+.compute-physical-package.arch-cpu { border: 2px solid #38BDF8; box-shadow: 0 0 40px rgba(56, 189, 248, 0.25); }
+.compute-physical-package.arch-gpu { border: 2px solid #60A5FA; box-shadow: 0 0 40px rgba(96, 165, 250, 0.25); }
+.compute-physical-package.arch-npu { border: 2px solid #22D3EE; box-shadow: 0 0 40px rgba(34, 211, 238, 0.25); }
+.compute-physical-package.arch-tpu { border: 2px solid #F97316; box-shadow: 0 0 40px rgba(249, 115, 22, 0.25); }
+.compute-physical-package.arch-fpga { border: 2px solid #A855F7; box-shadow: 0 0 40px rgba(168, 85, 247, 0.25); }
+
+/* Package Substrate & Heatspreader */
+.package-substrate {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.fiducial-mark {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #D97706;
+}
+.fiducial-mark.top-left { top: 12px; left: 12px; }
+.fiducial-mark.top-right { top: 12px; right: 12px; }
+.fiducial-mark.bottom-left { bottom: 12px; left: 12px; }
+.fiducial-mark.bottom-right { bottom: 12px; right: 12px; }
+
+.heat-spreader-rim {
+  flex: 1;
+  background: linear-gradient(145deg, #111827, #030712);
+  border-radius: 12px;
+  border: 1px solid #1E293B;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.package-engraving {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.engraving-brand {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #475569;
+}
+
+.engraving-model {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #38BDF8;
+}
+
+/* Silicon Die Cavity */
+.silicon-die-cavity {
+  flex: 1;
+  position: relative;
+  background: #020617;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Generic Compute Die */
+.generic-compute-die {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.core-chip-icon {
+  font-size: 55px;
+  color: #38BDF8;
+  filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.6));
+  animation: pulseChip 2s infinite alternate ease-in-out;
+}
+
+@keyframes pulseChip {
+  0% { transform: scale(0.96); opacity: 0.8; }
+  100% { transform: scale(1.04); opacity: 1; }
+}
+
+.chip-laser-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #F8FAFC;
+}
+
+.chip-laser-sub {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #64748B;
+}
+
+/* =========================================================================
+   CPU VISUAL STYLES
+   ========================================================================= */
+.cpu-visual-wrapper,
+.gpu-visual-wrapper,
+.npu-visual-wrapper,
+.tpu-visual-wrapper,
+.fpga-visual-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px;
+}
+
+.chip-die-container {
+  flex: 1;
+  background: #090D16;
+  border-radius: 8px;
+  border: 1px solid #1E293B;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 18px;
+  overflow: hidden;
+}
+
+.die-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #64748B;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #1E293B;
+  padding-bottom: 6px;
+}
+
+.die-tag { color: #38BDF8; }
+
+.cpu-cores-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  flex: 1;
+}
+
+.cpu-core-unit {
+  position: relative;
+  background: #0F172A;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.cpu-core-unit:hover {
+  border-color: #38BDF8;
+  transform: translateY(-2px);
+}
+
+.core-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 800;
+}
+.core-name { color: #F8FAFC; }
+.core-type { color: #38BDF8; font-size: 10px; }
+
+.core-internals {
+  display: flex;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.core-alu-block {
+  flex: 1.2;
+  background: #1E293B;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 9px;
+  font-weight: 700;
+  color: #94A3B8;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.alu-pulse-bar {
+  height: 3px;
+  background: #38BDF8;
+  border-radius: 2px;
+  animation: pulseBar 1.2s infinite alternate;
+}
+
+@keyframes pulseBar {
+  0% { width: 30%; opacity: 0.4; }
+  100% { width: 95%; opacity: 1; }
+}
+
+.core-cache-block {
+  flex: 0.8;
+  background: #151F32;
+  border-radius: 4px;
+  padding: 4px;
+  font-size: 8px;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cpu-l3-bus {
+  margin-top: 10px;
+  background: #0F172A;
+  border: 1px solid #1E293B;
+  border-radius: 4px;
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bus-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #64748B;
+}
+
+.bus-traces {
+  display: flex;
+  gap: 4px;
+}
+
+.bus-traces .trace {
+  width: 20px;
+  height: 2px;
+  background: #38BDF8;
+  opacity: 0.7;
+}
+
+/* Callout Strip */
+.architecture-callout-strip {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.callout-pill {
+  padding: 6px 14px;
+  background: #0F172A;
+  border: 1px solid #1E293B;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.callout-pill.accent-cyan { border-color: rgba(56, 189, 248, 0.4); color: #38BDF8; }
+.callout-pill.accent-blue { border-color: rgba(96, 165, 250, 0.4); color: #60A5FA; }
+.callout-pill.accent-amber { border-color: rgba(249, 115, 22, 0.4); color: #F97316; }
+.callout-pill.accent-purple { border-color: rgba(168, 85, 247, 0.4); color: #A855F7; }
+
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* =========================================================================
+   GPU VISUAL STYLES
+   ========================================================================= */
+.gpu-sm-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  flex: 1;
+}
+
+.gpu-sm-cluster {
+  background: #0F172A;
+  border: 1px solid #1E293B;
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sm-title {
+  font-size: 10px;
+  font-weight: 800;
+  color: #60A5FA;
+  margin-bottom: 6px;
+}
+
+.gpu-cores-matrix {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 3px;
+  flex: 1;
+}
+
+.gpu-sub-core {
+  background: #172554;
+  border: 1px solid #1E3A8A;
+  border-radius: 2px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: gpuPulse 1.6s infinite ease-in-out;
+}
+
+@keyframes gpuPulse {
+  0% { background: #172554; border-color: #1E3A8A; }
+  50% { background: #2563EB; border-color: #60A5FA; box-shadow: 0 0 6px #60A5FA; }
+  100% { background: #172554; border-color: #1E3A8A; }
+}
+
+.gpu-crossbar {
+  margin-top: 10px;
+  background: #0F172A;
+  border: 1px solid #1E293B;
+  border-radius: 4px;
+  padding: 6px 12px;
+}
+
+/* =========================================================================
+   NPU VISUAL STYLES
+   ========================================================================= */
+.npu-mac-array {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.matrix-input-label,
+.matrix-output-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #22D3EE;
+}
+
+.mac-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  background: #0F172A;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #1E293B;
+}
+
+.mac-cell {
+  width: 55px;
+  height: 40px;
+  background: #083344;
+  border: 1px solid #0E7490;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: macPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes macPulse {
+  0% { border-color: #0E7490; background: #083344; }
+  50% { border-color: #22D3EE; background: #155E75; box-shadow: 0 0 10px rgba(34, 211, 238, 0.4); }
+  100% { border-color: #0E7490; background: #083344; }
+}
+
+.mac-math {
+  font-size: 11px;
+  font-weight: 800;
+  color: #F8FAFC;
+}
+
+.mac-formula {
+  font-size: 8px;
+  font-family: monospace;
+  color: #22D3EE;
+}
+
+.npu-post-proc {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.proc-unit {
+  flex: 1;
+  background: #0F172A;
+  border: 1px solid #1E293B;
+  border-radius: 4px;
+  padding: 6px;
+  font-size: 9px;
+  font-weight: 700;
+  text-align: center;
+  color: #64748B;
+}
+
+/* =========================================================================
+   TPU VISUAL STYLES
+   ========================================================================= */
+.tpu-systolic-board {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.weight-flow-top,
+.data-flow-left,
+.systolic-subtext {
+  font-size: 10px;
+  font-weight: 800;
+  color: #F97316;
+  letter-spacing: 0.08em;
+}
+
+.systolic-matrix {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.systolic-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  background: #0F172A;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #1E293B;
+}
+
+.systolic-cell {
+  width: 42px;
+  height: 32px;
+  background: #431407;
+  border: 1px solid #9A3412;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: systolicWave 2s infinite ease-in-out;
+}
+
+@keyframes systolicWave {
+  0% { background: #431407; border-color: #9A3412; }
+  50% { background: #C2410C; border-color: #F97316; box-shadow: 0 0 10px rgba(249, 115, 22, 0.5); }
+  100% { background: #431407; border-color: #9A3412; }
+}
+
+.cell-arrow {
+  font-size: 12px;
+  color: #F8FAFC;
+}
+
+.tpu-interconnect-bar {
+  margin-top: 8px;
+  background: #0F172A;
+  border: 1px solid #1E293B;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748B;
+}
+
+/* =========================================================================
+   FPGA VISUAL STYLES
+   ========================================================================= */
+.fpga-fabric {
+  position: relative;
+  flex: 1;
+  background: #0F172A;
+  border-radius: 8px;
+  border: 1px solid #1E293B;
+  overflow: hidden;
+  padding: 12px;
+}
+
+.routing-grid-matrix {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  height: 100%;
+}
+
+.fpga-clb-tile {
+  background: #1E1B4B;
+  border: 1px solid #312E81;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.clb-label {
+  font-size: 9px;
+  font-weight: 800;
+  color: #A855F7;
+}
+
+.fpga-active-route-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.wire-active {
+  animation: dashRoute 1s linear infinite;
+}
+
+@keyframes dashRoute {
+  to { stroke-dashoffset: -36; }
+}
+
+.fpga-bitstream-status {
+  margin-top: 10px;
+  background: #0F172A;
+  border: 1px solid #1E293B;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 11px;
+  display: flex;
+  gap: 8px;
+}
+
+.bitstream-tag { font-weight: 800; color: #A855F7; }
+.bitstream-spec { color: #CBD5E1; font-weight: 600; }
+
+/* =========================================================================
+   STAGE 7: COMPARISON VIEW
+   ========================================================================= */
+.ce-comparison-view {
+  width: min(1100px, 92cqw);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 10;
+}
+
+.ce-compare-columns {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.ce-compare-card {
+  background: #0B1120;
+  border: 2px solid #1E293B;
+  border-radius: 14px;
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.ce-compare-card:hover {
+  transform: translateY(-4px);
+  border-color: #38BDF8;
+}
+
+.ce-compare-card.selected {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+}
+
+.ce-compare-card.dimmed {
+  opacity: 0.25;
+  transform: scale(0.96);
+}
+
+.card-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background: #020617;
+  border: 1px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0;
+  color: #F8FAFC;
+}
+
+.card-strength {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin: 6px 0 12px 0;
+}
+
+.card-role-pill {
+  background: #0F172A;
+  border: 1px solid #1E293B;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  color: #94A3B8;
+  font-weight: 600;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.card-examples-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 10px;
+  color: #64748B;
+  text-align: left;
+  width: 100%;
+}
+
+.card-examples-list span::before {
+  content: '• ';
+  color: #38BDF8;
+}
+
+/* =========================================================================
+   STAGE 8: INTERACTIVE CHOICE SCENARIO
+   ========================================================================= */
+.ce-scenario-panel {
+  width: min(850px, 86cqw);
+  background: linear-gradient(180deg, #0F172A, #020617);
+  border: 2px solid rgba(56, 189, 248, 0.4);
+  border-radius: 18px;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}
+
+.scenario-progress {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #38BDF8;
+  margin-bottom: 12px;
+}
+
+.scenario-question-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(20px, 2.4cqw, 32px);
+  font-weight: 700;
+  color: #F8FAFC;
+  line-height: 1.3;
+  margin-bottom: 24px;
+}
+
+.scenario-answer-reveal-box {
+  width: 100%;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.revealed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  border-radius: 30px;
+  border: 2px solid currentColor;
+  background: rgba(15, 23, 42, 0.9);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  box-shadow: 0 0 30px currentColor;
+}
+
+.revealed-explanation {
+  font-size: 14px;
+  font-weight: 500;
+  color: #CBD5E1;
+  max-width: 600px;
+}
+
+.unrevealed-prompt {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.unrevealed-prompt kbd {
+  background: #1E293B;
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: #38BDF8;
+}
+
+.scenario-action-bar {
+  display: flex;
+  gap: 14px;
+}
+
+.scenario-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.scenario-btn.primary {
+  background: #38BDF8;
+  border: none;
+  color: #02050A;
+}
+.scenario-btn.primary:hover { background: #7DD3FC; }
+
+.scenario-btn.secondary {
+  background: transparent;
+  border: 1px solid #334155;
+  color: #94A3B8;
+}
+.scenario-btn.secondary:hover { color: #F8FAFC; border-color: #64748B; }
+
+/* =========================================================================
+   STAGE 9: REALIZATION & STAGE 10: MEMORY TEASER
+   ========================================================================= */
+.ce-transition-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+}
+
+.realization-line {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(32px, 4cqw, 56px);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #F8FAFC;
+  letter-spacing: -0.02em;
+}
+
+.realization-line.highlight {
+  color: #38BDF8;
+}
+
+/* Memory Teaser View */
+.ce-memory-teaser-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  z-index: 10;
+}
+
+.memory-teaser-chips {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.teaser-chip {
+  width: 220px;
+  height: 180px;
+  background: #0B1120;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+.teaser-chip.compute-block {
+  border: 2px solid #38BDF8;
+}
+.teaser-chip.memory-block {
+  border: 2px solid #D97706;
+  background: #1A1208;
+}
+
+.teaser-chip-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #F8FAFC;
+}
+
+.teaser-chip-status {
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 6px;
+  letter-spacing: 0.1em;
+}
+
+.teaser-chip.compute-block .teaser-chip-status { color: #38BDF8; }
+.teaser-chip.memory-block .teaser-chip-status { color: #F59E0B; }
+
+.teaser-bus-flow {
+  position: relative;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.teaser-flow-arrow {
+  font-size: 24px;
+  color: #F59E0B;
+  animation: moveArrow 1s infinite linear;
+}
+
+@keyframes moveArrow {
+  0% { transform: translateX(20px); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(-20px); opacity: 0; }
+}
+
+.teaser-bus-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #F59E0B;
+  letter-spacing: 0.1em;
+}
+
+.memory-teaser-headline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(24px, 3cqw, 42px);
+  font-weight: 800;
+  color: #F8FAFC;
+  text-align: center;
+}
+
+.memory-teaser-headline span {
+  color: #F59E0B;
+}

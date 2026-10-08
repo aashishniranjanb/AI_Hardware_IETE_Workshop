@@ -1,0 +1,1246 @@
+/* =========================================================================
+   MISSION 04 / SLIDE 05 — THE MEMORY PROBLEM
+   A FAST PROCESSOR CAN STILL WAIT FOR DATA
+   ========================================================================= */
+
+.memory-problem-scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #02050A;
+  color: #F8FAFC;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  user-select: none;
+}
+
+/* Fixed 1366x768 design canvas, uniformly scaled to the 16:9 frame by
+   MemoryProblemScene (transform set inline). All sizes below are design px. */
+.mp-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1366px;
+  height: 768px;
+  transform-origin: center center;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+/* Background grid */
+.mp-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header Area */
+.mp-header {
+  position: relative;
+  z-index: 10;
+  padding: 56px 48px 0 48px; /* clears the deck topbar */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  flex: 0 0 auto;
+}
+
+.mp-header-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.mp-eyebrow {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: #38BDF8;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mp-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 40px;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.mp-title span {
+  color: #F59E0B;
+}
+
+.mp-subtitle {
+  font-size: 16px;
+  color: #94A3B8;
+  font-weight: 500;
+  margin-top: 8px;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  max-width: 720px;
+  min-height: 44px; /* reserve two lines so stage changes never shift layout */
+}
+
+/* Compact stage navigator (replaces the scrolling pill row) */
+.mp-stepper {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 14px;
+  padding: 10px 14px 12px;
+  backdrop-filter: blur(10px);
+}
+
+.mp-stepper-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #64748B;
+}
+
+.mp-stepper-count {
+  color: #38BDF8;
+  font-variant-numeric: tabular-nums;
+}
+
+.mp-stepper-track {
+  position: relative;
+  display: flex;
+  gap: 8px;
+}
+
+/* connector line behind the dots */
+.mp-stepper-track::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 50%;
+  height: 2px;
+  background: #1E293B;
+  transform: translateY(-50%);
+}
+
+.mp-step-dot {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #334155;
+  background: #0B1120;
+  color: #64748B;
+  font-size: 12px;
+  font-weight: 800;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.mp-step-dot:hover {
+  border-color: #38BDF8;
+  color: #F8FAFC;
+}
+
+.mp-step-dot.done {
+  border-color: #0E7490;
+  background: #082F49;
+  color: #7DD3FC;
+}
+
+.mp-step-dot.active {
+  border-color: #38BDF8;
+  background: #38BDF8;
+  color: #02050A;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.6);
+}
+
+.mp-step-dot.active.dot-amber {
+  border-color: #F59E0B;
+  background: #F59E0B;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.6);
+}
+
+.mp-stepper-label {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #F8FAFC;
+}
+
+/* Main Viewport Stage: everything between header and the reserved
+   bottom band for the global deck controls (bottom-right). */
+.mp-main-viewport {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  padding: 16px 48px 72px;
+}
+
+.mp-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.mp-col-tight {
+  gap: 12px;
+  width: 100%;
+}
+
+.mp-split {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.mp-where-box {
+  max-width: 340px;
+  text-align: center;
+}
+
+.memory-problem-scene .callout-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+.memory-problem-scene .callout-pill.accent-cyan { border-color: rgba(56, 189, 248, 0.45); color: #38BDF8; }
+.memory-problem-scene .callout-pill.accent-amber { border-color: rgba(245, 158, 11, 0.45); color: #F59E0B; }
+
+/* Data-flow lanes (had no sizing; SVG fell back to 300x150) */
+.data-flow-connector.vertical {
+  width: 520px;
+  height: 84px;
+}
+.data-flow-connector .data-flow-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* =========================================================================
+   COMPUTE PACKAGE COMPONENT
+   ========================================================================= */
+.mp-compute-package {
+  width: 760px;
+  background: #0B1120;
+  border-radius: 16px;
+  border: 2px solid #1E293B;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  transition: all 0.5s ease;
+  padding: 16px;
+}
+
+.mp-compute-package.state-active {
+  border-color: #38BDF8;
+  box-shadow: 0 0 40px rgba(56, 189, 248, 0.25);
+}
+
+.mp-compute-package.state-waiting {
+  border-color: #F59E0B;
+  box-shadow: 0 0 50px rgba(245, 158, 11, 0.35);
+  animation: waitingBorderPulse 2s infinite ease-in-out;
+}
+
+@keyframes waitingBorderPulse {
+  0% { border-color: #78350F; box-shadow: 0 0 20px rgba(245, 158, 11, 0.2); }
+  50% { border-color: #F59E0B; box-shadow: 0 0 50px rgba(245, 158, 11, 0.45); }
+  100% { border-color: #78350F; box-shadow: 0 0 20px rgba(245, 158, 11, 0.2); }
+}
+
+.mp-chip-package-rim {
+  background: #020617;
+  border: 1px solid #1E293B;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.mp-package-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #64748B;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #1E293B;
+  padding-bottom: 8px;
+}
+
+.mp-utilization-badge {
+  font-weight: 800;
+  color: #38BDF8;
+}
+.state-waiting .mp-utilization-badge {
+  color: #F59E0B;
+}
+
+.mp-silicon-die {
+  position: relative;
+  background: #090D16;
+  border: 1px solid #1E293B;
+  border-radius: 8px;
+  padding: 16px 18px;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mp-die-watermark {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #334155;
+}
+
+.mp-core-matrix {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.mp-cell {
+  background: #0F172A;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.3s ease;
+}
+
+.cell-pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #64748B;
+}
+
+.cell-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748B;
+}
+
+.cell-computing {
+  background: #082F49;
+  border-color: #38BDF8;
+}
+.cell-computing .cell-pip {
+  background: #38BDF8;
+  box-shadow: 0 0 6px #38BDF8;
+}
+.cell-computing .cell-name {
+  color: #F8FAFC;
+}
+
+.cell-idle {
+  opacity: 0.35;
+  background: #0B0F19;
+  border-color: #1E293B;
+}
+
+/* Compact strip variant: shown above a memory diagram */
+.mp-compute-package.is-compact {
+  width: 860px;
+  padding: 8px;
+}
+.is-compact .mp-chip-package-rim {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.is-compact .mp-package-header {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  letter-spacing: 0.06em;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0 14px 0 0;
+  border-bottom: 0;
+  border-right: 1px solid #1E293B;
+}
+.is-compact .mp-silicon-die { flex: 1; }
+.is-compact .mp-silicon-die {
+  min-height: 0;
+  padding: 8px 10px;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+}
+.is-compact .mp-die-watermark {
+  position: static;
+  flex: 0 0 250px;
+  font-size: 13px;
+  color: #64748B;
+  line-height: 1.3;
+}
+.is-compact .mp-core-matrix {
+  flex: 1;
+  margin-top: 0;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 4px;
+}
+.is-compact .mp-cell { padding: 6px 0; }
+.is-compact .cell-name { display: none; }
+.is-compact .mp-package-pins { display: none; }
+
+/* Starvation Overlay */
+.mp-starvation-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mp-amber-warning-box {
+  background: #1C1204;
+  border: 2px solid #F59E0B;
+  border-radius: 12px;
+  padding: 16px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
+  animation: amberPulse 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes amberPulse {
+  0% { transform: scale(0.98); }
+  100% { transform: scale(1.02); }
+}
+
+.warning-icon {
+  font-size: 26px;
+  color: #F59E0B;
+}
+
+.warning-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #F59E0B;
+}
+
+.warning-sub {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #FCD34D;
+}
+
+.mp-package-pins {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.bga-pin {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #D97706;
+  opacity: 0.8;
+}
+
+/* =========================================================================
+   HBM VISUAL COMPONENT
+   ========================================================================= */
+.hbm-visual-container {
+  width: 860px;
+}
+
+.hbm-interposer-substrate {
+  background: #0B1120;
+  border: 2px solid #60A5FA;
+  border-radius: 16px;
+  padding: 14px 22px;
+  box-shadow: 0 0 45px rgba(96, 165, 250, 0.25);
+}
+
+.interposer-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #64748B;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #1E293B;
+  padding-bottom: 8px;
+}
+
+.hbm-spec-pill {
+  color: #60A5FA;
+}
+
+.hbm-stacks-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.hbm-stack-cube {
+  background: #020617;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+.cube-top-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #94A3B8;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.cube-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dram-layer {
+  background: #1E293B;
+  border: 1px solid #334155;
+  border-radius: 3px;
+  padding: 0 6px;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #CBD5E1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tsv-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #60A5FA;
+}
+
+.base-logic-layer {
+  background: #172554;
+  border-color: #60A5FA;
+  color: #93C5FD;
+}
+
+.microbumps-row {
+  display: flex;
+  justify-content: space-around;
+  margin: 4px 0;
+}
+
+.microbump {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #F59E0B;
+}
+
+.cube-capacity-tag {
+  font-size: 13px;
+  font-weight: 800;
+  color: #60A5FA;
+  text-align: center;
+  margin-top: 0;
+}
+
+.hbm-wide-interconnect {
+  margin-top: 12px;
+  background: #020617;
+  border: 1px solid #1E293B;
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.interconnect-bus-lanes {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.bus-lane-wire {
+  width: 3px;
+  height: 18px;
+  background: #334155;
+  border-radius: 2px;
+}
+
+.feeding-active .bus-lane-wire {
+  background: #60A5FA;
+  box-shadow: 0 0 8px #60A5FA;
+  animation: busPulse 1s infinite alternate;
+}
+
+@keyframes busPulse {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.bus-bandwidth-label {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #60A5FA;
+}
+
+/* =========================================================================
+   MEMORY HIERARCHY PYRAMID COMPONENT
+   ========================================================================= */
+.memory-hierarchy-container {
+  width: 1180px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Shared axis: left = closer/faster/smaller, right = farther/slower/larger */
+.hierarchy-axis-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 0 4px;
+}
+.axis-label-fast { color: #38BDF8; }
+.axis-label-large { color: #F59E0B; }
+
+.axis-gradient-bar {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  background: linear-gradient(90deg, #38BDF8, #F59E0B);
+  margin: 0 18px;
+  border-radius: 2px;
+}
+.axis-gradient-bar::after {
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  border: 6px solid transparent;
+  border-left: 9px solid #F59E0B;
+  transform: translate(50%, -50%);
+}
+
+.hierarchy-tiers-stack {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.hierarchy-tier-card {
+  background: #0B1120;
+  border: 2px solid #1E293B;
+  border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: transform 0.25s ease, opacity 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hierarchy-tier-card:hover {
+  transform: translateY(-3px);
+  border-color: #38BDF8;
+}
+
+.hierarchy-tier-card.selected {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 24px rgba(56, 189, 248, 0.18);
+}
+
+/* Projector-safe dimming: still legible */
+.hierarchy-tier-card.dimmed {
+  opacity: 0.45;
+  filter: saturate(0.5);
+}
+
+.tier-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.tier-proximity {
+  color: #94A3B8;
+}
+
+.tier-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  margin: 0;
+  color: #F8FAFC;
+  line-height: 1.15;
+}
+
+.tier-content-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tier-metrics-col {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.metric-box {
+  background: #020617;
+  border: 1px solid #1E293B;
+  border-radius: 6px;
+  padding: 4px 9px;
+  display: flex;
+  flex-direction: column;
+}
+
+.m-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #64748B;
+}
+
+.m-val {
+  font-size: 14px;
+  font-weight: 800;
+  color: #F8FAFC;
+  line-height: 1.25;
+}
+
+.tier-summary {
+  font-size: 13px;
+  color: #94A3B8;
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* Full-pyramid stage: hierarchy is the only diagram, so give it room */
+.memory-hierarchy-container.is-large { width: 1260px; gap: 14px; }
+.is-large .hierarchy-tier-card { padding: 16px 18px; gap: 10px; }
+.is-large .tier-name { font-size: 22px; }
+.is-large .metric-box { padding: 6px 10px; }
+.is-large .m-val { font-size: 16px; }
+.is-large .tier-summary { font-size: 14px; }
+
+/* =========================================================================
+   WAITING GAME SIMULATION COMPONENT
+   ========================================================================= */
+.waiting-game-container {
+  width: 1140px;
+  background: linear-gradient(180deg, #0F172A, #020617);
+  border: 2px solid #1E293B;
+  border-radius: 18px;
+  padding: 18px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+}
+
+.game-control-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1E293B;
+  padding-bottom: 12px;
+  gap: 20px;
+}
+
+.game-kicker {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #38BDF8;
+}
+
+.game-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 4px 0 0 0;
+  color: #F8FAFC;
+}
+
+.game-toggle-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.game-btn {
+  padding: 9px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  white-space: nowrap;
+  font-weight: 800;
+  border: 1px solid #334155;
+  background: #020617;
+  color: #94A3B8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.game-btn.active-amber {
+  background: #1C1204;
+  border-color: #F59E0B;
+  color: #F59E0B;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+}
+
+.game-btn.active-cyan {
+  background: #082F49;
+  border-color: #38BDF8;
+  color: #38BDF8;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+.game-simulation-board {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #020617;
+  border: 1px solid #1E293B;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.game-memory-source {
+  width: 190px;
+}
+
+.source-box {
+  background: #0F172A;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+
+.source-icon { font-size: 24px; }
+.source-name { font-size: 14px; font-weight: 800; color: #F8FAFC; }
+.source-rate { font-size: 13px; font-weight: 700; color: #38BDF8; }
+
+.game-stream-highway {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.highway-lanes-cluster {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.highway-lane-track {
+  position: relative;
+  height: 4px;
+  background: #1E293B;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.lane-packet-pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 100%;
+  background: #22D3EE;
+  border-radius: 2px;
+  box-shadow: 0 0 8px #22D3EE;
+  animation: streamFlow infinite linear;
+}
+
+@keyframes streamFlow {
+  0% { transform: translateX(-50px); }
+  100% { transform: translateX(350px); }
+}
+
+.highway-tag {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #64748B;
+}
+
+.game-workers-matrix {
+  width: 470px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.matrix-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #64748B;
+}
+
+.matrix-status { color: #38BDF8; }
+
+.workers-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.worker-core-node {
+  background: #0F172A;
+  border: 1px solid #1E293B;
+  border-radius: 4px;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  transition: all 0.3s ease;
+}
+
+.worker-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #64748B;
+}
+
+.worker-id { font-size: 12px; font-weight: 700; color: #64748B; }
+.worker-state-text { font-size: 12px; font-weight: 800; color: #475569; }
+
+.core-busy {
+  background: #082F49;
+  border-color: #38BDF8;
+}
+.core-busy .worker-status-dot {
+  background: #38BDF8;
+  box-shadow: 0 0 6px #38BDF8;
+}
+.core-busy .worker-state-text {
+  color: #38BDF8;
+}
+
+.core-starved {
+  background: #1C1204;
+  border-color: #78350F;
+  opacity: 0.55;
+}
+.core-starved .worker-status-dot {
+  background: #F59E0B;
+}
+.core-starved .worker-state-text {
+  color: #F59E0B;
+}
+
+.game-footer-takeaway {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #020617;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.takeaway-badge {
+  font-size: 12px;
+  white-space: nowrap;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #F59E0B;
+  background: #1C1204;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid #78350F;
+}
+
+.takeaway-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: #CBD5E1;
+}
+
+/* =========================================================================
+   STAGE 10: SYSTEM PERFORMANCE COMPARISON
+   ========================================================================= */
+.mp-system-comparison-view {
+  width: 1120px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.comparison-columns-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.sys-card {
+  background: #0B1120;
+  border-radius: 14px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.sys-card.card-starved {
+  border: 2px solid #F59E0B;
+}
+.sys-card.card-balanced {
+  border: 2px solid #22D3EE;
+}
+
+.sys-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.sys-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0;
+  color: #F8FAFC;
+}
+
+.sys-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.card-starved .sys-badge { background: #1C1204; color: #F59E0B; border: 1px solid #78350F; }
+.card-balanced .sys-badge { background: #082F49; color: #22D3EE; border: 1px solid #0E7490; }
+
+.sys-diagram-mock {
+  background: #020617;
+  border: 1px solid #1E293B;
+  border-radius: 8px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.mock-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #94A3B8;
+  font-weight: 700;
+}
+
+.mock-row .val { color: #F8FAFC; }
+
+.sys-outcome-box {
+  background: #0F172A;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #CBD5E1;
+  line-height: 1.4;
+}
+
+.mp-big-takeaway-banner {
+  background: linear-gradient(90deg, #1C1204, #082F49);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 16px 24px;
+  text-align: center;
+}
+
+.banner-line1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #F8FAFC;
+  letter-spacing: 0.05em;
+}
+
+.banner-line1 span {
+  color: #F59E0B;
+}
+
+.banner-line2 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #94A3B8;
+  margin-top: 4px;
+}
+
+/* =========================================================================
+   STAGE 11 / 12: TEASER & TRANSITION TO DATA HIGHWAY
+   ========================================================================= */
+.mp-teaser-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+}
+
+.teaser-headline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px;
+  margin: 0;
+  font-weight: 800;
+  color: #F8FAFC;
+  line-height: 1.15;
+}
+
+.teaser-headline span {
+  color: #38BDF8;
+}
+
+.teaser-highway-visual {
+  position: relative;
+  width: 900px;
+  height: 130px;
+  background: #0B1120;
+  border: 2px solid #38BDF8;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 0 50px rgba(56, 189, 248, 0.3);
+  overflow: hidden;
+}
+
+.highway-road-lines {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, transparent 50%, rgba(56, 189, 248, 0.25) 50%);
+  background-size: 40px 100%;
+  animation: moveRoad 0.8s infinite linear;
+}
+
+@keyframes moveRoad {
+  to { background-position: -40px 0; }
+}
+
+.highway-hub {
+  position: relative;
+  z-index: 2;
+  background: #020617;
+  border: 1px solid #38BDF8;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: #38BDF8;
+}
+
+.highway-center-label {
+  position: relative;
+  z-index: 2;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #F8FAFC;
+  text-shadow: 0 0 10px #38BDF8;
+}
+
+.teaser-next-action-pill {
+  padding: 9px 20px;
+  background: #0F172A;
+  border: 1px solid #38BDF8;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #38BDF8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.teaser-kbd {
+  background: #020617;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: inherit;
+}

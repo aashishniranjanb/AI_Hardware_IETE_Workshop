@@ -1,0 +1,373 @@
+/* =========================================================================
+   SLIDE 11 — FROM RTL TO REAL HARDWARE
+   Styles for all 12 stages: ALU start -> 3 Paths -> FPGA pipeline/board
+   -> Renesas pipeline/board -> ESP32 pipeline/board -> Comparison
+   -> Same Task (Digit 7) -> Tradeoffs -> Physical Boards Reveal
+   ========================================================================= */
+
+.platform-scene-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #05070B;
+  color: #F4F7FA;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.platform-ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(39, 215, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(39, 215, 255, 0.035) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, black 45%, transparent 95%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header */
+.platform-top-header {
+  position: relative;
+  z-index: 10;
+  padding: 22px 50px 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.platform-editorial-title-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.platform-eyebrow-line {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: #27D7FF;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.platform-main-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(24px, 2.8cqw, 38px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.platform-main-title span {
+  color: #27D7FF;
+}
+
+.platform-stage-caption {
+  font-size: 13px;
+  color: #8B98A8;
+  font-weight: 600;
+  margin-top: 5px;
+  letter-spacing: 0.04em;
+}
+
+.platform-header-accent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.platform-accent-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #27D7FF;
+  text-shadow: 0 0 20px rgba(39, 215, 255, 0.5);
+}
+
+.platform-teaching-point-pill {
+  padding: 4px 12px;
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #57E6A5;
+}
+
+/* Viewport */
+.platform-main-viewport {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  padding: 0 40px;
+}
+
+.plat-wrap {
+  width: 100%;
+  max-width: 1150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Three Paths Layout */
+.three-paths-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.path-preview-card {
+  background: #0B1120;
+  border: 2px solid #1E293B;
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.path-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  padding: 3px 10px;
+  border-radius: 14px;
+}
+
+/* Pipeline Flow Chains */
+.pipeline-step-chain {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.pipe-step-box {
+  background: #0B1120;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 120px;
+}
+
+/* Board Spec Cards */
+.board-hero-card {
+  display: flex;
+  gap: 40px;
+  background: #0B1120;
+  border: 2px solid #1E293B;
+  border-radius: 16px;
+  padding: 30px;
+  width: 100%;
+  max-width: 950px;
+  align-items: center;
+}
+
+.board-schematic-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #020617;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.board-info-pane {
+  flex: 1.3;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.board-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #F4F7FA;
+}
+
+.board-flow-tag {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #27D7FF;
+}
+
+.board-specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.board-spec-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 6px 10px;
+  background: #020617;
+  border-radius: 6px;
+  border: 1px solid #1E293B;
+}
+
+.board-spec-item .k { color: #8B98A8; }
+.board-spec-item .v { font-weight: 700; color: #F4F7FA; font-family: 'Space Grotesk', monospace; }
+
+/* Compare Table Card */
+.compare-columns-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.compare-col-box {
+  background: #0B1120;
+  border: 2px solid #1E293B;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Same Task Convergence Card */
+.task-convergence-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 16px;
+  padding: 28px;
+  width: 100%;
+  max-width: 950px;
+}
+
+.input-digit-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background: #0B1120;
+  border: 2px solid #27D7FF;
+  border-radius: 12px;
+}
+
+/* Tradeoff Axes Grid */
+.tradeoff-radar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.tradeoff-card {
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Final Reveal Card */
+.reveal-boards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.reveal-board-pane {
+  background: #0B1120;
+  border: 2px solid #1E293B;
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+/* Bottom Progression */
+.platform-bottom-bar {
+  position: relative;
+  z-index: 10;
+  padding: 10px 50px 20px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.platform-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(11, 17, 32, 0.9);
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 1px solid #1E293B;
+  backdrop-filter: blur(10px);
+}
+
+.platform-step-btn {
+  background: transparent;
+  border: none;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  padding: 4px 8px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.platform-step-btn:hover {
+  color: #F4F7FA;
+}
+
+.platform-step-btn.step-active {
+  color: #05070B;
+  background: #27D7FF;
+  font-weight: 800;
+  box-shadow: 0 0 10px rgba(39, 215, 255, 0.5);
+}
+
+.platform-divider {
+  color: #334155;
+  font-size: 9px;
+}

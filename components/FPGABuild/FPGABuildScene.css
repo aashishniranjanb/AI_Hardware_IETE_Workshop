@@ -1,0 +1,362 @@
+/* =========================================================================
+   SLIDE 13 — BUILD THE FPGA VERSION
+   Styles for all 15 stages from AI Model through Quantization, MAC arrays,
+   RTL, Synthesis, Place & Route, Bitstream, and VSDSquadron FPGA Mini.
+   ========================================================================= */
+
+.fpga-build-scene-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #05070B;
+  color: #F4F7FA;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.fb-ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(39, 215, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(39, 215, 255, 0.035) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, black 45%, transparent 95%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header */
+.fb-top-header {
+  position: relative;
+  z-index: 10;
+  padding: 22px 50px 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.fb-editorial-title-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.fb-eyebrow-line {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: #27D7FF;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fb-main-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(24px, 2.8cqw, 38px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.fb-main-title span {
+  color: #27D7FF;
+}
+
+.fb-stage-caption {
+  font-size: 13px;
+  color: #8B98A8;
+  font-weight: 600;
+  margin-top: 5px;
+  letter-spacing: 0.04em;
+}
+
+.fb-header-accent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.fb-accent-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #27D7FF;
+  text-shadow: 0 0 20px rgba(39, 215, 255, 0.5);
+}
+
+.fb-teaching-point-pill {
+  padding: 4px 12px;
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #57E6A5;
+}
+
+/* Viewport */
+.fb-main-viewport {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  padding: 0 40px;
+}
+
+.fb-wrap {
+  width: 100%;
+  max-width: 1150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Common Card Containers */
+.fb-stage-card {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 16px;
+  padding: 28px 36px;
+  width: 100%;
+  max-width: 950px;
+}
+
+/* Quantization View */
+.quant-compare-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 16px;
+  padding: 26px 36px;
+}
+
+.quant-box {
+  background: #0B1120;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 160px;
+}
+
+/* MAC Schematics */
+.mac-diagram-box {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #020617;
+  border: 2px solid #27D7FF;
+  border-radius: 16px;
+  padding: 24px 34px;
+}
+
+/* Parallel MAC Grid */
+.parallel-mac-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 8px;
+  background: #020617;
+  border: 2px solid #27D7FF;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 0 30px rgba(39, 215, 255, 0.15);
+}
+
+.parallel-mac-cell {
+  background: rgba(39, 215, 255, 0.1);
+  border: 1px solid #27D7FF;
+  border-radius: 4px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 800;
+  color: #27D7FF;
+}
+
+/* Code Snippet Box */
+.verilog-snippet-card {
+  background: #0B1120;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 16px 22px;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 13px;
+  color: #57E6A5;
+  line-height: 1.6;
+}
+
+/* Synthesis Mapping View */
+.synth-split-view {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 16px;
+  padding: 24px 32px;
+}
+
+/* FPGA Grid Routing Fabric */
+.pnr-fabric-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  gap: 5px;
+  width: 320px;
+  height: 320px;
+  background: #020617;
+  border: 2px solid #27D7FF;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 0 35px rgba(39, 215, 255, 0.2);
+}
+
+.pnr-lut-node {
+  background: rgba(39, 215, 255, 0.1);
+  border: 1px solid #27D7FF;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: 800;
+  color: #27D7FF;
+}
+
+.pnr-lut-node.is-routed {
+  background: #27D7FF;
+  color: #020617;
+  box-shadow: 0 0 8px #27D7FF;
+}
+
+/* Bitstream Streaming Display */
+.bitstream-stream-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: #020617;
+  border: 2px solid #57E6A5;
+  border-radius: 16px;
+  padding: 24px 40px;
+  box-shadow: 0 0 35px rgba(87, 230, 165, 0.15);
+}
+
+.bitstream-code-line {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 14px;
+  font-weight: 800;
+  color: #57E6A5;
+  letter-spacing: 0.1em;
+}
+
+/* Board Schematic Box */
+.board-preview-box {
+  display: flex;
+  gap: 36px;
+  background: #020617;
+  border: 2px solid #27D7FF;
+  border-radius: 16px;
+  padding: 26px 36px;
+  width: 100%;
+  max-width: 900px;
+  align-items: center;
+}
+
+/* Complete 9-Step Pipeline Strip */
+.complete-pipeline-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 14px;
+  padding: 16px 20px;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.pipeline-tiny-node {
+  background: #0B1120;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+  text-align: center;
+}
+
+/* Bottom Stepper Bar */
+.fb-bottom-bar {
+  position: relative;
+  z-index: 10;
+  padding: 10px 50px 20px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.fb-track {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(11, 17, 32, 0.9);
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 1px solid #1E293B;
+  backdrop-filter: blur(10px);
+}
+
+.fb-step-btn {
+  background: transparent;
+  border: none;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  padding: 4px 7px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fb-step-btn:hover {
+  color: #F4F7FA;
+}
+
+.fb-step-btn.step-active {
+  color: #05070B;
+  background: #27D7FF;
+  font-weight: 800;
+  box-shadow: 0 0 10px rgba(39, 215, 255, 0.5);
+}
+
+.fb-divider {
+  color: #334155;
+  font-size: 9px;
+}

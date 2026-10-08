@@ -1,0 +1,712 @@
+/* =========================================================================
+   MISSION 05 / SLIDE 06 — THE DATA HIGHWAY
+   HOW DOES ALL THIS DATA MOVE?
+   ========================================================================= */
+
+.data-highway-scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #02050A;
+  color: #F8FAFC;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background grid */
+.dh-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, black 45%, transparent 95%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header Area */
+.dh-header {
+  position: relative;
+  z-index: 10;
+  padding: 35px 50px 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.dh-eyebrow {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: #38BDF8;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dh-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(26px, 3.2cqw, 46px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.dh-title span {
+  color: #38BDF8;
+}
+
+.dh-subtitle {
+  font-size: 15px;
+  color: #94A3B8;
+  font-weight: 500;
+  margin-top: 6px;
+  letter-spacing: 0.04em;
+}
+
+/* Stage Navigation Pills */
+.dh-stage-indicator-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(15, 23, 42, 0.85);
+  padding: 5px 8px;
+  border-radius: 30px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  backdrop-filter: blur(10px);
+  max-width: 55cqw;
+  overflow-x: auto;
+}
+
+.dh-nav-pill {
+  padding: 5px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: 20px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64748B;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.dh-nav-pill:hover {
+  color: #F8FAFC;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dh-nav-pill.active {
+  color: #02050A;
+  background: #38BDF8;
+  font-weight: 800;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+}
+
+/* Main Viewport */
+.dh-main-viewport {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  padding: 0 40px;
+}
+
+/* =========================================================================
+   DATA NODE STYLES
+   ========================================================================= */
+.dh-data-node {
+  position: relative;
+  width: 140px;
+  background: #0B1120;
+  border: 2px solid #1E293B;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+}
+
+.dh-data-node.highlighted {
+  border-color: #38BDF8;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+}
+
+.dh-data-node.dimmed {
+  opacity: 0.3;
+}
+
+.node-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.node-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.node-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  margin: 0;
+  color: #F8FAFC;
+}
+
+.node-sublabel {
+  font-size: 9px;
+  font-weight: 600;
+  color: #94A3B8;
+}
+
+.node-pins-row {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 4px;
+}
+
+.node-pin-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #D97706;
+  opacity: 0.7;
+}
+
+/* =========================================================================
+   GPU CLUSTER STYLES
+   ========================================================================= */
+.gpu-cluster-container {
+  position: relative;
+  width: min(880px, 88cqw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.cluster-interconnect-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: #0F172A;
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #60A5FA;
+  letter-spacing: 0.08em;
+}
+
+.badge-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #60A5FA;
+  box-shadow: 0 0 8px #60A5FA;
+}
+
+.gpu-nodes-grid {
+  position: relative;
+  width: 680px;
+  height: 340px;
+}
+
+.gpu-nodes-grid.grid-dual {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 220px;
+}
+
+.gpu-nodes-grid.grid-quad .pod-1 { position: absolute; top: 10px; left: 90px; }
+.gpu-nodes-grid.grid-quad .pod-2 { position: absolute; top: 10px; right: 90px; }
+.gpu-nodes-grid.grid-quad .pod-3 { position: absolute; bottom: 10px; left: 90px; }
+.gpu-nodes-grid.grid-quad .pod-4 { position: absolute; bottom: 10px; right: 90px; }
+
+.gpu-unit-pod {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 5;
+}
+
+.pod-hbm-sub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.hbm-tag {
+  font-size: 9px;
+  font-weight: 800;
+  color: #60A5FA;
+  background: #0F172A;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid #1E293B;
+}
+
+.cluster-mesh-svg {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 680px;
+  height: 340px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* =========================================================================
+   PCIe BUS VIEW
+   ========================================================================= */
+.pcie-stage-container {
+  width: min(840px, 86cqw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.pcie-root-top {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.pcie-bus-bar {
+  position: relative;
+  width: 640px;
+  height: 48px;
+  background: #0F172A;
+  border: 2px solid #22D3EE;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.3);
+}
+
+.pcie-bus-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #22D3EE;
+}
+
+.pcie-devices-row {
+  display: flex;
+  justify-content: space-between;
+  width: 640px;
+}
+
+/* =========================================================================
+   NoC VISUAL STYLES
+   ========================================================================= */
+.noc-visual-container {
+  width: min(780px, 82cqw);
+}
+
+.noc-silicon-die-package {
+  background: #0B1120;
+  border: 2px solid #38BDF8;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 0 50px rgba(56, 189, 248, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.noc-die-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #64748B;
+  border-bottom: 1px solid #1E293B;
+  padding-bottom: 8px;
+}
+
+.noc-die-header .die-spec { color: #38BDF8; }
+
+.noc-mesh-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  background: #020617;
+  border: 1px solid #1E293B;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.noc-tile-node {
+  position: relative;
+  background: #0F172A;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.noc-router-box {
+  width: 22px;
+  height: 22px;
+  background: #020617;
+  border: 1px solid #38BDF8;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.router-label {
+  font-size: 8px;
+  font-weight: 800;
+  color: #38BDF8;
+}
+
+.tile-subsystem {
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.sub-compute { background: #082F49; color: #38BDF8; }
+.sub-cache { background: #172554; color: #60A5FA; }
+.sub-mem { background: #1C1204; color: #F59E0B; }
+
+.noc-footer-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+}
+
+.noc-badge {
+  background: #082F49;
+  color: #38BDF8;
+  border: 1px solid #0E7490;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 800;
+}
+
+.noc-desc {
+  color: #94A3B8;
+  font-weight: 500;
+}
+
+/* =========================================================================
+   NETWORK VISUAL STYLES
+   ========================================================================= */
+.network-visual-container {
+  position: relative;
+  width: min(880px, 88cqw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.network-header-banner {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.banner-kicker { color: #A855F7; }
+.banner-spec { color: #CBD5E1; }
+
+.network-topology-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  z-index: 5;
+}
+
+.server-rack-pod {
+  background: #0B1120;
+  border: 2px solid #1E293B;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rack-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748B;
+  text-align: center;
+}
+
+.rack-nodes-bay {
+  display: flex;
+  gap: 10px;
+}
+
+.rack-nic-box {
+  background: #1E1B4B;
+  border: 1px solid #A855F7;
+  border-radius: 4px;
+  padding: 4px;
+  text-align: center;
+  font-size: 9px;
+  font-weight: 800;
+  color: #A855F7;
+}
+
+.network-switch-pod {
+  background: #0B1120;
+  border: 2px solid #A855F7;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 0 35px rgba(168, 85, 247, 0.35);
+  text-align: center;
+}
+
+.switch-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: #F8FAFC;
+  margin: 0 0 10px 0;
+}
+
+.switch-ports-matrix {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 3px;
+  margin-bottom: 8px;
+}
+
+.switch-port-led {
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  background: #A855F7;
+  box-shadow: 0 0 4px #A855F7;
+}
+
+.switch-bandwidth {
+  font-size: 9px;
+  font-weight: 800;
+  color: #94A3B8;
+}
+
+.network-connections-svg {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 760px;
+  height: 180px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* =========================================================================
+   THREE-LEVEL COMPARISON VIEW
+   ========================================================================= */
+.dh-three-level-view {
+  width: min(920px, 90cqw);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tiers-table-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.tier-column-card {
+  background: #0B1120;
+  border: 2px solid #1E293B;
+  border-radius: 12px;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  transition: all 0.25s ease;
+}
+
+.tier-column-card:hover {
+  transform: translateY(-4px);
+  border-color: #38BDF8;
+}
+
+.tier-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #020617;
+  border: 1px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.tier-tech-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0;
+  color: #F8FAFC;
+}
+
+.tier-scope-tag {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #0F172A;
+  border: 1px solid #1E293B;
+}
+
+.tier-stat-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-label {
+  font-size: 8px;
+  font-weight: 800;
+  color: #64748B;
+  letter-spacing: 0.1em;
+}
+
+.stat-val {
+  font-size: 11px;
+  font-weight: 800;
+  color: #F8FAFC;
+}
+
+.tier-role-text {
+  font-size: 10px;
+  color: #94A3B8;
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* =========================================================================
+   BLACKWELL TEASER & HIGHWAY FINALE
+   ========================================================================= */
+.dh-finale-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  text-align: center;
+}
+
+.finale-headline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(28px, 3.5cqw, 50px);
+  font-weight: 800;
+  color: #F8FAFC;
+  line-height: 1.15;
+}
+
+.finale-headline span {
+  color: #38BDF8;
+}
+
+.blackwell-system-preview-rack {
+  position: relative;
+  width: min(840px, 86cqw);
+  background: linear-gradient(180deg, #0B1120, #020617);
+  border: 2px solid #76B900;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 0 60px rgba(118, 185, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.blackwell-header-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: #76B900;
+  letter-spacing: 0.15em;
+}
+
+.blackwell-gpus-strip {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.blackwell-scale-stat {
+  display: flex;
+  gap: 20px;
+}
+
+.scale-pill {
+  background: #020617;
+  border: 1px solid #1E293B;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #CBD5E1;
+}
+
+.scale-pill strong {
+  color: #76B900;
+}
+
+.finale-next-action-pill {
+  padding: 8px 18px;
+  background: #0F172A;
+  border: 1px solid #76B900;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #76B900;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

@@ -1,0 +1,71 @@
+/* =========================================================================
+   DESIGN TOKENS — single source of truth for the deck's visual language.
+   Values are extracted from existing usage (see FULL_DECK_CONSOLIDATION_AUDIT).
+   ========================================================================= */
+:root {
+  /* Surfaces */
+  --c-bg: #05070B;
+  --c-bg-deep: #020617;
+  --c-panel: #0B1120;
+  --c-panel-2: #0F172A;
+  --c-border: #1E293B;
+  --c-border-strong: #334155;
+
+  /* Accents */
+  --c-cyan: #27D7FF;
+  --c-sky: #38BDF8;
+  --c-blue: #4B8DFF;
+  --c-green: #57E6A5;
+  --c-amber: #F59E0B;
+  --c-amber-soft: #FFB84D;
+  --c-purple: #8A7CFF;
+
+  /* Text */
+  --c-text: #F4F7FA;
+  --c-muted: #8B98A8;
+  --c-dim: #64748B;
+
+  /* Glow */
+  --glow-cyan: 0 0 14px rgba(39, 215, 255, 0.55);
+  --glow-blue: 0 0 14px rgba(75, 141, 255, 0.55);
+  --glow-amber: 0 0 14px rgba(245, 158, 11, 0.55);
+  --glow-green: 0 0 14px rgba(87, 230, 165, 0.55);
+
+  /* Typography */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, 'Fira Code', monospace;
+  --fs-display: 40px;
+  --fs-heading: 22px;
+  --fs-section: 18px;
+  --fs-body: 15px;
+  --fs-label: 13px;
+  --fs-micro: 12px;
+  --ls-label: 0.12em;
+
+  /* Spacing */
+  --s-xs: 4px;
+  --s-sm: 8px;
+  --s-md: 12px;
+  --s-lg: 20px;
+  --s-xl: 32px;
+
+  /* Radii */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-pill: 999px;
+
+  /* Motion */
+  --t-fast: 0.18s;
+  --t-base: 0.3s;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Z-index scale */
+  --z-scene: 1;
+  --z-scene-ui: 10;
+  --z-topbar: 25;
+  --z-controls: 40;
+  --z-transition: 60;
+  --z-blackout: 100;
+}

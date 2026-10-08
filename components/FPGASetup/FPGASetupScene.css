@@ -1,0 +1,279 @@
+/* =========================================================================
+   SLIDE 14 — FPGA HARDWARE SETUP
+   Styles for VSDSquadron FPGA Mini setup, Onboard FT232H, Direct USB link,
+   No External Adapter required, and First Test -> AI upgrade.
+   ========================================================================= */
+
+.fpga-setup-scene-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #05070B;
+  color: #F4F7FA;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.fs-ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(39, 215, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(39, 215, 255, 0.035) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, black 45%, transparent 95%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header */
+.fs-top-header {
+  position: relative;
+  z-index: 10;
+  padding: 22px 50px 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.fs-editorial-title-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.fs-eyebrow-line {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: #27D7FF;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fs-main-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(24px, 2.8cqw, 38px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.fs-main-title span {
+  color: #27D7FF;
+}
+
+.fs-stage-caption {
+  font-size: 13px;
+  color: #8B98A8;
+  font-weight: 600;
+  margin-top: 5px;
+  letter-spacing: 0.04em;
+}
+
+.fs-header-accent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.fs-accent-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #27D7FF;
+  text-shadow: 0 0 20px rgba(39, 215, 255, 0.5);
+}
+
+.fs-teaching-point-pill {
+  padding: 4px 12px;
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #57E6A5;
+}
+
+/* Viewport */
+.fs-main-viewport {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  padding: 0 40px;
+}
+
+.fs-wrap {
+  width: 100%;
+  max-width: 1150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Hero Board Card */
+.fs-board-hero-card {
+  display: flex;
+  gap: 40px;
+  background: #020617;
+  border: 2px solid #27D7FF;
+  border-radius: 18px;
+  padding: 28px 40px;
+  align-items: center;
+  box-shadow: 0 0 40px rgba(39, 215, 255, 0.15);
+}
+
+/* USB Cable Link Component */
+.usb-cable-link-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 16px;
+  padding: 28px 40px;
+  width: 100%;
+  max-width: 950px;
+}
+
+.cable-wire-svg {
+  flex: 1;
+  height: 50px;
+}
+
+/* Prominent Callout Banner */
+.prominent-callout-banner {
+  padding: 12px 30px;
+  border-radius: 30px;
+  background: rgba(39, 215, 255, 0.12);
+  border: 2px solid #27D7FF;
+  color: #27D7FF;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  box-shadow: 0 0 25px rgba(39, 215, 255, 0.25);
+  text-align: center;
+}
+
+/* Dual Split Flows (Power + Data) */
+.power-data-split-box {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  max-width: 850px;
+}
+
+.split-flow-card {
+  flex: 1;
+  background: #0B1120;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+/* LED Blink Test Card */
+.blink-validation-card {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: #020617;
+  border: 2px solid #57E6A5;
+  border-radius: 16px;
+  padding: 28px 40px;
+  box-shadow: 0 0 35px rgba(87, 230, 165, 0.15);
+}
+
+.pulsing-led-indicator {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #57E6A5;
+  box-shadow: 0 0 25px #57E6A5;
+  border: 3px solid #F4F7FA;
+}
+
+/* Final Steps Grid */
+.steps-progression-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  width: 100%;
+}
+
+.step-box-item {
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 10px;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+/* Bottom Stepper Bar */
+.fs-bottom-bar {
+  position: relative;
+  z-index: 10;
+  padding: 10px 50px 20px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.fs-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(11, 17, 32, 0.9);
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 1px solid #1E293B;
+  backdrop-filter: blur(10px);
+}
+
+.fs-step-btn {
+  background: transparent;
+  border: none;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  padding: 4px 8px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fs-step-btn:hover {
+  color: #F4F7FA;
+}
+
+.fs-step-btn.step-active {
+  color: #05070B;
+  background: #27D7FF;
+  font-weight: 800;
+  box-shadow: 0 0 10px rgba(39, 215, 255, 0.5);
+}
+
+.fs-divider {
+  color: #334155;
+  font-size: 9px;
+}

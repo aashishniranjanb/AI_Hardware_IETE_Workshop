@@ -1,0 +1,423 @@
+/* =========================================================================
+   SLIDE 09 — THE FUNDAMENTAL BUILDING BLOCK: TRANSISTOR → LOGIC → FPGA
+   ========================================================================= */
+
+.transistor-scene-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #05070B;
+  color: #F4F7FA;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.t-ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(39, 215, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(39, 215, 255, 0.035) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, black 45%, transparent 95%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header */
+.t-top-header {
+  position: relative;
+  z-index: 10;
+  padding: 24px 50px 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.t-editorial-title-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.t-eyebrow-line {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: #27D7FF;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.t-main-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(24px, 3cqw, 40px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.t-main-title span {
+  color: #27D7FF;
+}
+
+.t-stage-caption {
+  font-size: 13px;
+  color: #8B98A8;
+  font-weight: 600;
+  margin-top: 5px;
+  letter-spacing: 0.04em;
+}
+
+.t-header-accent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.t-accent-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #27D7FF;
+  text-shadow: 0 0 20px rgba(39, 215, 255, 0.5);
+}
+
+.t-teaching-point-pill {
+  padding: 4px 12px;
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #57E6A5;
+}
+
+/* Viewport */
+.t-main-viewport {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  padding: 0 40px;
+}
+
+.t-wrap {
+  width: 100%;
+  max-width: 1150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Stage 0: Preserved AND Gate */
+.and-gate-stage-container {
+  display: flex;
+  gap: 4cqw;
+  align-items: center;
+}
+
+.and-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.and-input-btn {
+  width: 100px;
+  height: 100px;
+  font-size: 40px;
+  font-weight: bold;
+  border-radius: 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.and-output-card {
+  padding: 30px 40px;
+  background: #0a1220;
+  border: 1px solid #355477;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  width: 320px;
+}
+
+/* Stage 1: More Logic Network */
+.logic-net-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.net-gate-box {
+  background: #0B1120;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Stage 2: Programmable Switches */
+.switch-route-diagram {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 14px;
+  padding: 30px;
+}
+
+/* Stage 4: PLA vs PAL comparison */
+.pla-pal-container {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+.pl-card {
+  flex: 1;
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pl-card.is-pla {
+  border-color: #27D7FF;
+}
+
+.pl-card.is-pal {
+  border-color: #8A7CFF;
+}
+
+.pl-block-diagram {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pl-strip {
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.pl-strip.prog {
+  background: rgba(39, 215, 255, 0.15);
+  border: 1px dashed #27D7FF;
+  color: #27D7FF;
+}
+
+.pl-strip.fixed {
+  background: rgba(138, 124, 255, 0.15);
+  border: 1px solid #8A7CFF;
+  color: #8A7CFF;
+}
+
+/* Stage 5: CPLD View */
+.cpld-matrix-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.cpld-blocks-row {
+  display: flex;
+  gap: 20px;
+}
+
+.cpld-logic-box {
+  background: #0B1120;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #F4F7FA;
+  text-align: center;
+}
+
+.cpld-interconnect-bar {
+  width: 100%;
+  padding: 12px;
+  background: rgba(39, 215, 255, 0.1);
+  border: 2px solid #27D7FF;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #27D7FF;
+  letter-spacing: 0.15em;
+}
+
+/* Stage 6: FPGA Grid Fabric */
+.fpga-grid-fabric {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  gap: 6px;
+  width: 340px;
+  height: 340px;
+  background: #020617;
+  border: 2px solid #27D7FF;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 0 35px rgba(39, 215, 255, 0.2);
+}
+
+.fpga-lut-cell {
+  background: rgba(39, 215, 255, 0.1);
+  border: 1px solid #27D7FF;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 800;
+  color: #27D7FF;
+}
+
+.fpga-lut-cell.is-lit {
+  background: #27D7FF;
+  color: #020617;
+  box-shadow: 0 0 10px #27D7FF;
+}
+
+/* Stage 7: Switch Matrix Interactive */
+.switch-matrix-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.switch-grid-svg {
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.interactive-switch-node {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.interactive-switch-node:hover {
+  filter: drop-shadow(0 0 6px #27D7FF);
+}
+
+/* Stage 8: RTL to Bitstream Pipeline */
+.rtl-pipeline-chain {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rtl-pipe-card {
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 140px;
+}
+
+.rtl-pipe-card.active-step {
+  border-color: #27D7FF;
+  box-shadow: 0 0 15px rgba(39, 215, 255, 0.2);
+}
+
+/* Stage 9: Configured Hardware Final Message */
+.configured-hero-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background: #020617;
+  border: 2px solid #57E6A5;
+  border-radius: 16px;
+  padding: 30px 50px;
+  box-shadow: 0 0 35px rgba(87, 230, 165, 0.15);
+}
+
+/* Bottom Progression */
+.t-bottom-bar {
+  position: relative;
+  z-index: 10;
+  padding: 10px 50px 20px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.t-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(11, 17, 32, 0.9);
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 1px solid #1E293B;
+  backdrop-filter: blur(10px);
+}
+
+.t-step-btn {
+  background: transparent;
+  border: none;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  padding: 4px 8px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.t-step-btn:hover {
+  color: #F4F7FA;
+}
+
+.t-step-btn.step-active {
+  color: #05070B;
+  background: #27D7FF;
+  font-weight: 800;
+  box-shadow: 0 0 10px rgba(39, 215, 255, 0.5);
+}
+
+.t-divider {
+  color: #334155;
+  font-size: 9px;
+}

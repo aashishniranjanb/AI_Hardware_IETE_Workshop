@@ -1,0 +1,230 @@
+/* =========================================================================
+   SHARED UI PRIMITIVES (ui-*) — small, composable classes built on tokens.
+   Scenes keep their own composition; these give one visual language.
+   ========================================================================= */
+
+/* ---------- Ambient grid (one implementation for every scene) ---------- */
+.deck-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
+}
+
+/* ---------- Panel ---------- */
+.ui-panel {
+  --accent: var(--c-border-strong);
+  background: linear-gradient(180deg, var(--c-panel-2), var(--c-panel));
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  transition: border-color var(--t-base) var(--ease-out), box-shadow var(--t-base) var(--ease-out);
+}
+.ui-panel.is-compact { border-radius: var(--r-md); }
+.ui-panel.is-elevated { box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75); }
+.ui-panel.accent-cyan  { --accent: var(--c-cyan);  border-color: rgba(39, 215, 255, 0.45); }
+.ui-panel.accent-blue  { --accent: var(--c-blue);  border-color: rgba(75, 141, 255, 0.45); }
+.ui-panel.accent-amber { --accent: var(--c-amber); border-color: rgba(245, 158, 11, 0.5); }
+.ui-panel.accent-green { --accent: var(--c-green); border-color: rgba(87, 230, 165, 0.45); }
+.ui-panel.is-active { border-color: var(--accent); box-shadow: 0 0 28px color-mix(in srgb, var(--accent) 30%, transparent); }
+
+/* ---------- Badge / status ---------- */
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-micro);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  color: var(--c-muted);
+  background: var(--c-bg-deep);
+  border: 1px solid var(--c-border-strong);
+}
+.ui-badge.accent-cyan  { color: var(--c-cyan);  border-color: rgba(39, 215, 255, 0.4); }
+.ui-badge.accent-amber { color: var(--c-amber); border-color: rgba(245, 158, 11, 0.45); }
+.ui-badge.accent-green { color: var(--c-green); border-color: rgba(87, 230, 165, 0.4); }
+
+/* ---------- Callout pill ---------- */
+.ui-callout {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: var(--r-pill);
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  color: var(--c-sky);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+.ui-callout.accent-amber { border-color: rgba(245, 158, 11, 0.45); color: var(--c-amber); }
+.ui-callout.accent-green { border-color: rgba(87, 230, 165, 0.45); color: var(--c-green); }
+
+/* ---------- Metric ---------- */
+.ui-metric {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 9px;
+  background: var(--c-bg-deep);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+}
+.ui-metric-label { font-size: var(--fs-micro); font-weight: 800; letter-spacing: 0.08em; color: var(--c-dim); }
+.ui-metric-value { font-size: 14px; font-weight: 800; color: var(--c-text); line-height: 1.25; }
+
+/* ---------- Stage navigator ---------- */
+.stage-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--s-md);
+  max-width: 100%;
+  font-family: var(--font-body);
+}
+.stage-nav.is-stacked {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--s-sm);
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: var(--r-lg);
+  padding: 10px 14px 12px;
+  backdrop-filter: blur(10px);
+}
+.stage-nav-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  white-space: nowrap;
+  font-size: var(--fs-micro);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--c-dim);
+}
+.stage-nav.is-stacked .stage-nav-meta { justify-content: space-between; }
+.stage-nav-count { color: var(--c-sky); font-variant-numeric: tabular-nums; }
+.stage-nav-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+.stage-nav-track::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 50%;
+  height: 2px;
+  background: var(--c-border);
+  transform: translateY(-50%);
+}
+.stage-nav-dot {
+  position: relative;
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--c-border-strong);
+  background: var(--c-panel);
+  color: var(--c-dim);
+  font: 800 12px/1 var(--font-body);
+  cursor: pointer;
+  transition: background var(--t-fast), border-color var(--t-fast), color var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast);
+}
+.stage-nav-dot:hover { border-color: var(--c-sky); color: var(--c-text); transform: translateY(-1px); }
+.stage-nav-dot:focus-visible { outline: 2px solid var(--c-sky); outline-offset: 2px; }
+.stage-nav-dot.is-done { border-color: #0E7490; background: #082F49; color: #7DD3FC; }
+.stage-nav-dot.is-active {
+  border-color: var(--c-sky);
+  background: var(--c-sky);
+  color: var(--c-bg-deep);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.6);
+}
+.stage-nav-dot.is-active.is-amber { border-color: var(--c-amber); background: var(--c-amber); box-shadow: var(--glow-amber); }
+.stage-nav.is-compact .stage-nav-dot { width: 22px; height: 22px; font-size: 11px; }
+.stage-nav.is-compact .stage-nav-track { gap: 4px; }
+.stage-nav-label {
+  font-size: var(--fs-label);
+  font-weight: 800;
+  letter-spacing: var(--ls-label);
+  color: var(--c-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/* ---------- Slide transition scan line ---------- */
+.slide-scan {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  z-index: var(--z-transition);
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(180deg, transparent, var(--c-cyan) 30%, var(--c-cyan) 70%, transparent);
+  box-shadow: 0 0 18px 4px rgba(39, 215, 255, 0.35);
+}
+.slide-stage {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 50%;
+}
+
+/* ---------- Reduced motion ---------- */
+/* OS preference applies unless the presenter forced full motion (M key). */
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="full"]) *,
+  :root:not([data-motion="full"]) *::before,
+  :root:not([data-motion="full"]) *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  :root:not([data-motion="full"]) .slide-scan { display: none; }
+}
+:root[data-motion="reduced"] *,
+:root[data-motion="reduced"] *::before,
+:root[data-motion="reduced"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+:root[data-motion="reduced"] .slide-scan { display: none; }
+
+/* Motion-mode toast (M key) */
+.motion-toast {
+  position: absolute;
+  left: 50%;
+  bottom: 70px;
+  transform: translateX(-50%);
+  z-index: var(--z-transition);
+  padding: 8px 16px;
+  border-radius: var(--r-pill);
+  background: rgba(11, 17, 32, 0.92);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  color: var(--c-sky);
+  font: 800 var(--fs-label)/1 var(--font-body);
+  letter-spacing: var(--ls-label);
+  pointer-events: none;
+}
+
+/* ---------- Scene header contract ----------
+   Every "*-top-header" clears the deck topbar (brand + slide counter). */
+:root { --deck-header-clearance: 44px; }
+[class*="-top-header"] {
+  padding-top: var(--deck-header-clearance) !important;
+}

@@ -1,0 +1,385 @@
+/* =========================================================================
+   SLIDE 12 — ONE AI MODEL. THREE HARDWARE PLATFORMS
+   Styles for all 13 stages: One Task -> Common Pipeline -> Model Network
+   -> Hardware Fork -> FPGA Path -> Renesas Path -> ESP32 Path -> 3 Ways
+   -> What Changes -> Engineering Choice -> Same Input -> Same Result -> Build It
+   ========================================================================= */
+
+.comp-scene-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #05070B;
+  color: #F4F7FA;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.comp-ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(39, 215, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(39, 215, 255, 0.035) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, black 45%, transparent 95%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header */
+.comp-top-header {
+  position: relative;
+  z-index: 10;
+  padding: 22px 50px 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.comp-editorial-title-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.comp-eyebrow-line {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: #27D7FF;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comp-main-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(24px, 2.8cqw, 38px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.comp-main-title span {
+  color: #27D7FF;
+}
+
+.comp-stage-caption {
+  font-size: 13px;
+  color: #8B98A8;
+  font-weight: 600;
+  margin-top: 5px;
+  letter-spacing: 0.04em;
+}
+
+.comp-header-accent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.comp-accent-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #27D7FF;
+  text-shadow: 0 0 20px rgba(39, 215, 255, 0.5);
+}
+
+.comp-teaching-point-pill {
+  padding: 4px 12px;
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #57E6A5;
+}
+
+/* Viewport */
+.comp-main-viewport {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  padding: 0 40px;
+}
+
+.comp-wrap {
+  width: 100%;
+  max-width: 1150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Stage 0: One Task Display */
+.single-task-card {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  background: #020617;
+  border: 2px solid #27D7FF;
+  border-radius: 16px;
+  padding: 28px 40px;
+  box-shadow: 0 0 35px rgba(39, 215, 255, 0.15);
+}
+
+.digit-scan-frame {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  background: #0B1120;
+  border: 2px solid #27D7FF;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.digit-glyph {
+  font-size: 56px;
+  font-weight: 900;
+  font-family: 'Space Grotesk', monospace;
+  color: #27D7FF;
+  text-shadow: 0 0 15px rgba(39, 215, 255, 0.6);
+}
+
+/* Stage 1: Common Pipeline */
+.common-pipeline-chain {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  justify-content: center;
+}
+
+.common-pipe-node {
+  background: #0B1120;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 150px;
+}
+
+/* Stage 2: Neural Network Architecture */
+.nn-model-matrix {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 16px;
+  padding: 24px 34px;
+}
+
+.nn-layer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.nn-nodes-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nn-node-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1E293B;
+  border: 1px solid #334155;
+}
+
+.nn-node-dot.active-node {
+  background: #27D7FF;
+  border-color: #27D7FF;
+  box-shadow: 0 0 8px #27D7FF;
+}
+
+/* Stage 3: Three Branches Fork */
+.three-branches-fork {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.branch-fork-card {
+  background: #0B1120;
+  border: 2px solid #1E293B;
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+/* Stage 4, 5, 6: Individual Path Cards */
+.platform-impl-card {
+  display: flex;
+  gap: 34px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 16px;
+  padding: 28px 36px;
+  width: 100%;
+  max-width: 950px;
+  align-items: center;
+}
+
+.impl-left-pane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+}
+
+.impl-center-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Stage 7: Three Columns Side-by-Side */
+.three-cols-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.col-impl-box {
+  background: #0B1120;
+  border: 2px solid #1E293B;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Stage 8: Dimensions Grid */
+.dimensions-radar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.dimension-item-card {
+  background: #0B1120;
+  border: 1px solid #1E293B;
+  border-radius: 8px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Stage 9: Engineering Choice Axes */
+.choice-axes-container {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  max-width: 900px;
+  background: #020617;
+  border: 2px solid #1E293B;
+  border-radius: 14px;
+  padding: 28px;
+  align-items: center;
+}
+
+/* Stage 10 & 11: Convergence Displays */
+.convergence-hero-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background: #020617;
+  border: 2px solid #57E6A5;
+  border-radius: 18px;
+  padding: 30px 60px;
+  box-shadow: 0 0 35px rgba(87, 230, 165, 0.15);
+}
+
+.converged-digit-giant {
+  font-size: 72px;
+  font-weight: 900;
+  font-family: 'Space Grotesk', monospace;
+  color: #57E6A5;
+  text-shadow: 0 0 25px rgba(87, 230, 165, 0.6);
+}
+
+/* Bottom Stepper Bar */
+.comp-bottom-bar {
+  position: relative;
+  z-index: 10;
+  padding: 10px 50px 20px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.comp-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(11, 17, 32, 0.9);
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 1px solid #1E293B;
+  backdrop-filter: blur(10px);
+}
+
+.comp-step-btn {
+  background: transparent;
+  border: none;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  padding: 4px 8px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.comp-step-btn:hover {
+  color: #F4F7FA;
+}
+
+.comp-step-btn.step-active {
+  color: #05070B;
+  background: #27D7FF;
+  font-weight: 800;
+  box-shadow: 0 0 10px rgba(39, 215, 255, 0.5);
+}
+
+.comp-divider {
+  color: #334155;
+  font-size: 9px;
+}

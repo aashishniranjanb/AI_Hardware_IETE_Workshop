@@ -1,0 +1,110 @@
+export const SUBSYSTEMS = [
+  {
+    id: 'vision',
+    name: 'VISION',
+    subtitle: 'Cameras + depth sensing',
+    spec: 'Stereo 4K 120FPS + LiDAR',
+    role: 'Perception: Spatial vision & optical input',
+    posClass: 'pos-vision',
+    anchor: { x: 50, y: 12 },
+    partClass: 'layer-vision',
+    color: '#38bdf8',
+    questionAnswer: 'Without vision, an intelligent machine cannot perceive its surroundings.'
+  },
+  {
+    id: 'audio',
+    name: 'AUDIO',
+    subtitle: 'Microphones + audio DSP',
+    spec: '8-Mic Array + Beamforming',
+    role: 'Hearing: Directional acoustics & voice recognition',
+    posClass: 'pos-audio',
+    anchor: { x: 50, y: 18 },
+    partClass: 'layer-audio',
+    color: '#38bdf8',
+    questionAnswer: 'Acoustic beamforming lets Chitti isolate human voices from noise.'
+  },
+  {
+    id: 'compute',
+    name: 'AI COMPUTE',
+    subtitle: 'CPU / GPU / NPU',
+    spec: '128 TFLOPS Dual-Die Neural Core',
+    role: 'Inference + Control: Where AI neural math executes',
+    posClass: 'pos-compute',
+    anchor: { x: 50, y: 34 },
+    partClass: 'layer-compute-core',
+    color: '#38bdf8',
+    questionAnswer: 'The core accelerator executing matrix multiplications (MACs) for vision and decision models.'
+  },
+  {
+    id: 'memory',
+    name: 'MEMORY',
+    subtitle: 'HBM + RAM + Storage',
+    spec: '3.2 TB/s HBM3e + 32GB LPDDR5x',
+    role: 'Stores AI weights & high-speed sensory buffers',
+    posClass: 'pos-memory',
+    anchor: { x: 58, y: 37 },
+    partClass: 'layer-memory-r',
+    color: '#38bdf8',
+    questionAnswer: 'Compute is useless if weights and video frames cannot arrive fast enough.'
+  },
+  {
+    id: 'communication',
+    name: 'COMMUNICATION',
+    subtitle: '5G / Wi-Fi 7 / RF Link',
+    spec: 'Dual-Band Transceiver <1ms',
+    role: 'Connectivity: Base station telemetry & cloud uplink',
+    posClass: 'pos-communication',
+    anchor: { x: 48, y: 24 },
+    partClass: 'layer-communication',
+    color: '#38bdf8',
+    questionAnswer: 'Offloads complex tasks and connects the robot to human operators and base stations.'
+  },
+  {
+    id: 'thermal',
+    name: 'THERMAL',
+    subtitle: 'Vapor chamber + cooling',
+    spec: '450W TDP Closed-Loop Channels',
+    role: 'Cooling: Heat dissipation for continuous high compute',
+    posClass: 'pos-thermal',
+    anchor: { x: 42, y: 32 },
+    partClass: 'layer-thermal',
+    color: '#f97316',
+    questionAnswer: 'AI accelerators generate massive heat; without cooling, silicon throttles instantly.'
+  },
+  {
+    id: 'power',
+    name: 'POWER',
+    subtitle: 'Battery + PMIC',
+    spec: '800V Solid-State + 12-Phase PMIC',
+    role: 'Energy: Regulated power for peak actuator transients',
+    posClass: 'pos-power',
+    anchor: { x: 50, y: 52 },
+    partClass: 'layer-battery',
+    color: '#38bdf8',
+    questionAnswer: 'High-discharge battery bank supplying hundreds of peak amps to limbs and compute.'
+  },
+  {
+    id: 'actuation',
+    name: 'ACTUATION',
+    subtitle: 'Harmonic motors + servos',
+    spec: '36-DOF Harmonic Drives / 120Nm',
+    role: 'Movement: Converts AI decisions into physical work',
+    posClass: 'pos-actuation',
+    anchor: { x: 62, y: 44 },
+    partClass: 'layer-arm-r',
+    color: '#38bdf8',
+    questionAnswer: 'Robotic servos and harmonic joints that translate digital pulses into kinetic action.'
+  },
+  {
+    id: 'sensors',
+    name: 'SENSORS',
+    subtitle: '6-Axis IMU + tactile skin',
+    spec: '1000Hz Kinematic Telemetry',
+    role: 'Physical Awareness: Balance, torque, touch feedback',
+    posClass: 'pos-sensors',
+    anchor: { x: 45, y: 64 },
+    partClass: 'layer-pelvis',
+    color: '#38bdf8',
+    questionAnswer: 'Gyroscopes, torque gauges, and pressure arrays giving Chitti spatial proprioception.'
+  }
+];
