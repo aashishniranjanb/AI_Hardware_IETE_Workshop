@@ -1,3 +1,4 @@
+import { RippleAdder } from './RippleAdder';
 import React, { useState } from 'react';
 
 // STAGE 0: LOGIC GATE TOOLKIT (AND, OR, NOT, XOR)
@@ -273,35 +274,18 @@ export function StageFullAdder() {
   );
 }
 
-// STAGE 4: CHAINED FULL ADDERS (Ripple Carry Chain)
+// STAGE 4: CHAINED FULL ADDERS (Ripple Carry Chain) — animated carry propagation
 export function StageChainedAdders() {
   return (
     <div className="stage-wrap">
-      <div style={{ fontSize: '13px', fontWeight: 800, color: '#27D7FF', letterSpacing: '0.15em' }}>
+      <div style={{ fontSize: '13px', fontWeight: 800, color: 'var(--c-cyan)', letterSpacing: '0.15em' }}>
         RIPPLE CARRY PROPAGATION: C0 → C1 → C2 → C3 → C4
       </div>
-      <div className="bit4-chain-container">
-        {[
-          { bit: 3, cin: 'C3', cout: 'C4', s: 'S3' },
-          { bit: 2, cin: 'C2', cout: 'C3', s: 'S2' },
-          { bit: 1, cin: 'C1', cout: 'C2', s: 'S1' },
-          { bit: 0, cin: 'C0=0', cout: 'C1', s: 'S0' },
-        ].map((unit) => (
-          <div key={unit.bit} className="bit4-unit-box">
-            <span className="bit4-unit-title">STAGE [{unit.bit}]</span>
-            <div style={{ fontSize: '12px', color: '#8B98A8' }}>A{unit.bit} + B{unit.bit}</div>
-            <div style={{ fontSize: '12px', color: '#F59E0B', fontWeight: 700 }}>
-              {unit.cin} → {unit.cout}
-            </div>
-            <div style={{ fontSize: '16px', fontWeight: 800, color: '#27D7FF' }}>
-              {unit.s}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div style={{ fontSize: '12px', color: '#8B98A8', maxWidth: '600px', textAlign: 'center', lineHeight: 1.6 }}>
-        Each stage computes its sum and forwards its carry to the next stage on the left.<br />
-        By chaining 4 full adders together, we can add two 4-bit numbers (0 to 15).
+      {/* 11 + 7: every stage generates or propagates a carry, so the ripple is visible end to end */}
+      <RippleAdder a={11} b={7} />
+      <div style={{ fontSize: '13px', color: 'var(--c-muted)', maxWidth: '640px', textAlign: 'center', lineHeight: 1.5 }}>
+        Each full adder must wait for the carry from its right-hand neighbour before its sum is final —
+        that waiting is why it is called a ripple-carry adder.
       </div>
     </div>
   );
@@ -365,40 +349,8 @@ export function StageFourBitAdder() {
         </div>
       </div>
 
-      {/* Ripple Carry 4 Full Adders Chain */}
-      <div className="bit4-chain-container">
-        {[
-          { bit: 3, a: aBits[3], b: bBits[3], s: s3, cin: c3, cout: c4 },
-          { bit: 2, a: aBits[2], b: bBits[2], s: s2, cin: c2, cout: c3 },
-          { bit: 1, a: aBits[1], b: bBits[1], s: s1, cin: c1, cout: c2 },
-          { bit: 0, a: aBits[0], b: bBits[0], s: s0, cin: c0, cout: c1 },
-        ].map((stage) => (
-          <div key={stage.bit} className="bit4-unit-box">
-            <span className="bit4-unit-title">FA STAGE [{stage.bit}]</span>
-            <div style={{ fontSize: '12px', color: '#8B98A8' }}>
-              A={stage.a} + B={stage.b}
-            </div>
-            <div style={{ fontSize: '12px', color: '#F59E0B' }}>
-              Cin={stage.cin} → Cout={stage.cout}
-            </div>
-            <div style={{ marginTop: '4px', fontSize: '16px', fontWeight: 800, color: '#27D7FF' }}>
-              SUM = {stage.s}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Output Total */}
-      <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-        <div className="circuit-result-badge highlight-sum" style={{ minWidth: '220px' }}>
-          <span className="res-lbl">DECIMAL RESULT</span>
-          <span className="res-val">{sumTotal}</span>
-        </div>
-        <div className="circuit-result-badge highlight-carry" style={{ minWidth: '220px' }}>
-          <span className="res-lbl">5-BIT BINARY WORD</span>
-          <span className="res-val">{c4}{s3}{s2}{s1}{s0}₂</span>
-        </div>
-      </div>
+      {/* Animated ripple-carry chain (restarts whenever A or B changes) */}
+      <RippleAdder a={valA} b={valB} />
     </div>
   );
 }
