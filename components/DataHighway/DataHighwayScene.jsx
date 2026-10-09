@@ -7,6 +7,7 @@ import gsap from 'gsap';
 import { HIGHWAY_STAGES, INTERCONNECT_TIERS } from './dataHighwayData';
 import { DataNode } from './DataNode';
 import { ConnectionPath } from './ConnectionPath';
+import { PcieRoutes } from './PcieRoutes';
 import { GPUCluster } from './GPUCluster';
 import { NoCVisual } from './NoCVisual';
 import { NetworkVisual } from './NetworkVisual';
@@ -15,6 +16,7 @@ import './DataHighway.css';
 export function DataHighwayScene() {
   const containerRef = useRef(null);
   const [stageIndex, setStageIndex] = useState(0);
+  const pcieRef = useRef(null);
 
   const currentStage = HIGHWAY_STAGES[stageIndex] || HIGHWAY_STAGES[0];
 
@@ -108,7 +110,8 @@ export function DataHighwayScene() {
 
         {/* STAGE 3: PCIe (SYSTEM-LEVEL INTERCONNECT) */}
         {currentStage.id === 'pcie' && (
-          <div className="pcie-stage-container">
+          <div className="pcie-stage-container" ref={pcieRef}>
+            <PcieRoutes />
             <div className="pcie-root-top">
               <DataNode type="gpu" label="HOST CPU" sublabel="ROOT COMPLEX" color="#38BDF8" icon="cpu" />
               <DataNode type="gpu" label="AI GPU" sublabel="PCIe ADD-IN CARD" color="#60A5FA" icon="gpu" isHighlighted={true} />

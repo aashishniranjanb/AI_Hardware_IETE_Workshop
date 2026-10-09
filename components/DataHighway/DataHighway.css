@@ -713,3 +713,11 @@
 
 /* Projector readability */
 .data-highway-scene .stat-label, .stat-label { font-size: 12px; }
+
+/* Data packets (ConnectionPath): GSAP moves them along the real wire path */
+.dh-packet { filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.9)); }
+.dh-packet-rev { filter: drop-shadow(0 0 4px rgba(248, 250, 252, 0.8)); }
+.pcie-stage-container { position: relative; }
+.pcie-routes-svg { position: absolute; left: 0; top: 0; pointer-events: none; z-index: 3; overflow: visible; }
+.pcie-stage-container > :not(.pcie-routes-svg) { position: relative; z-index: 1; }
+.pcie-stub { fill: none; stroke: rgba(148, 163, 184, 0.35); stroke-width: 2; }

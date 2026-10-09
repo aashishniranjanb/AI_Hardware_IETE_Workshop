@@ -82,6 +82,7 @@ export function NetworkVisual() {
           width={4}
           speed="medium"
           isActive={true}
+          delay={1.6} /* starts as the net-1 packet reaches the switch: one end-to-end transfer */
         />
       </svg>
     </div>
