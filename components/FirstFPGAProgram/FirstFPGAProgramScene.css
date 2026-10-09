@@ -320,3 +320,57 @@
   color: rgba(255, 255, 255, 0.15);
   font-size: 0.75rem;
 }
+
+/* ===== Counter → LED conceptual simulation (CounterLedDemo.jsx) =====
+   GSAP drives the count and toggles classes; no CSS transitions/animations here. */
+.cl-root { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; max-width: 900px; }
+.cl-sim-badge {
+  display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: var(--r-pill);
+  border: 1px dashed var(--c-amber); color: var(--c-amber); font-size: 12px; font-weight: 800; letter-spacing: 0.08em;
+}
+.cl-wave-label { font: 700 12px var(--font-body); fill: var(--c-muted); }
+.cl-wave-path { fill: none; stroke: var(--c-cyan); stroke-width: 2.5; }
+.cl-edge-marker { fill: var(--c-green); filter: drop-shadow(0 0 6px var(--c-green)); }
+.cl-row { display: flex; align-items: center; gap: 24px; }
+.cl-card { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 14px 18px; border-radius: var(--r-md); border: 1px solid var(--c-border-strong); background: var(--c-panel); min-width: 260px; }
+.cl-card-title { font-size: 12px; font-weight: 800; letter-spacing: 0.1em; color: var(--c-muted); }
+.cl-card-note { font-size: 12px; color: var(--c-green); }
+.cl-bits { display: flex; gap: 6px; }
+.cl-bit { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.cl-bit-val {
+  width: 34px; height: 38px; display: grid; place-items: center; border-radius: 6px;
+  border: 1px solid var(--c-border-strong); background: var(--c-bg-deep);
+  font: 800 18px var(--font-mono); color: var(--c-dim);
+}
+.cl-bit-val.is-one { color: var(--c-bg-deep); background: var(--c-cyan); border-color: var(--c-cyan); }
+.cl-bit.is-msb .cl-bit-val { border-color: var(--c-green); }
+.cl-bit.is-msb .cl-bit-val.is-one { background: var(--c-green); border-color: var(--c-green); }
+.cl-bit-idx { font: 700 12px var(--font-mono); color: var(--c-dim); }
+.cl-bit.is-msb .cl-bit-idx { color: var(--c-green); }
+.cl-count { font: 800 16px var(--font-mono); color: var(--c-cyan); }
+.cl-arrow { font-size: 28px; color: var(--c-violet); }
+.cl-small-led, .cl-big-led { border-radius: 50%; background: radial-gradient(circle at 40% 35%, #2b3a33, #0b1210 70%); border: 2px solid #1f3a2c; }
+.cl-small-led { width: 46px; height: 46px; }
+.cl-big-led { width: 150px; height: 150px; }
+.cl-small-led.is-on, .cl-big-led.is-on {
+  background: radial-gradient(circle at 40% 35%, #d9ffe9, var(--c-green) 45%, #1f8f5a 80%);
+  border-color: var(--c-green);
+  box-shadow: 0 0 30px rgba(87, 230, 165, 0.75), 0 0 80px rgba(87, 230, 165, 0.35);
+}
+.cl-led-state { font: 800 15px var(--font-mono); color: var(--c-text-2); }
+.cl-scale-note, .cl-led-wire { font-size: 13px; color: var(--c-muted); text-align: center; max-width: 640px; line-height: 1.5; }
+.cl-scale-note code, .cl-board-text code { font-family: var(--font-mono); color: var(--c-text-2); }
+.cl-led-row { display: flex; align-items: center; gap: 40px; }
+.cl-led-side { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.cl-led-side .cl-led-wire { text-align: left; max-width: 360px; }
+.cl-board-check {
+  display: flex; align-items: center; gap: 14px; padding: 10px 14px; max-width: 820px;
+  border-radius: var(--r-md); border: 1px solid var(--c-border-strong); background: rgba(2, 6, 23, 0.7);
+}
+.cl-board-check.is-verified { border-color: var(--c-green); }
+.cl-board-text { display: block; font-size: 13px; line-height: 1.45; color: var(--c-text-2); }
+.cl-board-check.is-verified .cl-board-text { color: var(--c-green); font-weight: 700; }
+.cl-verify-btn { flex: 0 0 auto; padding: 7px 12px; border-radius: var(--r-pill); border: 1px solid var(--c-border-strong); background: var(--c-panel); color: var(--c-text-2); font: 700 12px var(--font-body); cursor: pointer; }
+.cl-verify-btn:hover { border-color: var(--c-green); color: var(--c-text); }
+.cl-verify-btn:focus-visible { outline: 2px solid var(--c-green); outline-offset: 2px; }
+.cl-board-text svg { vertical-align: -3px; margin-right: 4px; }

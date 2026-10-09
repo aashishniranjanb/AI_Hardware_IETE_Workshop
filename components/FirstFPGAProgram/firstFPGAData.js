@@ -76,10 +76,10 @@ export const FIRST_FPGA_STAGES = [
   {
     id: 'LED',
     title: 'AND NOW... IT BLINKS!',
-    eyebrow: 'STAGE 10 / 14 • PHYSICAL PROOF',
-    caption: 'High-order counter bit toggles the output pin. The physical LED flashes rhythmically on the VSDSquadron FPGA Mini.',
-    takeaway: 'IT WORKS • SILICON ALIVE',
-    tag: 'PHYSICAL OUTPUT'
+    eyebrow: 'STAGE 10 / 14 • EXPECTED OUTPUT',
+    caption: 'The high-order counter bit drives the LED pin. Simulated here — on the VSDSquadron FPGA Mini, check that the physical LED blinks.',
+    takeaway: 'SIMULATED • VERIFY ON THE BOARD',
+    tag: 'LED OUTPUT'
   },
   {
     id: 'WHAT_PROVED',

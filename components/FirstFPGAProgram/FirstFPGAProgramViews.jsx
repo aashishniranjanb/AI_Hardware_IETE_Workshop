@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { CounterLedDemo } from './CounterLedDemo';
 import { GlyphIcon, InlineIcon } from '../deck/GlyphIcon';
 
 // STAGE 1: WHY_BLINK (Why start with blink?)
@@ -122,61 +123,11 @@ export function StageVerilog() {
   );
 }
 
-// STAGE 4: CLOCK (The clock drives everything)
+// STAGE 4: CLOCK (The clock drives everything) — GSAP-driven conceptual simulation
 export function StageClock() {
-  const [tick, setTick] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTick(t => (t + 1) % 16);
-    }, 400);
-    return () => clearInterval(timer);
-  }, []);
-
-  const ledState = (tick >= 8) ? 1 : 0;
-
   return (
     <div className="ff-wrap">
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', width: '100%', maxWidth: '850px' }}>
-        <svg width="600" height="100" viewBox="0 0 600 100">
-          <text x="10" y="25" fill="#8B98A8" fontSize="12" fontWeight="700">OSCILLATOR CLOCK (clk)</text>
-          {/* Square wave */}
-          <path
-            d="M 20 70 L 60 70 L 60 30 L 100 30 L 100 70 L 140 70 L 140 30 L 180 30 L 180 70 L 220 70 L 220 30 L 260 30 L 260 70 L 300 70 L 300 30 L 340 30 L 340 70 L 380 70 L 380 30 L 420 30 L 420 70 L 460 70 L 460 30 L 500 30 L 500 70 L 540 70 L 540 30 L 580 30"
-            fill="none"
-            stroke="#27D7FF"
-            strokeWidth="2.5"
-          />
-          {/* Rising edge markers */}
-          {[60, 140, 220, 300, 380, 460, 540].map((x) => (
-            <polygon key={x} points={`${x-4},45 ${x},32 ${x+4},45`} fill="#57E6A5" />
-          ))}
-        </svg>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
-          <div className="ff-card" style={{ minWidth: '220px', textAlign: 'center' }}>
-            <div style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800 }}>COUNTER ACCUMULATOR</div>
-            <div style={{ fontSize: '32px', fontFamily: 'monospace', fontWeight: 900, color: '#27D7FF', marginTop: '6px' }}>
-              0x{tick.toString(16).toUpperCase()}
-            </div>
-            <div style={{ fontSize: '12px', color: '#57E6A5', marginTop: '4px' }}>
-              INCREMENTS EVERY posedge clk
-            </div>
-          </div>
-
-          <div style={{ fontSize: '28px', color: '#8A7CFF' }}>→</div>
-
-          <div className="ff-card" style={{ minWidth: '220px', textAlign: 'center' }}>
-            <div style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800 }}>LED OUTPUT BIT (MSB)</div>
-            <div style={{ fontSize: '32px', fontFamily: 'monospace', fontWeight: 900, color: ledState ? '#57E6A5' : '#64748B', marginTop: '6px' }}>
-              {ledState ? 'HIGH (1)' : 'LOW (0)'}
-            </div>
-            <div style={{ fontSize: '12px', color: ledState ? '#57E6A5' : '#8B98A8', marginTop: '4px' }}>
-              {ledState ? 'LED ON' : 'LED OFF'}
-            </div>
-          </div>
-        </div>
-      </div>
+      <CounterLedDemo variant="clock" />
     </div>
   );
 }
@@ -370,33 +321,11 @@ export function StageConfigured() {
   );
 }
 
-// STAGE 10: LED (And now... it blinks!)
+// STAGE 10: LED — conceptual simulation, clearly separated from the real board
 export function StageLED() {
-  const [isOn, setIsOn] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsOn(prev => !prev);
-    }, 700);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="ff-wrap">
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}>
-        <div className={`ff-big-led-core ${isOn ? 'on' : 'off'}`}>
-          {isOn ? 'ON' : 'OFF'}
-        </div>
-
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '24px', fontWeight: 900, color: isOn ? '#57E6A5' : '#8B98A8' }}>
-            {isOn ? 'HARDWARE RUNNING • LED ACTIVE' : 'CYCLE REFRESH • LED LOW'}
-          </div>
-          <div style={{ fontSize: '13px', color: '#8B98A8', marginTop: '6px' }}>
-            Driven in real time by the 24th bit of your physical silicon counter register.
-          </div>
-        </div>
-      </div>
+      <CounterLedDemo variant="led" />
     </div>
   );
 }
