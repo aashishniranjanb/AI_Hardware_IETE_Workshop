@@ -24,7 +24,7 @@ export function GPUCluster({ mode = 'quad', isNVLink = true }) {
             sublabel="PRIMARY COMPUTE"
             badge="ACTIVE"
             color="#38BDF8"
-            icon="⚡"
+            icon="gpu"
             isHighlighted={true}
           />
           <div className="pod-hbm-sub">
@@ -41,7 +41,7 @@ export function GPUCluster({ mode = 'quad', isNVLink = true }) {
             sublabel="PEER ACCELERATOR"
             badge="ACTIVE"
             color="#60A5FA"
-            icon="⚡"
+            icon="gpu"
             isHighlighted={true}
           />
           <div className="pod-hbm-sub">
@@ -60,7 +60,7 @@ export function GPUCluster({ mode = 'quad', isNVLink = true }) {
                 sublabel="PEER ACCELERATOR"
                 badge="ACTIVE"
                 color="#22D3EE"
-                icon="⚡"
+                icon="gpu"
                 isHighlighted={true}
               />
               <div className="pod-hbm-sub">
@@ -76,7 +76,7 @@ export function GPUCluster({ mode = 'quad', isNVLink = true }) {
                 sublabel="PEER ACCELERATOR"
                 badge="ACTIVE"
                 color="#A855F7"
-                icon="⚡"
+                icon="gpu"
                 isHighlighted={true}
               />
               <div className="pod-hbm-sub">

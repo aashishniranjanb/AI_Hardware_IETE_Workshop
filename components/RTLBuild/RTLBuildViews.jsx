@@ -1,4 +1,5 @@
 import React from 'react';
+import { InlineIcon } from '../deck/GlyphIcon';
 
 // STAGE 1: THE_ARCHITECTURE (We know what we want to build)
 export function StageTheArchitecture() {
@@ -94,7 +95,7 @@ export function StageRTLMeaning() {
         </div>
       </div>
       <div style={{ marginTop: '22px', fontSize: '13px', color: '#27D7FF', fontWeight: 700 }}>
-        ★ RTL = REGISTER TRANSFER LEVEL: DESCRIBING HOW SIGNALS MOVE BETWEEN HARDWARE REGISTERS.
+        <InlineIcon glyph="note" /> RTL = REGISTER TRANSFER LEVEL: DESCRIBING HOW SIGNALS MOVE BETWEEN HARDWARE REGISTERS.
       </div>
     </div>
   );
@@ -119,7 +120,7 @@ export function StageMACRTL() {
         </pre>
       </div>
       <div style={{ marginTop: '16px', fontSize: '12px', color: '#57E6A5', fontWeight: 700 }}>
-        ★ SYNTHESIZES DIRECTLY INTO AN iCE40UP5K 16×16 MULTIPLIER + ACCUMULATOR DSP CELL
+        <InlineIcon glyph="note" /> SYNTHESIZES DIRECTLY INTO AN iCE40UP5K 16×16 MULTIPLIER + ACCUMULATOR DSP CELL
       </div>
     </div>
   );
@@ -141,7 +142,7 @@ export function StageReLURTL() {
         </pre>
       </div>
       <div style={{ marginTop: '16px', fontSize: '12px', color: '#27D7FF', fontWeight: 700 }}>
-        ★ ZERO CLOCK LATENCY: PURE COMBINATIONAL LOGIC REQUIRING ONLY A FEW LUTS
+        <InlineIcon glyph="note" /> ZERO CLOCK LATENCY: PURE COMBINATIONAL LOGIC REQUIRING ONLY A FEW LUTS
       </div>
     </div>
   );
@@ -167,7 +168,7 @@ export function StageControlRTL() {
         </pre>
       </div>
       <div style={{ marginTop: '16px', fontSize: '12px', color: '#FFB84D', fontWeight: 700 }}>
-        ★ THE BRAIN THAT ORCHESTRATES THE ARITHMETIC DATAPATH
+        <InlineIcon glyph="note" /> THE BRAIN THAT ORCHESTRATES THE ARITHMETIC DATAPATH
       </div>
     </div>
   );
@@ -293,7 +294,7 @@ export function StageProgram() {
   return (
     <div className="rb-wrap">
       <div style={{ textAlign: 'center', marginBottom: '16px' }}>
-        <span style={{ fontSize: '12px', fontWeight: 800, color: '#57E6A5' }}>★ ONBOARD USB PROGRAMMING ★</span>
+        <span style={{ fontSize: '12px', fontWeight: 800, color: '#57E6A5' }}><InlineIcon glyph="note" /> ONBOARD USB PROGRAMMING</span>
         <div style={{ fontSize: '20px', fontWeight: 900, color: '#F4F7FA' }}>iceprog accelerator.bin</div>
       </div>
 
@@ -411,7 +412,7 @@ export function StageLiveHandoff() {
     <div className="rb-wrap">
       <div style={{ textAlign: 'center', maxWidth: '820px' }}>
         <div style={{ fontSize: '13px', fontWeight: 800, color: '#57E6A5', letterSpacing: '0.15em' }}>
-          ★ WORKSHOP MILESTONE ★
+          <InlineIcon glyph="note" /> WORKSHOP MILESTONE
         </div>
         <h2 style={{ fontSize: '36px', fontWeight: 900, color: '#F4F7FA', margin: '10px 0' }}>
           ENOUGH THEORY. NOW WE BUILD IT.

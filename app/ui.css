@@ -289,3 +289,21 @@
 /* Line icons that replaced emoji (components/deck/GlyphIcon.jsx) */
 .inline-icon { display: inline-block; vertical-align: -0.18em; margin: 0 0.15em; flex: 0 0 auto; }
 .glyph-icon { display: inline-block; vertical-align: middle; }
+
+/* ---------- Scene title contract (Slides 04–17) ----------
+   One size/family/weight for every scene's main title; 15–17 previously used
+   a system font at weight 900 and a different inset. */
+.ce-title, .mp-title, .dh-title, .bw-main-title, .ac-main-title, .t-main-title,
+.logic-main-title, .platform-main-title, .comp-main-title, .fb-main-title,
+.fs-main-title, .ff-main-title, .aa-main-title, .rb-main-title {
+  font-family: var(--font-display) !important;
+  font-size: var(--fs-display) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.ff-top-header, .aa-top-header, .rb-top-header {
+  padding-left: 50px !important;
+  padding-right: 50px !important;
+}
+.ce-header, .dh-header { padding-left: 50px !important; }

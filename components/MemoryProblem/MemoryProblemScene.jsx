@@ -105,7 +105,7 @@ export function MemoryProblemScene() {
         {currentStage.id === 'where_is_data' && (
           <div className="mp-split">
             <div className="mp-amber-warning-box mp-where-box">
-              <span className="warning-icon"><GlyphIcon glyph="❓" size={26} /></span>
+              <span className="warning-icon"><GlyphIcon glyph="question" size={26} /></span>
               <span className="warning-title">WHERE IS THE DATA?</span>
               <span className="warning-sub">
                 DATA MUST TRAVEL FROM PHYSICAL STORAGE ACROSS SILICON INTERFACES
@@ -134,7 +134,7 @@ export function MemoryProblemScene() {
           <div className="mp-col mp-col-tight">
             <ComputeUnit compact state="waiting" customTitle="WAITING ON OFF-PACKAGE DIMM BUS" />
             <div className="callout-pill accent-amber">
-              <span><InlineIcon glyph="⚠️" /> DDR5: HIGH CAPACITY (HUNDREDS OF GBs) BUT SEPARATED BY SOCKET PIN LIMITS (~200 GB/s)</span>
+              <span><InlineIcon glyph="warning" /> DDR5: HIGH CAPACITY (HUNDREDS OF GBs) BUT SEPARATED BY SOCKET PIN LIMITS (~200 GB/s)</span>
             </div>
             <MemoryHierarchy activeTier="ram" onSelectTier={setSelectedTier} />
           </div>
@@ -152,7 +152,7 @@ export function MemoryProblemScene() {
         {currentStage.id === 'storage' && (
           <div className="mp-col mp-col-tight">
             <div className="callout-pill accent-amber">
-              <span><InlineIcon glyph="💾" /> NVMe STORAGE POOL: TERABYTES/PETABYTES BUT 100,000x SLOWER THAN CACHE</span>
+              <span><InlineIcon glyph="storage" /> NVMe STORAGE POOL: TERABYTES/PETABYTES BUT 100,000x SLOWER THAN CACHE</span>
             </div>
             <MemoryHierarchy activeTier="storage" onSelectTier={setSelectedTier} />
           </div>

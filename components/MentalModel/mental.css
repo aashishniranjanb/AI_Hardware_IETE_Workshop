@@ -7,7 +7,7 @@
   width: 100vw;
   height: 100vh;
   background: #02050A;
-  color: #F8FAFC;
+  color: var(--c-text);
   overflow: hidden;
   font-family: 'Inter', system-ui, sans-serif;
   container-type: size; /* cqw/cqh below resolve to the 16:9 frame, not the window */
@@ -38,7 +38,7 @@
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.22em;
-  color: #38bdf8;
+  color: var(--c-sky);
   margin-bottom: 16px;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .mm-title span {
-  color: #38bdf8;
+  color: var(--c-sky);
 }
 
 /* Architecture on the Right */
@@ -78,8 +78,8 @@
 /* Hardware Modules */
 .mm-module {
   position: absolute;
-  background: #0B1120;
-  border: 2px solid #1e293b;
+  background: var(--c-panel);
+  border: 2px solid var(--c-border);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -97,13 +97,13 @@
 }
 
 .mm-module:hover {
-  border-color: #38bdf8;
+  border-color: var(--c-sky);
 }
 
 /* Dimming effect when a block is hovered */
 .mental-model-scene.has-hover .mm-module.dimmed {
   filter: brightness(0.4) saturate(0.5);
-  border-color: #1e293b !important;
+  border-color: var(--c-border) !important;
 }
 .mental-model-scene.has-hover .mm-path.dimmed,
 .mental-model-scene.has-hover .mm-arrow.dimmed {
@@ -122,7 +122,7 @@
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.05em;
-  color: #94A3B8;
+  color: var(--c-muted-2);
   margin-top: 6px;
 }
 
@@ -134,13 +134,13 @@
   left: 50%;
   top: 40%;
   transform: translate(-50%, -50%);
-  border-color: #38bdf8;
-  background: linear-gradient(180deg, #0f172a, #020617);
+  border-color: var(--c-sky);
+  background: linear-gradient(180deg, var(--c-panel-2), var(--c-bg-deep));
   border-width: 3px;
   z-index: 15;
 }
-#mod-compute .mm-mod-title { font-size: 20px; color: #38bdf8; }
-#mod-compute .mm-mod-sub { font-size: 13px; color: #f8fafc; }
+#mod-compute .mm-mod-title { font-size: 20px; color: var(--c-sky); }
+#mod-compute .mm-mod-sub { font-size: 13px; color: var(--c-text); }
 
 #mod-sensors {
   width: 200px;
@@ -189,9 +189,9 @@
   top: 100%;
   transform: translate(-50%, -50%);
   background: linear-gradient(180deg, #1f1406, #0f0a03);
-  border-color: #f59e0b;
+  border-color: var(--c-amber);
 }
-#mod-power .mm-mod-title { color: #f59e0b; }
+#mod-power .mm-mod-title { color: var(--c-amber); }
 
 /* Real World labels */
 .mm-world-label {
@@ -202,7 +202,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: #64748b;
+  color: var(--c-dim);
   opacity: 0;
 }
 .world-top { top: 2%; }
@@ -222,7 +222,7 @@
 
 .mm-path {
   fill: none;
-  stroke: #38bdf8;
+  stroke: var(--c-sky);
   stroke-width: 3;
   opacity: 0;
   transition: filter 0.3s;
@@ -230,40 +230,40 @@
 
 .mm-path-high-speed {
   stroke-width: 4;
-  stroke: #60a5fa;
+  stroke: var(--c-sky-2);
 }
 
 .mm-arrow {
-  fill: #38bdf8;
+  fill: var(--c-sky);
   opacity: 0;
   transition: filter 0.3s;
 }
 
 .mm-path.mm-path-power, .mm-arrow.mm-arrow-power {
-  stroke: #f59e0b;
-  fill: #f59e0b;
+  stroke: var(--c-amber);
+  fill: var(--c-amber);
 }
 
 .mm-path.mm-path-thermal, .mm-arrow.mm-arrow-thermal {
-  stroke: #22d3ee;
-  fill: #22d3ee;
+  stroke: var(--c-cyan-2);
+  fill: var(--c-cyan-2);
 }
 
 /* Particles */
 .mm-particle {
-  fill: #22d3ee;
-  filter: drop-shadow(0 0 6px #22d3ee);
+  fill: var(--c-cyan-2);
+  filter: drop-shadow(0 0 6px var(--c-cyan-2));
   opacity: 0;
 }
 
 .mm-particle-power {
-  fill: #f59e0b;
-  filter: drop-shadow(0 0 6px #f59e0b);
+  fill: var(--c-amber);
+  filter: drop-shadow(0 0 6px var(--c-amber));
 }
 
 .mm-particle-thermal {
-  fill: #ef4444;
-  filter: drop-shadow(0 0 6px #ef4444);
+  fill: var(--c-red);
+  filter: drop-shadow(0 0 6px var(--c-red));
 }
 
 /* Text message at the end */
@@ -277,7 +277,7 @@
   font-size: 24px;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: #f8fafc;
+  color: var(--c-text);
   opacity: 0;
   z-index: 20;
 }

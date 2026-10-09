@@ -7,7 +7,7 @@ export function DataNode({
   sublabel = 'COMPUTE CORE',
   badge = 'ACTIVE',
   color = '#38BDF8',
-  icon = '▦',
+  icon = 'gpu',
   isHighlighted = false,
   isDimmed = false
 }) {

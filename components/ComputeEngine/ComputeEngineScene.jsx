@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState, useCallback } from 'react';
+import { InlineIcon } from '../deck/GlyphIcon';
 import { stageEnter } from '../deck/motion';
 import { StageNavigator } from '../deck/StageNavigator';
 import gsap from 'gsap';
@@ -226,7 +227,7 @@ export function ComputeEngineScene() {
                       color: targetArchitecture?.color || '#38BDF8'
                     }}
                   >
-                    <span>✓ OPTIMAL CHOICE:</span>
+                    <span><InlineIcon glyph="success" /> OPTIMAL CHOICE:</span>
                     <span>{activeScenario.answer}</span>
                   </div>
                   <div className="revealed-explanation">

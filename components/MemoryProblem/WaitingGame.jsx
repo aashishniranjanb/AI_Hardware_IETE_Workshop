@@ -22,13 +22,13 @@ export function WaitingGame({ initialMode = 'low' }) {
             className={`game-btn ${!isHigh ? 'active-amber' : ''}`}
             onClick={() => setSupplyMode('low')}
           >
-            <InlineIcon glyph="⚠️" /> 1 Data Lane (DDR / Single Bus)
+            <InlineIcon glyph="warning" /> 1 Data Lane (DDR / Single Bus)
           </button>
           <button
             className={`game-btn ${isHigh ? 'active-cyan' : ''}`}
             onClick={() => setSupplyMode('high')}
           >
-            <InlineIcon glyph="⚡" /> 16 Data Lanes (HBM / Wide Interconnect)
+            <InlineIcon glyph="energy" /> 16 Data Lanes (HBM / Wide Interconnect)
           </button>
         </div>
       </div>
@@ -38,7 +38,7 @@ export function WaitingGame({ initialMode = 'low' }) {
         {/* Memory Data Source (Left) */}
         <div className="game-memory-source">
           <div className="source-box">
-            <span className="source-icon"><GlyphIcon glyph="💾" size={26} /></span>
+            <span className="source-icon"><GlyphIcon glyph="storage" size={26} /></span>
             <span className="source-name">MEMORY POOL</span>
             <span className="source-rate">
               {isHigh ? 'DATA FEED: 3,200 GB/s' : 'DATA FEED: 32 GB/s'}

@@ -36,7 +36,7 @@
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.22em;
-  color: #38bdf8;
+  color: var(--c-sky);
   background: rgba(56, 189, 248, 0.08);
   border: 1px solid rgba(56, 189, 248, 0.25);
   padding: 5px 12px;
@@ -56,7 +56,7 @@
 }
 
 .chitti-title span {
-  color: #38bdf8;
+  color: var(--c-sky);
   text-shadow: 0 0 35px rgba(56, 189, 248, 0.4);
 }
 
@@ -77,28 +77,28 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(to bottom, #38bdf8, #22d3ee);
+  background: linear-gradient(to bottom, var(--c-sky), var(--c-cyan-2));
 }
 
 .challenge-lbl {
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.2em;
-  color: #38bdf8;
+  color: var(--c-sky);
   text-transform: uppercase;
 }
 
 .challenge-q {
   font-size: 20px;
   font-weight: 700;
-  color: #f8fafc;
+  color: var(--c-text);
   line-height: 1.35;
   margin: 10px 0 10px;
 }
 
 .challenge-desc {
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--c-muted-2);
   line-height: 1.5;
 }
 
@@ -111,8 +111,8 @@
 
 .btn-primary-explode {
   background: linear-gradient(135deg, #0284c7, #0369a1);
-  color: #f8fafc;
-  border: 1px solid #38bdf8;
+  color: var(--c-text);
+  border: 1px solid var(--c-sky);
   border-radius: 12px;
   padding: 14px 22px;
   font-size: 13px;
@@ -142,7 +142,7 @@
   flex: 1;
   background: rgba(15, 23, 42, 0.7);
   border: 1px solid rgba(56, 189, 248, 0.2);
-  color: #cbd5e1;
+  color: var(--c-text-2);
   border-radius: 10px;
   padding: 10px 14px;
   font-size: 12px;
@@ -158,7 +158,7 @@
 
 .btn-sec:hover {
   background: rgba(30, 41, 59, 0.9);
-  border-color: #38bdf8;
+  border-color: var(--c-sky);
   color: #fff;
 }
 
@@ -166,17 +166,17 @@
   display: flex;
   gap: 12px;
   font-size: 12px;
-  color: #64748b;
+  color: var(--c-dim);
   letter-spacing: 0.06em;
   padding-top: 12px;
 }
 
 .kbd-badge {
-  background: #0f172a;
-  border: 1px solid #334155;
+  background: var(--c-panel-2);
+  border: 1px solid var(--c-border-strong);
   border-radius: 4px;
   padding: 2px 6px;
-  color: #94a3b8;
+  color: var(--c-muted-2);
   font-weight: 700;
   font-size: 12px;
 }
@@ -188,7 +188,7 @@
   gap: 8px;
   font-size: 12px;
   font-family: monospace;
-  color: #38bdf8;
+  color: var(--c-sky);
   padding: 8px 14px;
   border-radius: 8px;
   background: rgba(56, 189, 248, 0.05);
@@ -200,8 +200,8 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #38bdf8;
-  box-shadow: 0 0 10px #38bdf8;
+  background: var(--c-sky);
+  box-shadow: 0 0 10px var(--c-sky);
   animation: pulse-dot-anim 1.5s infinite ease-in-out;
 }
 
@@ -239,7 +239,7 @@
   left: -20%;
   width: 140%;
   height: 3px;
-  background: linear-gradient(90deg, transparent 0%, #38bdf8 30%, #22d3ee 50%, #38bdf8 70%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, var(--c-sky) 30%, var(--c-cyan-2) 50%, var(--c-sky) 70%, transparent 100%);
   box-shadow: 0 0 25px 5px rgba(56, 189, 248, 0.85), 0 0 50px 10px rgba(34, 211, 238, 0.4);
   z-index: 50;
   pointer-events: none;
@@ -479,7 +479,7 @@
 }
 
 .is-active-subsystem {
-  filter: drop-shadow(0 0 25px #38bdf8) brightness(1.25) !important;
+  filter: drop-shadow(0 0 25px var(--c-sky)) brightness(1.25) !important;
   opacity: 1 !important;
 }
 
@@ -495,7 +495,7 @@
 }
 
 .leader-path {
-  stroke: #38bdf8;
+  stroke: var(--c-sky);
   stroke-width: 1.5;
   stroke-dasharray: 4 4;
   fill: none;
@@ -504,15 +504,15 @@
 }
 
 .leader-path.active {
-  stroke: #22d3ee;
+  stroke: var(--c-cyan-2);
   stroke-width: 2.5;
   stroke-dasharray: none;
   opacity: 1;
-  filter: drop-shadow(0 0 8px #38bdf8);
+  filter: drop-shadow(0 0 8px var(--c-sky));
 }
 
 .leader-node-dot {
-  fill: #38bdf8;
+  fill: var(--c-sky);
   stroke: #0284c7;
   stroke-width: 2;
   r: 4;
@@ -542,7 +542,7 @@
 
 .callout-card:hover, .callout-card.is-active {
   background: rgba(15, 28, 50, 0.95);
-  border-color: #38bdf8;
+  border-color: var(--c-sky);
   transform: scale(1.05);
   box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
 }
@@ -558,13 +558,13 @@
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.14em;
-  color: #38bdf8;
+  color: var(--c-sky);
   text-transform: uppercase;
 }
 
 .callout-detail-spec {
   font-size: 12px;
-  color: #64748b;
+  color: var(--c-dim);
   font-family: monospace;
 }
 
@@ -577,7 +577,7 @@
 
 .callout-role {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--c-muted-2);
   margin-top: 4px;
   line-height: 1.3;
 }
@@ -602,8 +602,8 @@
 }
 
 .data-flow-particle {
-  fill: #38bdf8;
-  filter: drop-shadow(0 0 6px #38bdf8);
+  fill: var(--c-sky);
+  filter: drop-shadow(0 0 6px var(--c-sky));
 }
 
 .data-packet-banner {
@@ -654,7 +654,7 @@
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.16em;
-  color: #64748b;
+  color: var(--c-dim);
   margin-right: 6px;
   text-transform: uppercase;
   white-space: nowrap;
@@ -663,7 +663,7 @@
 .dock-pill {
   background: rgba(15, 23, 42, 0.7);
   border: 1px solid rgba(56, 189, 248, 0.15);
-  color: #94a3b8;
+  color: var(--c-muted-2);
   border-radius: 20px;
   padding: 6px 12px;
   font-size: 12px;
@@ -683,7 +683,7 @@
 .dock-pill.active {
   background: linear-gradient(135deg, #0284c7, #0369a1);
   color: #fff;
-  border-color: #38bdf8;
+  border-color: var(--c-sky);
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
 }
 
@@ -694,7 +694,7 @@
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(145deg, rgba(13, 22, 38, 0.97), rgba(5, 10, 20, 0.98));
-  border: 1px solid #38bdf8;
+  border: 1px solid var(--c-sky);
   border-radius: 14px;
   padding: 16px 22px;
   width: min(620px, 90cqw);
@@ -710,14 +710,14 @@
   margin: 0;
   font-size: 15px;
   font-weight: 800;
-  color: #f8fafc;
+  color: var(--c-text);
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 .drawer-info h4 span {
-  color: #38bdf8;
+  color: var(--c-sky);
   font-size: 12px;
   letter-spacing: 0.1em;
 }
@@ -725,7 +725,7 @@
 .drawer-info p {
   margin: 6px 0 0;
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--c-muted-2);
   line-height: 1.4;
 }
 
@@ -736,14 +736,14 @@
   padding: 8px 12px;
   font-family: monospace;
   font-size: 12px;
-  color: #38bdf8;
+  color: var(--c-sky);
   white-space: nowrap;
 }
 
 .drawer-close {
   background: transparent;
   border: none;
-  color: #64748b;
+  color: var(--c-dim);
   font-size: 16px;
   cursor: pointer;
   padding: 4px;
@@ -759,10 +759,10 @@
   padding: 10px 14px;
   border-radius: 10px;
   background: rgba(56, 189, 248, 0.04);
-  border-left: 3px solid #38bdf8;
+  border-left: 3px solid var(--c-sky);
   font-size: 12px;
   line-height: 1.45;
-  color: #94a3b8;
+  color: var(--c-muted-2);
 }
 
 .mental-model-hook strong {

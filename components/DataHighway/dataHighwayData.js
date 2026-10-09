@@ -115,7 +115,7 @@ export const INTERCONNECT_TIERS = [
     tech: 'On-Die Packet Switched Routers',
     role: 'Routes packets between CPU/GPU cores, L2/L3 caches, and memory controllers on the silicon die.',
     color: '#38BDF8',
-    icon: '▦'
+    icon: 'noc'
   },
   {
     id: 'nvlink',
@@ -126,7 +126,7 @@ export const INTERCONNECT_TIERS = [
     tech: 'High-speed differential copper traces / NVLink Switch',
     role: 'Enables GPUs to read/write directly to peer GPU memory with shared address space at memory-like speeds.',
     color: '#60A5FA',
-    icon: '⚡'
+    icon: 'nvlink'
   },
   {
     id: 'pcie',
@@ -137,7 +137,7 @@ export const INTERCONNECT_TIERS = [
     tech: 'Motherboard PCB traces, Root Complex',
     role: 'Connects host CPU to GPUs, high-speed NVMe storage drives, and network interface cards (NICs).',
     color: '#22D3EE',
-    icon: '🔌'
+    icon: 'pcie'
   },
   {
     id: 'network',
@@ -148,6 +148,6 @@ export const INTERCONNECT_TIERS = [
     tech: 'Optical Transceivers, Spine-Leaf Switches',
     role: 'Clusters tens of thousands of servers together into supercomputing clusters like xAI Colossus or NVL72 pods.',
     color: '#A855F7',
-    icon: '🌐'
+    icon: 'network'
   }
 ];

@@ -15,8 +15,8 @@ export function NetworkVisual() {
         <div className="server-rack-pod">
           <div className="rack-title">AI RACK SERVER 01</div>
           <div className="rack-nodes-bay">
-            <DataNode type="gpu" label="GPU 01" sublabel="TRAINING RANK 0" color="#38BDF8" icon="▦" />
-            <DataNode type="gpu" label="GPU 02" sublabel="TRAINING RANK 1" color="#60A5FA" icon="▦" />
+            <DataNode type="gpu" label="GPU 01" sublabel="TRAINING RANK 0" color="#38BDF8" icon="gpu" />
+            <DataNode type="gpu" label="GPU 02" sublabel="TRAINING RANK 1" color="#60A5FA" icon="gpu" />
           </div>
           <div className="rack-nic-box">
             <span className="nic-tag">800G CONNECT-X NIC</span>
@@ -41,8 +41,8 @@ export function NetworkVisual() {
         <div className="server-rack-pod">
           <div className="rack-title">AI RACK SERVER 02</div>
           <div className="rack-nodes-bay">
-            <DataNode type="gpu" label="GPU 03" sublabel="TRAINING RANK 2" color="#22D3EE" icon="▦" />
-            <DataNode type="gpu" label="GPU 04" sublabel="TRAINING RANK 3" color="#A855F7" icon="▦" />
+            <DataNode type="gpu" label="GPU 03" sublabel="TRAINING RANK 2" color="#22D3EE" icon="gpu" />
+            <DataNode type="gpu" label="GPU 04" sublabel="TRAINING RANK 3" color="#A855F7" icon="gpu" />
           </div>
           <div className="rack-nic-box">
             <span className="nic-tag">800G CONNECT-X NIC</span>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { GlyphIcon, InlineIcon } from '../deck/GlyphIcon';
 
 // STAGE 1: WHY_BLINK (Why start with blink?)
 export function StageWhyBlink() {
@@ -14,7 +15,7 @@ export function StageWhyBlink() {
     <div className="ff-wrap">
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
         <span style={{ fontSize: '13px', fontWeight: 800, color: '#57E6A5', letterSpacing: '0.1em' }}>
-          ★ SANITY TEST BEFORE THE AI ACCELERATOR ★
+          <InlineIcon glyph="note" /> SANITY TEST BEFORE THE AI ACCELERATOR
         </span>
         <h3 style={{ fontSize: '24px', fontWeight: 900, color: '#F4F7FA', marginTop: '6px' }}>
           VERIFY THE ENTIRE DEVELOPMENT PIPELINE
@@ -115,7 +116,7 @@ export function StageVerilog() {
       </div>
 
       <div style={{ marginTop: '14px', fontSize: '13px', color: '#57E6A5', fontWeight: 700 }}>
-        ★ NO INSTRUCTIONS. THIS VERILOG DESCRIBES PHYSICAL WIRE AND FLIP-FLOPS.
+        <InlineIcon glyph="note" /> NO INSTRUCTIONS. THIS VERILOG DESCRIBES PHYSICAL WIRE AND FLIP-FLOPS.
       </div>
     </div>
   );
@@ -302,7 +303,7 @@ export function StageProgram() {
     <div className="ff-wrap">
       <div style={{ textAlign: 'center', marginBottom: '16px' }}>
         <span style={{ fontSize: '12px', fontWeight: 800, color: '#57E6A5' }}>
-          ★ CRITICAL ARCHITECTURE NOTE ★
+          <InlineIcon glyph="note" /> CRITICAL ARCHITECTURE NOTE
         </span>
         <div style={{ fontSize: '20px', fontWeight: 900, color: '#F4F7FA' }}>
           PROGRAMMED DIRECTLY VIA ONBOARD FT232H
@@ -417,7 +418,7 @@ export function StageWhatProved() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', maxWidth: '680px' }}>
         {checklist.map((item, idx) => (
           <div key={idx} className="ff-check-card">
-            <span className="ff-check-badge">✓</span>
+            <span className="ff-check-badge"><GlyphIcon glyph="success" size={16} /></span>
             <span style={{ fontSize: '13px', fontWeight: 800, color: '#F4F7FA' }}>{item}</span>
           </div>
         ))}
@@ -499,7 +500,7 @@ export function StageHandoff() {
     <div className="ff-wrap">
       <div style={{ textAlign: 'center', maxWidth: '780px' }}>
         <div style={{ fontSize: '13px', fontWeight: 800, color: '#57E6A5', letterSpacing: '0.15em' }}>
-          ★ FIRST TEST COMPLETE ★
+          <InlineIcon glyph="note" /> FIRST TEST COMPLETE
         </div>
         <h2 style={{ fontSize: '32px', fontWeight: 900, color: '#F4F7FA', margin: '10px 0' }}>
           NOW WE BUILD THE AI HARDWARE.

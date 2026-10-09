@@ -6,8 +6,8 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: #05070B;
-  color: #F4F7FA;
+  background: var(--c-bg);
+  color: var(--c-text);
   overflow: hidden;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   user-select: none;
@@ -46,7 +46,7 @@
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.25em;
-  color: #27D7FF;
+  color: var(--c-cyan);
   margin-bottom: 6px;
   display: flex;
   align-items: center;
@@ -63,12 +63,12 @@
 }
 
 .t-main-title span {
-  color: #27D7FF;
+  color: var(--c-cyan);
 }
 
 .t-stage-caption {
   font-size: 13px;
-  color: #8B98A8;
+  color: var(--c-muted);
   font-weight: 600;
   margin-top: 5px;
   letter-spacing: 0.04em;
@@ -86,18 +86,18 @@
   font-size: 22px;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #27D7FF;
+  color: var(--c-cyan);
   text-shadow: 0 0 20px rgba(39, 215, 255, 0.5);
 }
 
 .t-teaching-point-pill {
   padding: 4px 12px;
-  background: #0B1120;
-  border: 1px solid #1E293B;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
   border-radius: 4px;
   font-size: 12px;
   font-weight: 700;
-  color: #57E6A5;
+  color: var(--c-green);
 }
 
 /* Viewport */
@@ -159,15 +159,15 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  background: #020617;
-  border: 2px solid #1E293B;
+  background: var(--c-bg-deep);
+  border: 2px solid var(--c-border);
   border-radius: 16px;
   padding: 24px;
 }
 
 .net-gate-box {
-  background: #0B1120;
-  border: 1px solid #334155;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border-strong);
   border-radius: 10px;
   padding: 16px 20px;
   display: flex;
@@ -180,8 +180,8 @@
   display: flex;
   align-items: center;
   gap: 30px;
-  background: #020617;
-  border: 2px solid #1E293B;
+  background: var(--c-bg-deep);
+  border: 2px solid var(--c-border);
   border-radius: 14px;
   padding: 30px;
 }
@@ -195,8 +195,8 @@
 
 .pl-card {
   flex: 1;
-  background: #0B1120;
-  border: 1px solid #1E293B;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
   border-radius: 12px;
   padding: 20px;
   display: flex;
@@ -205,11 +205,11 @@
 }
 
 .pl-card.is-pla {
-  border-color: #27D7FF;
+  border-color: var(--c-cyan);
 }
 
 .pl-card.is-pal {
-  border-color: #8A7CFF;
+  border-color: var(--c-violet);
 }
 
 .pl-block-diagram {
@@ -229,14 +229,14 @@
 
 .pl-strip.prog {
   background: rgba(39, 215, 255, 0.15);
-  border: 1px dashed #27D7FF;
-  color: #27D7FF;
+  border: 1px dashed var(--c-cyan);
+  color: var(--c-cyan);
 }
 
 .pl-strip.fixed {
   background: rgba(138, 124, 255, 0.15);
-  border: 1px solid #8A7CFF;
-  color: #8A7CFF;
+  border: 1px solid var(--c-violet);
+  color: var(--c-violet);
 }
 
 /* Stage 5: CPLD View */
@@ -245,8 +245,8 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  background: #020617;
-  border: 2px solid #1E293B;
+  background: var(--c-bg-deep);
+  border: 2px solid var(--c-border);
   border-radius: 14px;
   padding: 24px;
 }
@@ -257,13 +257,13 @@
 }
 
 .cpld-logic-box {
-  background: #0B1120;
-  border: 1px solid #334155;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border-strong);
   border-radius: 8px;
   padding: 12px 18px;
   font-size: 12px;
   font-weight: 800;
-  color: #F4F7FA;
+  color: var(--c-text);
   text-align: center;
 }
 
@@ -271,12 +271,12 @@
   width: 100%;
   padding: 12px;
   background: rgba(39, 215, 255, 0.1);
-  border: 2px solid #27D7FF;
+  border: 2px solid var(--c-cyan);
   border-radius: 8px;
   text-align: center;
   font-size: 12px;
   font-weight: 800;
-  color: #27D7FF;
+  color: var(--c-cyan);
   letter-spacing: 0.15em;
 }
 
@@ -288,8 +288,8 @@
   gap: 6px;
   width: 340px;
   height: 340px;
-  background: #020617;
-  border: 2px solid #27D7FF;
+  background: var(--c-bg-deep);
+  border: 2px solid var(--c-cyan);
   border-radius: 14px;
   padding: 16px;
   box-shadow: 0 0 35px rgba(39, 215, 255, 0.2);
@@ -297,20 +297,20 @@
 
 .fpga-lut-cell {
   background: rgba(39, 215, 255, 0.1);
-  border: 1px solid #27D7FF;
+  border: 1px solid var(--c-cyan);
   border-radius: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
   font-weight: 800;
-  color: #27D7FF;
+  color: var(--c-cyan);
 }
 
 .fpga-lut-cell.is-lit {
-  background: #27D7FF;
-  color: #020617;
-  box-shadow: 0 0 10px #27D7FF;
+  background: var(--c-cyan);
+  color: var(--c-bg-deep);
+  box-shadow: 0 0 10px var(--c-cyan);
 }
 
 /* Stage 7: Switch Matrix Interactive */
@@ -321,8 +321,8 @@
 }
 
 .switch-grid-svg {
-  background: #020617;
-  border: 2px solid #1E293B;
+  background: var(--c-bg-deep);
+  border: 2px solid var(--c-border);
   border-radius: 12px;
   padding: 16px;
 }
@@ -333,7 +333,7 @@
 }
 
 .interactive-switch-node:hover {
-  filter: drop-shadow(0 0 6px #27D7FF);
+  filter: drop-shadow(0 0 6px var(--c-cyan));
 }
 
 /* Stage 8: RTL to Bitstream Pipeline */
@@ -344,8 +344,8 @@
 }
 
 .rtl-pipe-card {
-  background: #0B1120;
-  border: 1px solid #1E293B;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
   border-radius: 10px;
   padding: 16px 20px;
   display: flex;
@@ -356,7 +356,7 @@
 }
 
 .rtl-pipe-card.active-step {
-  border-color: #27D7FF;
+  border-color: var(--c-cyan);
   box-shadow: 0 0 15px rgba(39, 215, 255, 0.2);
 }
 
@@ -366,8 +366,8 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  background: #020617;
-  border: 2px solid #57E6A5;
+  background: var(--c-bg-deep);
+  border: 2px solid var(--c-green);
   border-radius: 16px;
   padding: 30px 50px;
   box-shadow: 0 0 35px rgba(87, 230, 165, 0.15);
@@ -389,7 +389,7 @@
   background: rgba(11, 17, 32, 0.9);
   padding: 6px 14px;
   border-radius: 30px;
-  border: 1px solid #1E293B;
+  border: 1px solid var(--c-border);
   backdrop-filter: blur(10px);
 }
 
@@ -399,7 +399,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: #64748B;
+  color: var(--c-dim);
   padding: 4px 8px;
   border-radius: 16px;
   cursor: pointer;
@@ -407,17 +407,17 @@
 }
 
 .t-step-btn:hover {
-  color: #F4F7FA;
+  color: var(--c-text);
 }
 
 .t-step-btn.step-active {
-  color: #05070B;
-  background: #27D7FF;
+  color: var(--c-bg);
+  background: var(--c-cyan);
   font-weight: 800;
   box-shadow: 0 0 10px rgba(39, 215, 255, 0.5);
 }
 
 .t-divider {
-  color: #334155;
+  color: var(--c-border-strong);
   font-size: 12px;
 }

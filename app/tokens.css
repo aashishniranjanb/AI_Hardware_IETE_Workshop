@@ -20,10 +20,26 @@
   --c-amber-soft: #FFB84D;
   --c-purple: #8A7CFF;
 
+  --c-sky-2: #60A5FA;
+  --c-cyan-2: #22D3EE;
+  --c-violet: #8A7CFF;
+  --c-violet-2: #A855F7;
+  --c-red: #EF4444;
+
+  /* Semantic roles (use these in new code) */
+  --c-active: var(--c-sky);       /* selected component / focus */
+  --c-data: var(--c-cyan);        /* data paths, data flow */
+  --c-ai: var(--c-violet);        /* AI / model concepts */
+  --c-success: var(--c-green);    /* completed, verified output */
+  --c-warning: var(--c-amber);    /* warning, intermediate state */
+  --c-error: var(--c-red);        /* fault, failure */
+
   /* Text */
   --c-text: #F4F7FA;
   --c-muted: #8B98A8;
   --c-dim: #64748B;
+  --c-muted-2: #94A3B8;
+  --c-text-2: #CBD5E1;
 
   /* Glow */
   --glow-cyan: 0 0 14px rgba(39, 215, 255, 0.55);

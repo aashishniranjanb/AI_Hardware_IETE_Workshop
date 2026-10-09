@@ -66,7 +66,7 @@ export function DataHighwayScene() {
             <svg width="400" height="90" viewBox="0 0 400 90">
               <ConnectionPath id="entry-bus" d="M 200 10 L 200 80" lanes={4} color="#38BDF8" width={4} speed="fast" />
             </svg>
-            <DataNode type="hbm" label="HBM3e MEMORY" sublabel="3.2 TB/s IN-PACKAGE" color="#60A5FA" icon="💾" />
+            <DataNode type="hbm" label="HBM3e MEMORY" sublabel="3.2 TB/s IN-PACKAGE" color="#60A5FA" icon="memory" />
             <div className="callout-pill accent-cyan" style={{ marginTop: 10 }}>
               <span>▲ RECAP FROM SLIDE 05: DATA MOVES BETWEEN COMPUTE AND MEMORY ▲</span>
             </div>
@@ -80,7 +80,7 @@ export function DataHighwayScene() {
             <svg width="400" height="120" viewBox="0 0 400 120">
               <ConnectionPath id="p-single" d="M 200 10 L 200 110" lanes={1} color="#38BDF8" width={3} speed="slow" />
             </svg>
-            <DataNode type="hbm" label="MEMORY" sublabel="DATA STORAGE" color="#60A5FA" icon="💾" />
+            <DataNode type="hbm" label="MEMORY" sublabel="DATA STORAGE" color="#60A5FA" icon="memory" />
             <div className="callout-pill" style={{ marginTop: 10 }}>
               <span>AT THE SIMPLEST LEVEL: A SINGLE PHYSICAL CONDUCTIVE TRACE</span>
             </div>
@@ -99,9 +99,9 @@ export function DataHighwayScene() {
               <ConnectionPath id="p-lane-5" d="M 300 10 L 300 110" lanes={1} color="#38BDF8" width={3} speed="fast" />
               <ConnectionPath id="p-lane-6" d="M 340 10 L 340 110" lanes={1} color="#38BDF8" width={3} speed="fast" />
             </svg>
-            <DataNode type="hbm" label="WIDE MEMORY BUS" sublabel="HBM3e INTERPOSER" color="#60A5FA" icon="💾" isHighlighted={true} />
+            <DataNode type="hbm" label="WIDE MEMORY BUS" sublabel="HBM3e INTERPOSER" color="#60A5FA" icon="memory" isHighlighted={true} />
             <div className="callout-pill accent-cyan" style={{ marginTop: 10 }}>
-              <span><InlineIcon glyph="⚡" /> MORE PHYSICAL LANES → DIRECT MULTIPLICATION OF BANDWIDTH</span>
+              <span><InlineIcon glyph="energy" /> MORE PHYSICAL LANES → DIRECT MULTIPLICATION OF BANDWIDTH</span>
             </div>
           </div>
         )}
@@ -110,8 +110,8 @@ export function DataHighwayScene() {
         {currentStage.id === 'pcie' && (
           <div className="pcie-stage-container">
             <div className="pcie-root-top">
-              <DataNode type="gpu" label="HOST CPU" sublabel="ROOT COMPLEX" color="#38BDF8" icon="▦" />
-              <DataNode type="gpu" label="AI GPU" sublabel="PCIe ADD-IN CARD" color="#60A5FA" icon="⚡" isHighlighted={true} />
+              <DataNode type="gpu" label="HOST CPU" sublabel="ROOT COMPLEX" color="#38BDF8" icon="cpu" />
+              <DataNode type="gpu" label="AI GPU" sublabel="PCIe ADD-IN CARD" color="#60A5FA" icon="gpu" isHighlighted={true} />
             </div>
 
             <div className="pcie-bus-bar">
@@ -119,9 +119,9 @@ export function DataHighwayScene() {
             </div>
 
             <div className="pcie-devices-row">
-              <DataNode type="storage" label="NVMe SSD ARRAY" sublabel="14 GB/s STORAGE" color="#94A3B8" icon="💾" />
-              <DataNode type="nic" label="400G NIC ADAPTER" sublabel="NETWORK INTERFACE" color="#22D3EE" icon="🌐" />
-              <DataNode type="accelerator" label="FPGA ACCELERATOR" sublabel="CUSTOM COP" color="#A855F7" icon="▦" />
+              <DataNode type="storage" label="NVMe SSD ARRAY" sublabel="14 GB/s STORAGE" color="#94A3B8" icon="storage" />
+              <DataNode type="nic" label="400G NIC ADAPTER" sublabel="NETWORK INTERFACE" color="#22D3EE" icon="network" />
+              <DataNode type="accelerator" label="FPGA ACCELERATOR" sublabel="CUSTOM COP" color="#A855F7" icon="fpga" />
             </div>
           </div>
         )}
@@ -131,7 +131,7 @@ export function DataHighwayScene() {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
             <GPUCluster mode="dual" isNVLink={false} />
             <div className="callout-pill accent-amber">
-              <span><InlineIcon glyph="⚠️" /> THROUGH PCIe, PEER ACCELERATORS HIT A BOTTLENECK (~64 GB/s)</span>
+              <span><InlineIcon glyph="warning" /> THROUGH PCIe, PEER ACCELERATORS HIT A BOTTLENECK (~64 GB/s)</span>
             </div>
           </div>
         )}
@@ -141,7 +141,7 @@ export function DataHighwayScene() {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
             <GPUCluster mode="dual" isNVLink={true} />
             <div className="callout-pill accent-blue">
-              <span><InlineIcon glyph="⚡" /> NVLINK DELIVERS UP TO 1.8 TB/s DIRECT MEMORY ACCESS BETWEEN GPUS</span>
+              <span><InlineIcon glyph="energy" /> NVLINK DELIVERS UP TO 1.8 TB/s DIRECT MEMORY ACCESS BETWEEN GPUS</span>
             </div>
           </div>
         )}
@@ -229,7 +229,7 @@ export function DataHighwayScene() {
 
             <div className="blackwell-system-preview-rack">
               <div className="blackwell-header-badge">
-                <span><InlineIcon glyph="⚡" /> NEXT STAGE: NVIDIA BLACKWELL & GB200 NVL72</span>
+                <span><InlineIcon glyph="energy" /> NEXT STAGE: NVIDIA BLACKWELL & GB200 NVL72</span>
               </div>
 
               <div className="blackwell-scale-stat">

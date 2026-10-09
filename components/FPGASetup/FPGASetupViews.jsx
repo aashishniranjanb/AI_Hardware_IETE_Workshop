@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GlyphIcon } from '../deck/GlyphIcon';
+import { GlyphIcon, InlineIcon } from '../deck/GlyphIcon';
 
 // STAGE 0: THE BOARD (This is our FPGA)
 export function StageTheBoard() {
@@ -105,7 +105,7 @@ export function StageOnboardFT232H() {
   return (
     <div className="fs-wrap">
       <div className="prominent-callout-banner">
-        ★ CRITICAL NOTICE: NO EXTERNAL FT232H ADAPTER REQUIRED ★
+        <InlineIcon glyph="note" /> CRITICAL NOTICE: NO EXTERNAL FT232H ADAPTER REQUIRED
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '30px', marginTop: '10px' }}>
@@ -203,7 +203,7 @@ export function StageSendBitstream() {
           <span style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800 }}>FLASH COMMAND</span>
           <div style={{ fontSize: '13px', fontFamily: 'Space Grotesk', fontWeight: 800, color: '#27D7FF' }}>openFPGALoader -b ice40_generic</div>
         </div>
-        <span style={{ color: '#27D7FF', display: 'inline-flex' }}><GlyphIcon glyph="⚡" size={28} /></span>
+        <span style={{ color: '#27D7FF', display: 'inline-flex' }}><GlyphIcon glyph="energy" size={28} /></span>
         <div style={{ textAlign: 'center' }}>
           <span style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>BOARD RESPONSE</span>
           <div style={{ fontSize: '13px', fontWeight: 800, color: '#57E6A5' }}>Bitstream Loaded Successfully</div>

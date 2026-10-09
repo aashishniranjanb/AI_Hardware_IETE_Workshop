@@ -40,7 +40,7 @@ export function ComputeObject({ activeArch, stage }) {
           <div className="silicon-die-cavity">
             {stage === 'compute' && (
               <div className="generic-compute-die">
-                <div className="core-chip-icon"><GlyphIcon glyph="▦" size={22} /></div>
+                <div className="core-chip-icon"><GlyphIcon glyph="cpu" size={22} /></div>
                 <div className="chip-laser-label">CENTRAL COMPUTE ENGINE</div>
                 <div className="chip-laser-sub">THE HEART OF INTELLIGENCE</div>
                 <div className="engine-preview" aria-label="Compute engines covered next">

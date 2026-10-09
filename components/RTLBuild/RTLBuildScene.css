@@ -4,8 +4,8 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: #05070B;
-  color: #F4F7FA;
+  background-color: var(--c-bg);
+  color: var(--c-text);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -46,7 +46,7 @@
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #27D7FF;
+  color: var(--c-cyan);
   text-transform: uppercase;
 }
 
@@ -55,17 +55,17 @@
   font-weight: 900;
   letter-spacing: -0.02em;
   margin: 0;
-  color: #F4F7FA;
+  color: var(--c-text);
   line-height: 1.1;
 }
 
 .rb-main-title span {
-  color: #27D7FF;
+  color: var(--c-cyan);
 }
 
 .rb-stage-caption {
   font-size: 0.95rem;
-  color: #8B98A8;
+  color: var(--c-muted);
   max-width: 680px;
   line-height: 1.45;
   margin-top: 0.2rem;
@@ -83,7 +83,7 @@
   font-weight: 800;
   letter-spacing: 0.12em;
   background: rgba(39, 215, 255, 0.12);
-  color: #27D7FF;
+  color: var(--c-cyan);
   padding: 4px 10px;
   border-radius: 4px;
   border: 1px solid rgba(39, 215, 255, 0.3);
@@ -93,7 +93,7 @@
   font-size: 0.78rem;
   font-weight: 700;
   background: rgba(87, 230, 165, 0.1);
-  color: #57E6A5;
+  color: var(--c-green);
   padding: 5px 12px;
   border-radius: 999px;
   border: 1px solid rgba(87, 230, 165, 0.25);
@@ -155,7 +155,7 @@
   background: rgba(255, 255, 255, 0.03);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   font-size: 12px;
-  color: #8B98A8;
+  color: var(--c-muted);
   font-family: monospace;
 }
 
@@ -191,7 +191,7 @@
 .rb-step-btn {
   background: transparent;
   border: none;
-  color: #8B98A8;
+  color: var(--c-muted);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -203,12 +203,12 @@
 }
 
 .rb-step-btn:hover {
-  color: #F4F7FA;
+  color: var(--c-text);
   background: rgba(255, 255, 255, 0.05);
 }
 
 .rb-step-btn.step-active {
-  color: #27D7FF;
+  color: var(--c-cyan);
   background: rgba(39, 215, 255, 0.12);
   border: 1px solid rgba(39, 215, 255, 0.35);
 }

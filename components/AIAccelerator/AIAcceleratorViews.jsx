@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { InlineIcon } from '../deck/GlyphIcon';
 
 // STAGE 1: REPLACE_BLINKER (The blinker was only the test)
 export function StageReplaceBlinker() {
@@ -13,7 +14,7 @@ export function StageReplaceBlinker() {
             &nbsp;&nbsp;counter &lt;= counter + 1;<br />
             assign led = counter[23];
           </div>
-          <div style={{ fontSize: '12px', color: '#57E6A5' }}>✓ Pipeline verified on physical board</div>
+          <div style={{ fontSize: '12px', color: '#57E6A5' }}><InlineIcon glyph="success" /> Pipeline verified on physical board</div>
         </div>
 
         <div style={{ textAlign: 'center' }}>
@@ -29,7 +30,7 @@ export function StageReplaceBlinker() {
             Parallel MAC Array + Weights ROM<br />
             MNIST Handwritten Digit 0–9
           </div>
-          <div style={{ fontSize: '12px', color: '#FFB84D', fontWeight: 700 }}>★ REAL COMPUTATIONAL ENGINE</div>
+          <div style={{ fontSize: '12px', color: '#FFB84D', fontWeight: 700 }}><InlineIcon glyph="note" /> REAL COMPUTATIONAL ENGINE</div>
         </div>
       </div>
     </div>
@@ -118,7 +119,7 @@ export function StageOneMAC() {
       </svg>
 
       <div style={{ marginTop: '16px', fontSize: '13px', color: '#57E6A5', fontWeight: 800 }}>
-        ★ MAC = MULTIPLY + ACCUMULATE: THE COMPUTE WORKHORSE OF ALL AI HARDWARE
+        <InlineIcon glyph="note" /> MAC = MULTIPLY + ACCUMULATE: THE COMPUTE WORKHORSE OF ALL AI HARDWARE
       </div>
     </div>
   );
@@ -178,7 +179,7 @@ export function StageParallelism() {
             <div style={{ padding: '10px', background: 'rgba(87, 230, 165, 0.1)', border: '1px solid #57E6A5', borderRadius: '4px', fontSize: '12px', color: '#57E6A5', textAlign: 'center', fontWeight: 700 }}>MAC 2 (Cycle 1)</div>
             <div style={{ padding: '10px', background: 'rgba(87, 230, 165, 0.1)', border: '1px solid #57E6A5', borderRadius: '4px', fontSize: '12px', color: '#57E6A5', textAlign: 'center', fontWeight: 700 }}>MAC 3 (Cycle 1)</div>
           </div>
-          <div style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 700 }}>★ All 4 operations finish together in cycle 1!</div>
+          <div style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 700 }}><InlineIcon glyph="note" /> All 4 operations finish together in cycle 1!</div>
         </div>
       </div>
     </div>
@@ -631,7 +632,7 @@ export function StageHandsOnHandoff() {
     <div className="aa-wrap">
       <div style={{ textAlign: 'center', maxWidth: '780px' }}>
         <div style={{ fontSize: '13px', fontWeight: 800, color: '#57E6A5', letterSpacing: '0.15em' }}>
-          ★ ARCHITECTURE COMPLETE ★
+          <InlineIcon glyph="note" /> ARCHITECTURE COMPLETE
         </div>
         <h2 style={{ fontSize: '32px', fontWeight: 900, color: '#F4F7FA', margin: '10px 0' }}>
           FROM AI MODEL → FPGA ACCELERATOR

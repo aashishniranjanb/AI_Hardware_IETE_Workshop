@@ -8,7 +8,7 @@
   width: 100vw;
   height: 100vh;
   background: #02050A;
-  color: #F8FAFC;
+  color: var(--c-text);
   overflow: hidden;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   user-select: none;
@@ -43,7 +43,7 @@
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.25em;
-  color: #38BDF8;
+  color: var(--c-sky);
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -60,12 +60,12 @@
 }
 
 .dh-title span {
-  color: #38BDF8;
+  color: var(--c-sky);
 }
 
 .dh-subtitle {
   font-size: 15px;
-  color: #94A3B8;
+  color: var(--c-muted-2);
   font-weight: 500;
   margin-top: 6px;
   letter-spacing: 0.04em;
@@ -93,20 +93,20 @@
   border-radius: 20px;
   background: transparent;
   border: 1px solid transparent;
-  color: #64748B;
+  color: var(--c-dim);
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.2s ease;
 }
 
 .dh-nav-pill:hover {
-  color: #F8FAFC;
+  color: var(--c-text);
   background: rgba(255, 255, 255, 0.05);
 }
 
 .dh-nav-pill.active {
   color: #02050A;
-  background: #38BDF8;
+  background: var(--c-sky);
   font-weight: 800;
   box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
 }
@@ -128,8 +128,8 @@
 .dh-data-node {
   position: relative;
   width: 140px;
-  background: #0B1120;
-  border: 2px solid #1E293B;
+  background: var(--c-panel);
+  border: 2px solid var(--c-border);
   border-radius: 12px;
   padding: 10px;
   display: flex;
@@ -140,7 +140,7 @@
 }
 
 .dh-data-node.highlighted {
-  border-color: #38BDF8;
+  border-color: var(--c-sky);
   box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
 }
 
@@ -165,13 +165,13 @@
   font-size: 14px;
   font-weight: 800;
   margin: 0;
-  color: #F8FAFC;
+  color: var(--c-text);
 }
 
 .node-sublabel {
   font-size: 12px;
   font-weight: 600;
-  color: #94A3B8;
+  color: var(--c-muted-2);
 }
 
 .node-pins-row {
@@ -205,12 +205,12 @@
   align-items: center;
   gap: 8px;
   padding: 6px 16px;
-  background: #0F172A;
+  background: var(--c-panel-2);
   border: 1px solid rgba(96, 165, 250, 0.4);
   border-radius: 20px;
   font-size: 12px;
   font-weight: 800;
-  color: #60A5FA;
+  color: var(--c-sky-2);
   letter-spacing: 0.08em;
 }
 
@@ -218,8 +218,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #60A5FA;
-  box-shadow: 0 0 8px #60A5FA;
+  background: var(--c-sky-2);
+  box-shadow: 0 0 8px var(--c-sky-2);
 }
 
 .gpu-nodes-grid {
@@ -258,11 +258,11 @@
 .hbm-tag {
   font-size: 12px;
   font-weight: 800;
-  color: #60A5FA;
-  background: #0F172A;
+  color: var(--c-sky-2);
+  background: var(--c-panel-2);
   padding: 2px 6px;
   border-radius: 4px;
-  border: 1px solid #1E293B;
+  border: 1px solid var(--c-border);
 }
 
 .cluster-mesh-svg {
@@ -297,8 +297,8 @@
   position: relative;
   width: 640px;
   height: 48px;
-  background: #0F172A;
-  border: 2px solid #22D3EE;
+  background: var(--c-panel-2);
+  border: 2px solid var(--c-cyan-2);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -311,7 +311,7 @@
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #22D3EE;
+  color: var(--c-cyan-2);
 }
 
 .pcie-devices-row {
@@ -328,8 +328,8 @@
 }
 
 .noc-silicon-die-package {
-  background: #0B1120;
-  border: 2px solid #38BDF8;
+  background: var(--c-panel);
+  border: 2px solid var(--c-sky);
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 0 50px rgba(56, 189, 248, 0.25);
@@ -344,27 +344,27 @@
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.12em;
-  color: #64748B;
-  border-bottom: 1px solid #1E293B;
+  color: var(--c-dim);
+  border-bottom: 1px solid var(--c-border);
   padding-bottom: 8px;
 }
 
-.noc-die-header .die-spec { color: #38BDF8; }
+.noc-die-header .die-spec { color: var(--c-sky); }
 
 .noc-mesh-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  background: #020617;
-  border: 1px solid #1E293B;
+  background: var(--c-bg-deep);
+  border: 1px solid var(--c-border);
   border-radius: 10px;
   padding: 18px;
 }
 
 .noc-tile-node {
   position: relative;
-  background: #0F172A;
-  border: 1px solid #334155;
+  background: var(--c-panel-2);
+  border: 1px solid var(--c-border-strong);
   border-radius: 6px;
   padding: 10px;
   display: flex;
@@ -377,8 +377,8 @@
 .noc-router-box {
   width: 22px;
   height: 22px;
-  background: #020617;
-  border: 1px solid #38BDF8;
+  background: var(--c-bg-deep);
+  border: 1px solid var(--c-sky);
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -388,7 +388,7 @@
 .router-label {
   font-size: 11px;
   font-weight: 800;
-  color: #38BDF8;
+  color: var(--c-sky);
 }
 
 .tile-subsystem {
@@ -398,9 +398,9 @@
   border-radius: 3px;
 }
 
-.sub-compute { background: #082F49; color: #38BDF8; }
-.sub-cache { background: #172554; color: #60A5FA; }
-.sub-mem { background: #1C1204; color: #F59E0B; }
+.sub-compute { background: #082F49; color: var(--c-sky); }
+.sub-cache { background: #172554; color: var(--c-sky-2); }
+.sub-mem { background: #1C1204; color: var(--c-amber); }
 
 .noc-footer-status {
   display: flex;
@@ -411,7 +411,7 @@
 
 .noc-badge {
   background: #082F49;
-  color: #38BDF8;
+  color: var(--c-sky);
   border: 1px solid #0E7490;
   padding: 2px 8px;
   border-radius: 4px;
@@ -419,7 +419,7 @@
 }
 
 .noc-desc {
-  color: #94A3B8;
+  color: var(--c-muted-2);
   font-weight: 500;
 }
 
@@ -444,8 +444,8 @@
   letter-spacing: 0.1em;
 }
 
-.banner-kicker { color: #A855F7; }
-.banner-spec { color: #CBD5E1; }
+.banner-kicker { color: var(--c-violet-2); }
+.banner-spec { color: var(--c-text-2); }
 
 .network-topology-row {
   display: flex;
@@ -456,8 +456,8 @@
 }
 
 .server-rack-pod {
-  background: #0B1120;
-  border: 2px solid #1E293B;
+  background: var(--c-panel);
+  border: 2px solid var(--c-border);
   border-radius: 12px;
   padding: 14px;
   display: flex;
@@ -468,7 +468,7 @@
 .rack-title {
   font-size: 12px;
   font-weight: 800;
-  color: #64748B;
+  color: var(--c-dim);
   text-align: center;
 }
 
@@ -479,18 +479,18 @@
 
 .rack-nic-box {
   background: #1E1B4B;
-  border: 1px solid #A855F7;
+  border: 1px solid var(--c-violet-2);
   border-radius: 4px;
   padding: 4px;
   text-align: center;
   font-size: 12px;
   font-weight: 800;
-  color: #A855F7;
+  color: var(--c-violet-2);
 }
 
 .network-switch-pod {
-  background: #0B1120;
-  border: 2px solid #A855F7;
+  background: var(--c-panel);
+  border: 2px solid var(--c-violet-2);
   border-radius: 12px;
   padding: 16px 20px;
   box-shadow: 0 0 35px rgba(168, 85, 247, 0.35);
@@ -501,7 +501,7 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 800;
-  color: #F8FAFC;
+  color: var(--c-text);
   margin: 0 0 10px 0;
 }
 
@@ -516,14 +516,14 @@
   width: 5px;
   height: 5px;
   border-radius: 1px;
-  background: #A855F7;
-  box-shadow: 0 0 4px #A855F7;
+  background: var(--c-violet-2);
+  box-shadow: 0 0 4px var(--c-violet-2);
 }
 
 .switch-bandwidth {
   font-size: 12px;
   font-weight: 800;
-  color: #94A3B8;
+  color: var(--c-muted-2);
 }
 
 .network-connections-svg {
@@ -554,8 +554,8 @@
 }
 
 .tier-column-card {
-  background: #0B1120;
-  border: 2px solid #1E293B;
+  background: var(--c-panel);
+  border: 2px solid var(--c-border);
   border-radius: 12px;
   padding: 16px 14px;
   display: flex;
@@ -567,14 +567,14 @@
 
 .tier-column-card:hover {
   transform: translateY(-4px);
-  border-color: #38BDF8;
+  border-color: var(--c-sky);
 }
 
 .tier-icon-circle {
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: #020617;
+  background: var(--c-bg-deep);
   border: 1px solid currentColor;
   display: flex;
   align-items: center;
@@ -587,7 +587,7 @@
   font-size: 16px;
   font-weight: 800;
   margin: 0;
-  color: #F8FAFC;
+  color: var(--c-text);
 }
 
 .tier-scope-tag {
@@ -595,8 +595,8 @@
   font-weight: 800;
   padding: 3px 8px;
   border-radius: 4px;
-  background: #0F172A;
-  border: 1px solid #1E293B;
+  background: var(--c-panel-2);
+  border: 1px solid var(--c-border);
 }
 
 .tier-stat-row {
@@ -608,19 +608,19 @@
 .stat-label {
   font-size: 11px;
   font-weight: 800;
-  color: #64748B;
+  color: var(--c-dim);
   letter-spacing: 0.1em;
 }
 
 .stat-val {
   font-size: 12px;
   font-weight: 800;
-  color: #F8FAFC;
+  color: var(--c-text);
 }
 
 .tier-role-text {
   font-size: 12px;
-  color: #94A3B8;
+  color: var(--c-muted-2);
   line-height: 1.35;
   margin: 0;
 }
@@ -640,18 +640,18 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(28px, 3.5cqw, 50px);
   font-weight: 800;
-  color: #F8FAFC;
+  color: var(--c-text);
   line-height: 1.15;
 }
 
 .finale-headline span {
-  color: #38BDF8;
+  color: var(--c-sky);
 }
 
 .blackwell-system-preview-rack {
   position: relative;
   width: min(840px, 86cqw);
-  background: linear-gradient(180deg, #0B1120, #020617);
+  background: linear-gradient(180deg, var(--c-panel), var(--c-bg-deep));
   border: 2px solid #76B900;
   border-radius: 16px;
   padding: 24px;
@@ -685,13 +685,13 @@
 }
 
 .scale-pill {
-  background: #020617;
-  border: 1px solid #1E293B;
+  background: var(--c-bg-deep);
+  border: 1px solid var(--c-border);
   border-radius: 20px;
   padding: 6px 14px;
   font-size: 12px;
   font-weight: 700;
-  color: #CBD5E1;
+  color: var(--c-text-2);
 }
 
 .scale-pill strong {
@@ -700,7 +700,7 @@
 
 .finale-next-action-pill {
   padding: 8px 18px;
-  background: #0F172A;
+  background: var(--c-panel-2);
   border: 1px solid #76B900;
   border-radius: 20px;
   font-size: 12px;

@@ -6,9 +6,9 @@ export function MemoryHierarchy({ activeTier = null, onSelectTier = null, large 
   return (
     <div className={`memory-hierarchy-container ${large ? 'is-large' : ''}`}>
       <div className="hierarchy-axis-indicator">
-        <span className="axis-label-fast"><InlineIcon glyph="⚡" /> CLOSER • FASTER • SMALLER</span>
+        <span className="axis-label-fast"><InlineIcon glyph="energy" /> CLOSER • FASTER • SMALLER</span>
         <div className="axis-gradient-bar" />
-        <span className="axis-label-large">FARTHER • SLOWER • LARGER <InlineIcon glyph="💾" /></span>
+        <span className="axis-label-large">FARTHER • SLOWER • LARGER <InlineIcon glyph="storage" /></span>
       </div>
 
       <div className="hierarchy-tiers-stack">

@@ -8,7 +8,7 @@
   width: 100vw;
   height: 100vh;
   background: #02050A;
-  color: #F8FAFC;
+  color: var(--c-text);
   overflow: hidden;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   user-select: none;
@@ -43,7 +43,7 @@
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.25em;
-  color: #38BDF8;
+  color: var(--c-sky);
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -60,12 +60,12 @@
 }
 
 .ce-title span {
-  color: #38BDF8;
+  color: var(--c-sky);
 }
 
 .ce-subtitle {
   font-size: 16px;
-  color: #94A3B8;
+  color: var(--c-muted-2);
   font-weight: 500;
   margin-top: 6px;
   letter-spacing: 0.05em;
@@ -91,19 +91,19 @@
   border-radius: 20px;
   background: transparent;
   border: 1px solid transparent;
-  color: #64748B;
+  color: var(--c-dim);
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
 .ce-nav-pill:hover {
-  color: #F8FAFC;
+  color: var(--c-text);
   background: rgba(255, 255, 255, 0.05);
 }
 
 .ce-nav-pill.active {
   color: #02050A;
-  background: #38BDF8;
+  background: var(--c-sky);
   font-weight: 800;
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
 }
@@ -141,9 +141,9 @@
 .mock-block {
   position: absolute;
   border-radius: 8px;
-  background: #0B1120;
-  border: 2px solid #1E293B;
-  color: #64748B;
+  background: var(--c-panel);
+  border: 2px solid var(--c-border);
+  color: var(--c-dim);
   font-size: 12px;
   font-weight: 800;
   display: flex;
@@ -169,7 +169,7 @@
   position: relative;
   width: min(880px, 86cqw);
   height: min(520px, 62cqh);
-  background: #0B1120;
+  background: var(--c-panel);
   border-radius: 18px;
   box-shadow: 
     0 25px 60px rgba(0, 0, 0, 0.8),
@@ -181,11 +181,11 @@
   z-index: 10;
 }
 
-.compute-physical-package.arch-cpu { border: 2px solid #38BDF8; box-shadow: 0 0 40px rgba(56, 189, 248, 0.25); }
-.compute-physical-package.arch-gpu { border: 2px solid #60A5FA; box-shadow: 0 0 40px rgba(96, 165, 250, 0.25); }
-.compute-physical-package.arch-npu { border: 2px solid #22D3EE; box-shadow: 0 0 40px rgba(34, 211, 238, 0.25); }
+.compute-physical-package.arch-cpu { border: 2px solid var(--c-sky); box-shadow: 0 0 40px rgba(56, 189, 248, 0.25); }
+.compute-physical-package.arch-gpu { border: 2px solid var(--c-sky-2); box-shadow: 0 0 40px rgba(96, 165, 250, 0.25); }
+.compute-physical-package.arch-npu { border: 2px solid var(--c-cyan-2); box-shadow: 0 0 40px rgba(34, 211, 238, 0.25); }
 .compute-physical-package.arch-tpu { border: 2px solid #F97316; box-shadow: 0 0 40px rgba(249, 115, 22, 0.25); }
-.compute-physical-package.arch-fpga { border: 2px solid #A855F7; box-shadow: 0 0 40px rgba(168, 85, 247, 0.25); }
+.compute-physical-package.arch-fpga { border: 2px solid var(--c-violet-2); box-shadow: 0 0 40px rgba(168, 85, 247, 0.25); }
 
 /* Package Substrate & Heatspreader */
 .package-substrate {
@@ -213,7 +213,7 @@
   flex: 1;
   background: linear-gradient(145deg, #111827, #030712);
   border-radius: 12px;
-  border: 1px solid #1E293B;
+  border: 1px solid var(--c-border);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -240,14 +240,14 @@
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.2em;
-  color: #38BDF8;
+  color: var(--c-sky);
 }
 
 /* Silicon Die Cavity */
 .silicon-die-cavity {
   flex: 1;
   position: relative;
-  background: #020617;
+  background: var(--c-bg-deep);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -266,7 +266,7 @@
 
 .core-chip-icon {
   font-size: 55px;
-  color: #38BDF8;
+  color: var(--c-sky);
   filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.6));
   animation: pulseChip 2s infinite alternate ease-in-out;
 }
@@ -281,14 +281,14 @@
   font-size: 26px;
   font-weight: 800;
   letter-spacing: 0.12em;
-  color: #F8FAFC;
+  color: var(--c-text);
 }
 
 .chip-laser-sub {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.15em;
-  color: #64748B;
+  color: var(--c-dim);
 }
 
 /* =========================================================================
@@ -310,7 +310,7 @@
   flex: 1;
   background: #090D16;
   border-radius: 8px;
-  border: 1px solid #1E293B;
+  border: 1px solid var(--c-border);
   display: flex;
   flex-direction: column;
   padding: 14px 18px;
@@ -323,13 +323,13 @@
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
-  color: #64748B;
+  color: var(--c-dim);
   margin-bottom: 12px;
-  border-bottom: 1px solid #1E293B;
+  border-bottom: 1px solid var(--c-border);
   padding-bottom: 6px;
 }
 
-.die-tag { color: #38BDF8; }
+.die-tag { color: var(--c-sky); }
 
 .cpu-cores-grid {
   display: grid;
@@ -340,8 +340,8 @@
 
 .cpu-core-unit {
   position: relative;
-  background: #0F172A;
-  border: 1px solid #334155;
+  background: var(--c-panel-2);
+  border: 1px solid var(--c-border-strong);
   border-radius: 8px;
   padding: 10px;
   display: flex;
@@ -352,7 +352,7 @@
 }
 
 .cpu-core-unit:hover {
-  border-color: #38BDF8;
+  border-color: var(--c-sky);
   transform: translateY(-2px);
 }
 
@@ -362,8 +362,8 @@
   font-size: 12px;
   font-weight: 800;
 }
-.core-name { color: #F8FAFC; }
-.core-type { color: #38BDF8; font-size: 12px; }
+.core-name { color: var(--c-text); }
+.core-type { color: var(--c-sky); font-size: 12px; }
 
 .core-internals {
   display: flex;
@@ -373,12 +373,12 @@
 
 .core-alu-block {
   flex: 1.2;
-  background: #1E293B;
+  background: var(--c-border);
   border-radius: 4px;
   padding: 4px 6px;
   font-size: 12px;
   font-weight: 700;
-  color: #94A3B8;
+  color: var(--c-muted-2);
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -386,7 +386,7 @@
 
 .alu-pulse-bar {
   height: 3px;
-  background: #38BDF8;
+  background: var(--c-sky);
   border-radius: 2px;
   animation: pulseBar 1.2s infinite alternate;
 }
@@ -402,7 +402,7 @@
   border-radius: 4px;
   padding: 4px;
   font-size: 11px;
-  color: #64748B;
+  color: var(--c-dim);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -410,8 +410,8 @@
 
 .cpu-l3-bus {
   margin-top: 10px;
-  background: #0F172A;
-  border: 1px solid #1E293B;
+  background: var(--c-panel-2);
+  border: 1px solid var(--c-border);
   border-radius: 4px;
   padding: 6px 12px;
   display: flex;
@@ -423,7 +423,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: #64748B;
+  color: var(--c-dim);
 }
 
 .bus-traces {
@@ -434,7 +434,7 @@
 .bus-traces .trace {
   width: 20px;
   height: 2px;
-  background: #38BDF8;
+  background: var(--c-sky);
   opacity: 0.7;
 }
 
@@ -447,22 +447,22 @@
 
 .callout-pill {
   padding: 6px 14px;
-  background: #0F172A;
-  border: 1px solid #1E293B;
+  background: var(--c-panel-2);
+  border: 1px solid var(--c-border);
   border-radius: 20px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: #94A3B8;
+  color: var(--c-muted-2);
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.callout-pill.accent-cyan { border-color: rgba(56, 189, 248, 0.4); color: #38BDF8; }
-.callout-pill.accent-blue { border-color: rgba(96, 165, 250, 0.4); color: #60A5FA; }
+.callout-pill.accent-cyan { border-color: rgba(56, 189, 248, 0.4); color: var(--c-sky); }
+.callout-pill.accent-blue { border-color: rgba(96, 165, 250, 0.4); color: var(--c-sky-2); }
 .callout-pill.accent-amber { border-color: rgba(249, 115, 22, 0.4); color: #F97316; }
-.callout-pill.accent-purple { border-color: rgba(168, 85, 247, 0.4); color: #A855F7; }
+.callout-pill.accent-purple { border-color: rgba(168, 85, 247, 0.4); color: var(--c-violet-2); }
 
 .pill-dot {
   width: 6px;
@@ -482,8 +482,8 @@
 }
 
 .gpu-sm-cluster {
-  background: #0F172A;
-  border: 1px solid #1E293B;
+  background: var(--c-panel-2);
+  border: 1px solid var(--c-border);
   border-radius: 6px;
   padding: 8px;
   display: flex;
@@ -493,7 +493,7 @@
 .sm-title {
   font-size: 12px;
   font-weight: 800;
-  color: #60A5FA;
+  color: var(--c-sky-2);
   margin-bottom: 6px;
 }
 
@@ -517,14 +517,14 @@
 
 @keyframes gpuPulse {
   0% { background: #172554; border-color: #1E3A8A; }
-  50% { background: #2563EB; border-color: #60A5FA; box-shadow: 0 0 6px #60A5FA; }
+  50% { background: #2563EB; border-color: var(--c-sky-2); box-shadow: 0 0 6px var(--c-sky-2); }
   100% { background: #172554; border-color: #1E3A8A; }
 }
 
 .gpu-crossbar {
   margin-top: 10px;
-  background: #0F172A;
-  border: 1px solid #1E293B;
+  background: var(--c-panel-2);
+  border: 1px solid var(--c-border);
   border-radius: 4px;
   padding: 6px 12px;
 }
@@ -546,17 +546,17 @@
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
-  color: #22D3EE;
+  color: var(--c-cyan-2);
 }
 
 .mac-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 8px;
-  background: #0F172A;
+  background: var(--c-panel-2);
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid #1E293B;
+  border: 1px solid var(--c-border);
 }
 
 .mac-cell {
@@ -574,20 +574,20 @@
 
 @keyframes macPulse {
   0% { border-color: #0E7490; background: #083344; }
-  50% { border-color: #22D3EE; background: #155E75; box-shadow: 0 0 10px rgba(34, 211, 238, 0.4); }
+  50% { border-color: var(--c-cyan-2); background: #155E75; box-shadow: 0 0 10px rgba(34, 211, 238, 0.4); }
   100% { border-color: #0E7490; background: #083344; }
 }
 
 .mac-math {
   font-size: 12px;
   font-weight: 800;
-  color: #F8FAFC;
+  color: var(--c-text);
 }
 
 .mac-formula {
   font-size: 11px;
   font-family: monospace;
-  color: #22D3EE;
+  color: var(--c-cyan-2);
 }
 
 .npu-post-proc {
@@ -598,14 +598,14 @@
 
 .proc-unit {
   flex: 1;
-  background: #0F172A;
-  border: 1px solid #1E293B;
+  background: var(--c-panel-2);
+  border: 1px solid var(--c-border);
   border-radius: 4px;
   padding: 6px;
   font-size: 12px;
   font-weight: 700;
   text-align: center;
-  color: #64748B;
+  color: var(--c-dim);
 }
 
 /* =========================================================================
@@ -639,10 +639,10 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 6px;
-  background: #0F172A;
+  background: var(--c-panel-2);
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid #1E293B;
+  border: 1px solid var(--c-border);
 }
 
 .systolic-cell {
@@ -666,18 +666,18 @@
 
 .cell-arrow {
   font-size: 12px;
-  color: #F8FAFC;
+  color: var(--c-text);
 }
 
 .tpu-interconnect-bar {
   margin-top: 8px;
-  background: #0F172A;
-  border: 1px solid #1E293B;
+  background: var(--c-panel-2);
+  border: 1px solid var(--c-border);
   border-radius: 4px;
   padding: 6px 12px;
   font-size: 12px;
   font-weight: 700;
-  color: #64748B;
+  color: var(--c-dim);
 }
 
 /* =========================================================================
@@ -686,9 +686,9 @@
 .fpga-fabric {
   position: relative;
   flex: 1;
-  background: #0F172A;
+  background: var(--c-panel-2);
   border-radius: 8px;
-  border: 1px solid #1E293B;
+  border: 1px solid var(--c-border);
   overflow: hidden;
   padding: 12px;
 }
@@ -713,7 +713,7 @@
 .clb-label {
   font-size: 12px;
   font-weight: 800;
-  color: #A855F7;
+  color: var(--c-violet-2);
 }
 
 .fpga-active-route-svg {
@@ -734,8 +734,8 @@
 
 .fpga-bitstream-status {
   margin-top: 10px;
-  background: #0F172A;
-  border: 1px solid #1E293B;
+  background: var(--c-panel-2);
+  border: 1px solid var(--c-border);
   border-radius: 4px;
   padding: 6px 12px;
   font-size: 12px;
@@ -743,8 +743,8 @@
   gap: 8px;
 }
 
-.bitstream-tag { font-weight: 800; color: #A855F7; }
-.bitstream-spec { color: #CBD5E1; font-weight: 600; }
+.bitstream-tag { font-weight: 800; color: var(--c-violet-2); }
+.bitstream-spec { color: var(--c-text-2); font-weight: 600; }
 
 /* =========================================================================
    STAGE 7: COMPARISON VIEW
@@ -764,8 +764,8 @@
 }
 
 .ce-compare-card {
-  background: #0B1120;
-  border: 2px solid #1E293B;
+  background: var(--c-panel);
+  border: 2px solid var(--c-border);
   border-radius: 14px;
   padding: 18px 14px;
   display: flex;
@@ -779,7 +779,7 @@
 
 .ce-compare-card:hover {
   transform: translateY(-4px);
-  border-color: #38BDF8;
+  border-color: var(--c-sky);
 }
 
 .ce-compare-card.selected {
@@ -796,7 +796,7 @@
   width: 52px;
   height: 52px;
   border-radius: 10px;
-  background: #020617;
+  background: var(--c-bg-deep);
   border: 1px solid currentColor;
   display: flex;
   align-items: center;
@@ -811,7 +811,7 @@
   font-size: 22px;
   font-weight: 800;
   margin: 0;
-  color: #F8FAFC;
+  color: var(--c-text);
 }
 
 .card-strength {
@@ -822,12 +822,12 @@
 }
 
 .card-role-pill {
-  background: #0F172A;
-  border: 1px solid #1E293B;
+  background: var(--c-panel-2);
+  border: 1px solid var(--c-border);
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 12px;
-  color: #94A3B8;
+  color: var(--c-muted-2);
   font-weight: 600;
   margin-bottom: 10px;
   width: 100%;
@@ -838,14 +838,14 @@
   flex-direction: column;
   gap: 4px;
   font-size: 12px;
-  color: #64748B;
+  color: var(--c-dim);
   text-align: left;
   width: 100%;
 }
 
 .card-examples-list span::before {
   content: '• ';
-  color: #38BDF8;
+  color: var(--c-sky);
 }
 
 /* =========================================================================
@@ -853,7 +853,7 @@
    ========================================================================= */
 .ce-scenario-panel {
   width: min(850px, 86cqw);
-  background: linear-gradient(180deg, #0F172A, #020617);
+  background: linear-gradient(180deg, var(--c-panel-2), var(--c-bg-deep));
   border: 2px solid rgba(56, 189, 248, 0.4);
   border-radius: 18px;
   padding: 30px 40px;
@@ -869,7 +869,7 @@
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.2em;
-  color: #38BDF8;
+  color: var(--c-sky);
   margin-bottom: 12px;
 }
 
@@ -877,7 +877,7 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(20px, 2.4cqw, 32px);
   font-weight: 700;
-  color: #F8FAFC;
+  color: var(--c-text);
   line-height: 1.3;
   margin-bottom: 24px;
 }
@@ -911,7 +911,7 @@
 .revealed-explanation {
   font-size: 14px;
   font-weight: 500;
-  color: #CBD5E1;
+  color: var(--c-text-2);
   max-width: 600px;
 }
 
@@ -919,17 +919,17 @@
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.15em;
-  color: #64748B;
+  color: var(--c-dim);
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 .unrevealed-prompt kbd {
-  background: #1E293B;
+  background: var(--c-border);
   padding: 3px 8px;
   border-radius: 4px;
-  color: #38BDF8;
+  color: var(--c-sky);
 }
 
 .scenario-action-bar {
@@ -947,7 +947,7 @@
 }
 
 .scenario-btn.primary {
-  background: #38BDF8;
+  background: var(--c-sky);
   border: none;
   color: #02050A;
 }
@@ -955,10 +955,10 @@
 
 .scenario-btn.secondary {
   background: transparent;
-  border: 1px solid #334155;
-  color: #94A3B8;
+  border: 1px solid var(--c-border-strong);
+  color: var(--c-muted-2);
 }
-.scenario-btn.secondary:hover { color: #F8FAFC; border-color: #64748B; }
+.scenario-btn.secondary:hover { color: var(--c-text); border-color: var(--c-dim); }
 
 /* =========================================================================
    STAGE 9: REALIZATION & STAGE 10: MEMORY TEASER
@@ -976,12 +976,12 @@
   font-size: clamp(32px, 4cqw, 56px);
   font-weight: 800;
   line-height: 1.15;
-  color: #F8FAFC;
+  color: var(--c-text);
   letter-spacing: -0.02em;
 }
 
 .realization-line.highlight {
-  color: #38BDF8;
+  color: var(--c-sky);
 }
 
 /* Memory Teaser View */
@@ -1002,7 +1002,7 @@
 .teaser-chip {
   width: 220px;
   height: 180px;
-  background: #0B1120;
+  background: var(--c-panel);
   border-radius: 12px;
   padding: 20px;
   display: flex;
@@ -1013,7 +1013,7 @@
 }
 
 .teaser-chip.compute-block {
-  border: 2px solid #38BDF8;
+  border: 2px solid var(--c-sky);
 }
 .teaser-chip.memory-block {
   border: 2px solid #D97706;
@@ -1024,7 +1024,7 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: 20px;
   font-weight: 800;
-  color: #F8FAFC;
+  color: var(--c-text);
 }
 
 .teaser-chip-status {
@@ -1034,8 +1034,8 @@
   letter-spacing: 0.1em;
 }
 
-.teaser-chip.compute-block .teaser-chip-status { color: #38BDF8; }
-.teaser-chip.memory-block .teaser-chip-status { color: #F59E0B; }
+.teaser-chip.compute-block .teaser-chip-status { color: var(--c-sky); }
+.teaser-chip.memory-block .teaser-chip-status { color: var(--c-amber); }
 
 .teaser-bus-flow {
   position: relative;
@@ -1048,7 +1048,7 @@
 
 .teaser-flow-arrow {
   font-size: 24px;
-  color: #F59E0B;
+  color: var(--c-amber);
   animation: moveArrow 1s infinite linear;
 }
 
@@ -1061,7 +1061,7 @@
 .teaser-bus-label {
   font-size: 12px;
   font-weight: 800;
-  color: #F59E0B;
+  color: var(--c-amber);
   letter-spacing: 0.1em;
 }
 
@@ -1069,12 +1069,12 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(24px, 3cqw, 42px);
   font-weight: 800;
-  color: #F8FAFC;
+  color: var(--c-text);
   text-align: center;
 }
 
 .memory-teaser-headline span {
-  color: #F59E0B;
+  color: var(--c-amber);
 }
 
 /* Stage 00: package overlaid on the faint system context (was a flex sibling,
@@ -1108,5 +1108,5 @@
 }
 .engine-tile .engine-name { font: 800 14px/1 var(--font-display); letter-spacing: 0.08em; color: var(--c-text); }
 .engine-tile .engine-trait { font-size: 12px; color: var(--c-muted); text-align: center; line-height: 1.25; }
-.engine-tile.engine-fpga { color: #A855F7; }
+.engine-tile.engine-fpga { color: var(--c-violet-2); }
 .engine-tile.engine-tpu { color: #F97316; }

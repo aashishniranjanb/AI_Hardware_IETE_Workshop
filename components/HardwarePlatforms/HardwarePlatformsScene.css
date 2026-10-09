@@ -9,8 +9,8 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: #05070B;
-  color: #F4F7FA;
+  background: var(--c-bg);
+  color: var(--c-text);
   overflow: hidden;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   user-select: none;
@@ -49,7 +49,7 @@
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.25em;
-  color: #27D7FF;
+  color: var(--c-cyan);
   margin-bottom: 5px;
   display: flex;
   align-items: center;
@@ -66,12 +66,12 @@
 }
 
 .platform-main-title span {
-  color: #27D7FF;
+  color: var(--c-cyan);
 }
 
 .platform-stage-caption {
   font-size: 13px;
-  color: #8B98A8;
+  color: var(--c-muted);
   font-weight: 600;
   margin-top: 5px;
   letter-spacing: 0.04em;
@@ -89,18 +89,18 @@
   font-size: 20px;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #27D7FF;
+  color: var(--c-cyan);
   text-shadow: 0 0 20px rgba(39, 215, 255, 0.5);
 }
 
 .platform-teaching-point-pill {
   padding: 4px 12px;
-  background: #0B1120;
-  border: 1px solid #1E293B;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
   border-radius: 4px;
   font-size: 12px;
   font-weight: 700;
-  color: #57E6A5;
+  color: var(--c-green);
 }
 
 /* Viewport */
@@ -133,8 +133,8 @@
 }
 
 .path-preview-card {
-  background: #0B1120;
-  border: 2px solid #1E293B;
+  background: var(--c-panel);
+  border: 2px solid var(--c-border);
   border-radius: 14px;
   padding: 24px;
   display: flex;
@@ -159,15 +159,15 @@
   gap: 12px;
   width: 100%;
   justify-content: center;
-  background: #020617;
-  border: 2px solid #1E293B;
+  background: var(--c-bg-deep);
+  border: 2px solid var(--c-border);
   border-radius: 14px;
   padding: 24px;
 }
 
 .pipe-step-box {
-  background: #0B1120;
-  border: 1px solid #334155;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border-strong);
   border-radius: 8px;
   padding: 12px 16px;
   display: flex;
@@ -181,8 +181,8 @@
 .board-hero-card {
   display: flex;
   gap: 40px;
-  background: #0B1120;
-  border: 2px solid #1E293B;
+  background: var(--c-panel);
+  border: 2px solid var(--c-border);
   border-radius: 16px;
   padding: 30px;
   width: 100%;
@@ -196,8 +196,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #020617;
-  border: 1px solid #334155;
+  background: var(--c-bg-deep);
+  border: 1px solid var(--c-border-strong);
   border-radius: 12px;
   padding: 24px;
 }
@@ -213,14 +213,14 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: 24px;
   font-weight: 800;
-  color: #F4F7FA;
+  color: var(--c-text);
 }
 
 .board-flow-tag {
   font-family: 'Space Grotesk', monospace;
   font-size: 12px;
   font-weight: 700;
-  color: #27D7FF;
+  color: var(--c-cyan);
 }
 
 .board-specs-list {
@@ -234,13 +234,13 @@
   justify-content: space-between;
   font-size: 12px;
   padding: 6px 10px;
-  background: #020617;
+  background: var(--c-bg-deep);
   border-radius: 6px;
-  border: 1px solid #1E293B;
+  border: 1px solid var(--c-border);
 }
 
-.board-spec-item .k { color: #8B98A8; }
-.board-spec-item .v { font-weight: 700; color: #F4F7FA; font-family: 'Space Grotesk', monospace; }
+.board-spec-item .k { color: var(--c-muted); }
+.board-spec-item .v { font-weight: 700; color: var(--c-text); font-family: 'Space Grotesk', monospace; }
 
 /* Compare Table Card */
 .compare-columns-container {
@@ -251,8 +251,8 @@
 }
 
 .compare-col-box {
-  background: #0B1120;
-  border: 2px solid #1E293B;
+  background: var(--c-panel);
+  border: 2px solid var(--c-border);
   border-radius: 12px;
   padding: 20px;
   display: flex;
@@ -265,8 +265,8 @@
   display: flex;
   align-items: center;
   gap: 30px;
-  background: #020617;
-  border: 2px solid #1E293B;
+  background: var(--c-bg-deep);
+  border: 2px solid var(--c-border);
   border-radius: 16px;
   padding: 28px;
   width: 100%;
@@ -280,8 +280,8 @@
   justify-content: center;
   width: 100px;
   height: 100px;
-  background: #0B1120;
-  border: 2px solid #27D7FF;
+  background: var(--c-panel);
+  border: 2px solid var(--c-cyan);
   border-radius: 12px;
 }
 
@@ -294,8 +294,8 @@
 }
 
 .tradeoff-card {
-  background: #0B1120;
-  border: 1px solid #1E293B;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
   border-radius: 12px;
   padding: 20px;
   display: flex;
@@ -312,8 +312,8 @@
 }
 
 .reveal-board-pane {
-  background: #0B1120;
-  border: 2px solid #1E293B;
+  background: var(--c-panel);
+  border: 2px solid var(--c-border);
   border-radius: 14px;
   padding: 24px;
   display: flex;
@@ -339,7 +339,7 @@
   background: rgba(11, 17, 32, 0.9);
   padding: 6px 14px;
   border-radius: 30px;
-  border: 1px solid #1E293B;
+  border: 1px solid var(--c-border);
   backdrop-filter: blur(10px);
 }
 
@@ -349,7 +349,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: #64748B;
+  color: var(--c-dim);
   padding: 4px 8px;
   border-radius: 16px;
   cursor: pointer;
@@ -357,17 +357,17 @@
 }
 
 .platform-step-btn:hover {
-  color: #F4F7FA;
+  color: var(--c-text);
 }
 
 .platform-step-btn.step-active {
-  color: #05070B;
-  background: #27D7FF;
+  color: var(--c-bg);
+  background: var(--c-cyan);
   font-weight: 800;
   box-shadow: 0 0 10px rgba(39, 215, 255, 0.5);
 }
 
 .platform-divider {
-  color: #334155;
+  color: var(--c-border-strong);
   font-size: 12px;
 }

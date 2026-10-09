@@ -8,8 +8,8 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: #05070B;
-  color: #F4F7FA;
+  background: var(--c-bg);
+  color: var(--c-text);
   overflow: hidden;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   user-select: none;
@@ -48,7 +48,7 @@
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.25em;
-  color: #27D7FF;
+  color: var(--c-cyan);
   margin-bottom: 5px;
   display: flex;
   align-items: center;
@@ -65,12 +65,12 @@
 }
 
 .logic-main-title span {
-  color: #27D7FF;
+  color: var(--c-cyan);
 }
 
 .logic-stage-caption {
   font-size: 13px;
-  color: #8B98A8;
+  color: var(--c-muted);
   font-weight: 600;
   margin-top: 5px;
   letter-spacing: 0.04em;
@@ -88,18 +88,18 @@
   font-size: 20px;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #27D7FF;
+  color: var(--c-cyan);
   text-shadow: 0 0 20px rgba(39, 215, 255, 0.5);
 }
 
 .logic-teaching-point-pill {
   padding: 4px 12px;
-  background: #0B1120;
-  border: 1px solid #1E293B;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
   border-radius: 4px;
   font-size: 12px;
   font-weight: 700;
-  color: #57E6A5;
+  color: var(--c-green);
 }
 
 /* Viewport */
@@ -137,15 +137,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid #334155;
-  background: #0B1120;
-  color: #64748B;
+  border: 2px solid var(--c-border-strong);
+  background: var(--c-panel);
+  color: var(--c-dim);
 }
 
 .logic-toggle-btn.is-active {
   background: rgba(39, 215, 255, 0.15);
-  border-color: #27D7FF;
-  color: #27D7FF;
+  border-color: var(--c-cyan);
+  color: var(--c-cyan);
   box-shadow: 0 0 20px rgba(39, 215, 255, 0.35);
 }
 
@@ -153,7 +153,7 @@
   font-size: 12px;
   letter-spacing: 0.15em;
   font-weight: 700;
-  color: #8B98A8;
+  color: var(--c-muted);
 }
 
 /* Results & Badges */
@@ -163,18 +163,18 @@
   align-items: center;
   padding: 12px 20px;
   border-radius: 10px;
-  background: #0B1120;
-  border: 1px solid #334155;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border-strong);
 }
 
 .circuit-result-badge.highlight-sum {
-  border-color: #27D7FF;
-  color: #27D7FF;
+  border-color: var(--c-cyan);
+  color: var(--c-cyan);
 }
 
 .circuit-result-badge.highlight-carry {
-  border-color: #F59E0B;
-  color: #F59E0B;
+  border-color: var(--c-amber);
+  color: var(--c-amber);
 }
 
 .res-val {
@@ -191,8 +191,8 @@
 
 /* Truth Table Card */
 .truth-table-card {
-  background: #0B1120;
-  border: 1px solid #1E293B;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
   border-radius: 12px;
   padding: 16px 20px;
   display: flex;
@@ -205,8 +205,8 @@
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #8B98A8;
-  border-bottom: 1px solid #1E293B;
+  color: var(--c-muted);
+  border-bottom: 1px solid var(--c-border);
   padding-bottom: 8px;
 }
 
@@ -222,7 +222,7 @@
 
 .truth-table-row.is-current {
   background: rgba(39, 215, 255, 0.12);
-  color: #27D7FF;
+  color: var(--c-cyan);
   font-weight: 800;
 }
 
@@ -235,8 +235,8 @@
 }
 
 .gate-card {
-  background: #0B1120;
-  border: 1px solid #1E293B;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
   border-radius: 10px;
   padding: 18px;
   display: flex;
@@ -247,7 +247,7 @@
 }
 
 .gate-card:hover {
-  border-color: #27D7FF;
+  border-color: var(--c-cyan);
   transform: translateY(-2px);
 }
 
@@ -255,13 +255,13 @@
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.1em;
-  color: #27D7FF;
+  color: var(--c-cyan);
 }
 
 .gate-card-eq {
   font-size: 12px;
   font-family: 'Space Grotesk', monospace;
-  color: #8B98A8;
+  color: var(--c-muted);
 }
 
 .gate-output-pill {
@@ -270,15 +270,15 @@
   font-family: 'Space Grotesk', monospace;
   font-size: 20px;
   font-weight: 800;
-  background: #020617;
-  border: 1px solid #334155;
-  color: #64748B;
+  background: var(--c-bg-deep);
+  border: 1px solid var(--c-border-strong);
+  color: var(--c-dim);
 }
 
 .gate-output-pill.is-high {
   background: rgba(39, 215, 255, 0.15);
-  border-color: #27D7FF;
-  color: #27D7FF;
+  border-color: var(--c-cyan);
+  color: var(--c-cyan);
   box-shadow: 0 0 15px rgba(39, 215, 255, 0.3);
 }
 
@@ -287,8 +287,8 @@
   display: flex;
   align-items: center;
   gap: 24px;
-  background: #020617;
-  border: 2px solid #1E293B;
+  background: var(--c-bg-deep);
+  border: 2px solid var(--c-border);
   border-radius: 14px;
   padding: 24px 30px;
 }
@@ -298,15 +298,15 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  background: #020617;
-  border: 2px solid #1E293B;
+  background: var(--c-bg-deep);
+  border: 2px solid var(--c-border);
   border-radius: 14px;
   padding: 20px 24px;
 }
 
 .bit4-unit-box {
-  background: #0B1120;
-  border: 1px solid #27D7FF;
+  background: var(--c-panel);
+  border: 1px solid var(--c-cyan);
   border-radius: 8px;
   padding: 12px;
   display: flex;
@@ -319,35 +319,35 @@
 .bit4-unit-title {
   font-size: 12px;
   font-weight: 800;
-  color: #27D7FF;
+  color: var(--c-cyan);
 }
 
 /* ALU Stage Specific Styles */
 .alu-ops-selector {
   display: flex;
   gap: 10px;
-  background: #0B1120;
-  border: 1px solid #1E293B;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
   padding: 6px 12px;
   border-radius: 20px;
 }
 
 .alu-op-btn {
   background: transparent;
-  border: 1px solid #334155;
+  border: 1px solid var(--c-border-strong);
   border-radius: 14px;
   padding: 4px 12px;
   font-size: 12px;
   font-weight: 800;
-  color: #8B98A8;
+  color: var(--c-muted);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .alu-op-btn.is-selected {
-  background: #27D7FF;
-  color: #020617;
-  border-color: #27D7FF;
+  background: var(--c-cyan);
+  color: var(--c-bg-deep);
+  border-color: var(--c-cyan);
   box-shadow: 0 0 12px rgba(39, 215, 255, 0.4);
 }
 
@@ -355,16 +355,16 @@
 .system-cpu-block {
   display: flex;
   gap: 24px;
-  background: #020617;
-  border: 2px solid #1E293B;
+  background: var(--c-bg-deep);
+  border: 2px solid var(--c-border);
   border-radius: 16px;
   padding: 24px;
   align-items: center;
 }
 
 .cpu-module-box {
-  background: #0B1120;
-  border: 1px solid #334155;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border-strong);
   border-radius: 10px;
   padding: 16px 20px;
   display: flex;
@@ -388,17 +388,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background: #0B1120;
-  border: 1px solid #1E293B;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
   border-radius: 8px;
   font-size: 12px;
   font-weight: 800;
 }
 
 .ladder-step-bar.highlight-top {
-  border-color: #27D7FF;
+  border-color: var(--c-cyan);
   background: rgba(39, 215, 255, 0.1);
-  color: #27D7FF;
+  color: var(--c-cyan);
 }
 
 /* Platforms Handoff View */
@@ -410,8 +410,8 @@
 }
 
 .handoff-card {
-  background: #0B1120;
-  border: 1px solid #1E293B;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
   border-radius: 12px;
   padding: 20px;
   display: flex;
@@ -436,7 +436,7 @@
   background: rgba(11, 17, 32, 0.9);
   padding: 6px 14px;
   border-radius: 30px;
-  border: 1px solid #1E293B;
+  border: 1px solid var(--c-border);
   backdrop-filter: blur(10px);
 }
 
@@ -446,7 +446,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: #64748B;
+  color: var(--c-dim);
   padding: 4px 8px;
   border-radius: 16px;
   cursor: pointer;
@@ -454,17 +454,17 @@
 }
 
 .logic-step-btn:hover {
-  color: #F4F7FA;
+  color: var(--c-text);
 }
 
 .logic-step-btn.step-active {
-  color: #05070B;
-  background: #27D7FF;
+  color: var(--c-bg);
+  background: var(--c-cyan);
   font-weight: 800;
   box-shadow: 0 0 10px rgba(39, 215, 255, 0.5);
 }
 
 .logic-divider {
-  color: #334155;
+  color: var(--c-border-strong);
   font-size: 12px;
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { InlineIcon } from '../deck/GlyphIcon';
 
 /**
  * Animated data flow pathways connecting Chitti's subsystems.
@@ -30,7 +31,7 @@ export function ChittiDataFlow() {
       {/* Live Data Packet Telemetry Header Banner */}
       <div className="data-packet-banner">
         <span style={{ color: '#22d3ee' }}>● ACTIVE BUS:</span>
-        <span><b>{curPacket.source}</b> ➔ <b>{curPacket.dest}</b></span>
+        <span><b>{curPacket.source}</b> <InlineIcon glyph="next" /> <b>{curPacket.dest}</b></span>
         <span style={{ color: '#64748b' }}>|</span>
         <span>{curPacket.data}</span>
         <span style={{ color: '#38bdf8', background: 'rgba(56,189,248,0.1)', padding: '2px 6px', borderRadius: '4px' }}>
