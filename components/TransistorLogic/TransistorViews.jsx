@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SwitchMatrixConfig } from './SwitchMatrixConfig';
 
 export function Stage0ExistingAndGate({ a, setA, b, setB }) {
   return (
@@ -258,43 +259,9 @@ export function Stage6FPGAFabric() {
 }
 
 export function Stage7SwitchMatrix() {
-  const [switches, setSwitches] = useState({
-    s0: true, s1: false, s2: false, s3: true, s4: false
-  });
-
-  const toggle = (k) => setSwitches(prev => ({ ...prev, [k]: !prev[k] }));
-
   return (
     <div className="t-wrap">
-      <div className="switch-matrix-container">
-        <svg width="260" height="260" viewBox="0 0 260 260" className="switch-grid-svg">
-          {/* Horizontal lines */}
-          <line x1="20" y1="70" x2="240" y2="70" stroke={switches.s0 ? "#27D7FF" : "#334155"} strokeWidth="3" />
-          <line x1="20" y1="130" x2="240" y2="130" stroke={switches.s2 ? "#27D7FF" : "#334155"} strokeWidth="3" />
-          <line x1="20" y1="190" x2="240" y2="190" stroke={switches.s3 ? "#27D7FF" : "#334155"} strokeWidth="3" />
-
-          {/* Vertical lines */}
-          <line x1="70" y1="20" x2="70" y2="240" stroke={switches.s0 ? "#27D7FF" : "#334155"} strokeWidth="3" />
-          <line x1="130" y1="20" x2="130" y2="240" stroke={switches.s1 ? "#27D7FF" : "#334155"} strokeWidth="3" />
-          <line x1="190" y1="20" x2="190" y2="240" stroke={switches.s3 ? "#27D7FF" : "#334155"} strokeWidth="3" />
-
-          {/* Intersection switch nodes */}
-          <circle cx="70" cy="70" r="8" fill={switches.s0 ? "#27D7FF" : "#020617"} stroke="#27D7FF" strokeWidth="2" className="interactive-switch-node" onClick={() => toggle('s0')} />
-          <circle cx="130" cy="70" r="8" fill={switches.s1 ? "#27D7FF" : "#020617"} stroke="#27D7FF" strokeWidth="2" className="interactive-switch-node" onClick={() => toggle('s1')} />
-          <circle cx="190" cy="70" r="8" fill={switches.s2 ? "#27D7FF" : "#020617"} stroke="#27D7FF" strokeWidth="2" className="interactive-switch-node" onClick={() => toggle('s2')} />
-          <circle cx="130" cy="130" r="8" fill={switches.s3 ? "#27D7FF" : "#020617"} stroke="#27D7FF" strokeWidth="2" className="interactive-switch-node" onClick={() => toggle('s3')} />
-          <circle cx="190" cy="190" r="8" fill={switches.s4 ? "#27D7FF" : "#020617"} stroke="#27D7FF" strokeWidth="2" className="interactive-switch-node" onClick={() => toggle('s4')} />
-        </svg>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '380px' }}>
-          <div style={{ fontSize: '15px', fontWeight: 800, color: '#27D7FF' }}>
-            CLICK NODES TO CLOSE / OPEN SWITCHES
-          </div>
-          <div style={{ fontSize: '12px', color: '#8B98A8', lineHeight: 1.6 }}>
-            In an FPGA, routing channels cross at <strong>Switch Boxes</strong>. When a switch SRAM cell stores a <strong>1</strong>, pass transistors close, routing electrical signals between horizontal and vertical tracks.
-          </div>
-        </div>
-      </div>
+      <SwitchMatrixConfig />
     </div>
   );
 }
