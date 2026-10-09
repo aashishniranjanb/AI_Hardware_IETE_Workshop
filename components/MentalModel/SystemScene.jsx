@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useStageNavigation, useSceneExit, useDeckEntry } from '../deck/DeckNavigation';
 import { prefersReducedMotion } from '../deck/motion';
+import { setHandoff } from '../deck/handoff';
 import gsap from 'gsap';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 import './mental.css';
@@ -155,9 +156,10 @@ export function SystemScene() {
       .to(q('#mod-compute'), reduced
         ? { scale: 1.45, duration: 0.2 }
         : { scale: 2.6, boxShadow: '0 0 120px rgba(39,215,255,0.55)', duration: 0.6, ease: 'power2.in' }, 0)
-      .to(q('#mod-compute .comp-lbl'), { opacity: 0, duration: 0.25 }, reduced ? 0 : 0.3)
+      // Record where COMPUTE ends up so Slide 04's package starts exactly there.
+      .call(() => setHandoff('compute', root.querySelector('#mod-compute')))
       // short hand-off frame: a glowing COMPUTE frame, never a blank screen
-      .to({}, { duration: reduced ? 0.05 : 0.25 });
+      .to({}, { duration: reduced ? 0.05 : 0.2 });
     return true;
   });
 

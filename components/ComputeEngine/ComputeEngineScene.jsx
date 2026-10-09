@@ -7,6 +7,7 @@ import { ComputeObject } from './ComputeObject';
 import './ComputeEngine.css';
 import { useStageNavigation, useDeckEntry } from '../deck/DeckNavigation';
 import { prefersReducedMotion } from '../deck/motion';
+import { flipFrom, takeHandoff } from '../deck/handoff';
 
 export function ComputeEngineScene() {
   const containerRef = useRef(null);
@@ -29,16 +30,27 @@ export function ComputeEngineScene() {
   // at the zoom scale Slide 03 ended on, settles, then the header resolves.
   const entry = useDeckEntry();
   const arrivedFromSystem = useRef(entry.continuity && stageIndex === 0);
+  const flipRef = useRef(undefined);
   useLayoutEffect(() => {
     if (!arrivedFromSystem.current) return;
     const reduced = prefersReducedMotion();
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
-      tl.fromTo('.compute-physical-package',
+      const pkg = containerRef.current?.querySelector('.compute-physical-package');
+      // FLIP from the exact on-screen rectangle COMPUTE had at the end of Slide 03.
+      // Measured once per mount: React StrictMode re-runs this effect, and the
+      // second run would otherwise measure the package mid-hand-off (≈ no motion).
+      if (flipRef.current === undefined) flipRef.current = !reduced && pkg ? flipFrom(pkg, takeHandoff('compute')) : null;
+      const flip = flipRef.current;
+      const from = flip
+        ? { x: flip.x, y: flip.y, scale: flip.scale, opacity: 1 }
+        : { x: 0, y: 0, scale: reduced ? 1.04 : 1.25, opacity: reduced ? 0 : 1 };
+      tl.fromTo(pkg,
         // transition:none — the package's CSS `transition: all` would fight GSAP
-        { scale: reduced ? 1.08 : 1.9, opacity: reduced ? 0 : 1, transition: 'none', filter: 'drop-shadow(0 0 40px rgba(39,215,255,0.6))' },
-        { scale: 1, opacity: 1, filter: 'drop-shadow(0 0 0px rgba(39,215,255,0))', duration: reduced ? 0.25 : 0.9, ease: 'power3.out', clearProps: 'filter,transition,transform' })
-        .fromTo('.mock-block', { opacity: 0 }, { opacity: 0.15, duration: 0.5, stagger: 0.04 }, reduced ? 0 : 0.35)
+        { ...from, transformOrigin: '50% 50%', transition: 'none', filter: 'drop-shadow(0 0 40px rgba(39,215,255,0.6))' },
+        { x: 0, y: 0, scale: 1, opacity: 1, filter: 'drop-shadow(0 0 0px rgba(39,215,255,0))', duration: reduced ? 0.25 : 0.85, ease: 'power3.inOut', clearProps: 'filter,transition,transform' })
+        .fromTo('.engine-tile', { opacity: 0, y: reduced ? 0 : 10 }, { opacity: 1, y: 0, duration: 0.4, stagger: reduced ? 0 : 0.09, ease: 'power3.out' }, reduced ? 0 : 0.75)
+        .fromTo('.mock-block', { opacity: 0, transition: 'none' }, { opacity: 0.15, duration: 0.5, stagger: 0.04, clearProps: 'transition' }, reduced ? 0 : 0.35)
         .fromTo('.ce-eyebrow, .ce-title', { opacity: 0, y: reduced ? 0 : 10 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.08, ease: 'power3.out' }, reduced ? 0 : 0.45)
         .fromTo('.ce-subtitle', { opacity: 0 }, { opacity: 1, duration: 0.4 }, reduced ? 0 : 0.7)
         .fromTo('.ce-header .stage-nav', { opacity: 0 }, { opacity: 1, duration: 0.4 }, reduced ? 0 : 0.85);
@@ -142,7 +154,10 @@ export function ComputeEngineScene() {
               <div className="mock-block mock-power">POWER + THERMAL INFRASTRUCTURE</div>
             </div>
 
-            <ComputeObject activeArch={null} stage="compute" />
+            {/* Package sits ON the system's compute position (overlay), not beside it */}
+            <div className="ce-entry-package">
+              <ComputeObject activeArch={null} stage="compute" />
+            </div>
           </div>
         )}
 

@@ -88,7 +88,9 @@
   text-align: center;
   padding: 12px;
   opacity: 0; /* GSAP will reveal */
-  transition: opacity 0.3s, border-color 0.3s;
+  /* opacity/transform are owned by GSAP — a CSS opacity transition here made
+     every GSAP fade lag and double up (incl. the 03 → 04 hand-off). */
+  transition: border-color 0.3s, filter 0.3s;
   cursor: pointer;
   z-index: 10;
   box-shadow: 0 10px 25px rgba(0,0,0,0.5);
@@ -99,13 +101,13 @@
 }
 
 /* Dimming effect when a block is hovered */
-.mm-system-canvas.has-hover .mm-module.dimmed {
-  opacity: 0.3 !important;
+.mental-model-scene.has-hover .mm-module.dimmed {
+  filter: brightness(0.4) saturate(0.5);
   border-color: #1e293b !important;
 }
-.mm-system-canvas.has-hover .mm-path.dimmed,
-.mm-system-canvas.has-hover .mm-arrow.dimmed {
-  opacity: 0.15 !important;
+.mental-model-scene.has-hover .mm-path.dimmed,
+.mental-model-scene.has-hover .mm-arrow.dimmed {
+  filter: brightness(0.3);
 }
 
 .mm-mod-title {
@@ -223,7 +225,7 @@
   stroke: #38bdf8;
   stroke-width: 3;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: filter 0.3s;
 }
 
 .mm-path-high-speed {
@@ -234,7 +236,7 @@
 .mm-arrow {
   fill: #38bdf8;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: filter 0.3s;
 }
 
 .mm-path.mm-path-power, .mm-arrow.mm-arrow-power {

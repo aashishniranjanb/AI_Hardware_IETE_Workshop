@@ -306,7 +306,10 @@ function App() {
 
   useLayoutEffect(() => {
     if (entry.from === -1) return;
-    const tl = sceneEnter(stageRef.current, scanRef.current, entry.continuity ? { from: { scale: 1 }, duration: 0.2 } : undefined);
+    // Continuity bridges own the whole visual hand-off: the deck adds no fade
+    // (a fade from opacity 0 produced a dark frame between the two scenes).
+    const tl = entry.continuity ? null : sceneEnter(stageRef.current, scanRef.current);
+    if (entry.continuity) gsap.set(stageRef.current, { opacity: 1, scale: 1, clearProps: 'transform,opacity' });
     transitioningRef.current = false;
     return () => tl?.kill();
   }, [index]);
