@@ -4,6 +4,7 @@ import './chitti.css';
 import { useStageNavigation } from '../deck/DeckNavigation';
 import { ChittiExplodedView } from './ChittiExplodedView';
 import { SubsystemStrip } from './SubsystemStrip';
+import { ArrowRight, Boxes, Play, RotateCcw, ScanLine } from 'lucide-react';
 
 /**
  * Mission 01 — What if we built Chitti today?
@@ -66,20 +67,20 @@ export function ChittiScene() {
   const getPrimaryButtonLabel = () => {
     switch (sceneMode) {
       case 'hero':
-        return 'REVEAL THE SYSTEM →';
+        return 'REVEAL THE SYSTEM';
       case 'scan':
         return 'SCANNING SUBSYSTEMS...';
       case 'exploded':
-        return 'START DATA FLOW ➔';
+        return 'START DATA FLOW';
       case 'data-flow':
-        return 'REASSEMBLE CHITTI ↺';
+        return 'REASSEMBLE CHITTI';
       default:
-        return 'EXPLODE CHITTI →';
+        return 'EXPLODE CHITTI';
     }
   };
 
   return (
-    <section ref={containerRef} className="scene chitti-scene" style={{ padding: '7vh 5vw 4vh' }}>
+    <section ref={containerRef} className="scene chitti-scene">
       <div className="chitti-workbench">
         {/* Left Command Column */}
         <div className="chitti-cmd-col">
@@ -107,6 +108,9 @@ export function ChittiScene() {
                 disabled={sceneMode === 'scan'}
               >
                 <span>{getPrimaryButtonLabel()}</span>
+                {sceneMode === 'hero' && <ArrowRight size={16} aria-hidden="true" />}
+                {sceneMode === 'exploded' && <Play size={15} aria-hidden="true" />}
+                {sceneMode === 'data-flow' && <RotateCcw size={15} aria-hidden="true" />}
               </button>
 
               <div className="btn-row-secondary">
@@ -115,14 +119,14 @@ export function ChittiScene() {
                   onClick={() => setSceneMode('scan')}
                   title="Run Full System Scan"
                 >
-                  ⚡ SCAN [S]
+                  <ScanLine size={14} aria-hidden="true" /> SCAN [S]
                 </button>
                 <button
                   className="btn-sec"
                   onClick={() => setSceneMode(sceneMode === 'exploded' ? 'hero' : 'exploded')}
                   title="Toggle 3D Exploded View"
                 >
-                  ▦ {sceneMode === 'exploded' ? 'ASSEMBLE' : 'EXPLODE'} [E]
+                  <Boxes size={14} aria-hidden="true" /> {sceneMode === 'exploded' ? 'ASSEMBLE' : 'EXPLODE'} [E]
                 </button>
                 <button
                   className="btn-sec"
@@ -132,7 +136,7 @@ export function ChittiScene() {
                   }}
                   title="Reset to Hero"
                 >
-                  ↺ RESET [R]
+                  <RotateCcw size={14} aria-hidden="true" /> RESET [R]
                 </button>
               </div>
 
@@ -164,13 +168,13 @@ export function ChittiScene() {
           selectedSubsystem={selectedSubsystem}
           onSelectSubsystem={setSelectedSubsystem}
           onScanComplete={() => setSceneMode('exploded')}
-        />
-
-        {/* Bottom Subsystem Navigation Dock */}
-        <SubsystemStrip
-          selectedSubsystem={selectedSubsystem}
-          onSelectSubsystem={setSelectedSubsystem}
-        />
+        >
+          {/* Bottom Subsystem Navigation Dock */}
+          <SubsystemStrip
+            selectedSubsystem={selectedSubsystem}
+            onSelectSubsystem={setSelectedSubsystem}
+          />
+        </ChittiExplodedView>
       </div>
     </section>
   );

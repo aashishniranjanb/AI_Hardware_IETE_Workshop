@@ -92,13 +92,13 @@ export function VisionOpticsModule() {
         display: 'grid',
         placeItems: 'center',
         color: '#fff',
-        fontSize: '8px',
+        fontSize: '11px',
         fontWeight: 'bold'
       }}>
         4K
       </div>
       <div style={{
-        fontSize: '9px',
+        fontSize: '12px',
         fontFamily: 'monospace',
         color: '#38bdf8',
         textAlign: 'center',
@@ -116,7 +116,7 @@ export function VisionOpticsModule() {
         display: 'grid',
         placeItems: 'center',
         color: '#fff',
-        fontSize: '8px',
+        fontSize: '11px',
         fontWeight: 'bold'
       }}>
         120F
@@ -158,7 +158,7 @@ export function ChestPectoralPlate({ side = 'left' }) {
         x={isLeft ? "30" : "45"}
         y="55"
         fill="#64748b"
-        fontSize="7"
+        fontSize="11"
         fontFamily="monospace"
         letterSpacing="1"
       >
@@ -215,9 +215,9 @@ export function AIComputeCoreModule({ isScanning, isExploded }) {
           justifyContent: 'center',
           boxShadow: '0 0 10px rgba(96, 165, 250, 0.4)'
         }}>
-          <span style={{ fontSize: '7px', fontWeight: 800, color: '#93c5fd' }}>CPU/GPU</span>
-          <span style={{ fontSize: '11px', fontWeight: 900, color: '#f8fafc' }}>64T</span>
-          <span style={{ fontSize: '6px', color: '#38bdf8', fontFamily: 'monospace' }}>FLOPS</span>
+          <span style={{ fontSize: '11px', fontWeight: 800, color: '#93c5fd' }}>CPU/GPU</span>
+          <span style={{ fontSize: '12px', fontWeight: 900, color: '#f8fafc' }}>64T</span>
+          <span style={{ fontSize: '11px', color: '#38bdf8', fontFamily: 'monospace' }}>FLOPS</span>
         </div>
 
         {/* Bridge Interconnect */}
@@ -230,7 +230,7 @@ export function AIComputeCoreModule({ isScanning, isExploded }) {
           placeItems: 'center',
           boxShadow: '0 0 8px #38bdf8'
         }}>
-          <span style={{ fontSize: '6px', color: '#fff', transform: 'rotate(-90deg)' }}>LINK</span>
+          <span style={{ fontSize: '11px', color: '#fff', transform: 'rotate(-90deg)' }}>LINK</span>
         </div>
 
         {/* Die 02 (NPU Tensor Accelerator) */}
@@ -246,15 +246,15 @@ export function AIComputeCoreModule({ isScanning, isExploded }) {
           justifyContent: 'center',
           boxShadow: '0 0 10px rgba(34, 211, 238, 0.4)'
         }}>
-          <span style={{ fontSize: '7px', fontWeight: 800, color: '#67e8f9' }}>NPU AI</span>
-          <span style={{ fontSize: '11px', fontWeight: 900, color: '#f8fafc' }}>64T</span>
-          <span style={{ fontSize: '6px', color: '#22d3ee', fontFamily: 'monospace' }}>MACs</span>
+          <span style={{ fontSize: '11px', fontWeight: 800, color: '#67e8f9' }}>NPU AI</span>
+          <span style={{ fontSize: '12px', fontWeight: 900, color: '#f8fafc' }}>64T</span>
+          <span style={{ fontSize: '11px', color: '#22d3ee', fontFamily: 'monospace' }}>MACs</span>
         </div>
       </div>
 
       <div style={{
         marginTop: '6px',
-        fontSize: '8px',
+        fontSize: '11px',
         fontWeight: 800,
         letterSpacing: '1px',
         color: '#e2e8f0',
@@ -280,7 +280,7 @@ export function MemoryStackModule({ side = 'left' }) {
       justifyContent: 'space-between',
       boxShadow: '0 0 15px rgba(56, 189, 248, 0.25)'
     }}>
-      <div style={{ fontSize: '7px', fontWeight: 800, color: '#38bdf8', textAlign: 'center', letterSpacing: '0.5px' }}>
+      <div style={{ fontSize: '11px', fontWeight: 800, color: '#38bdf8', textAlign: 'center', letterSpacing: '0.5px' }}>
         HBM3e
       </div>
       {/* 4x 3D stacked DRAM layers */}
@@ -297,11 +297,11 @@ export function MemoryStackModule({ side = 'left' }) {
             padding: '0 4px'
           }}>
             <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#22d3ee' }} />
-            <span style={{ fontSize: '6px', color: '#94a3b8', fontFamily: 'monospace' }}>8GB</span>
+            <span style={{ fontSize: '11px', color: '#94a3b8', fontFamily: 'monospace' }}>8GB</span>
           </div>
         ))}
       </div>
-      <div style={{ fontSize: '6px', color: '#64748b', textAlign: 'center', fontFamily: 'monospace' }}>
+      <div style={{ fontSize: '11px', color: '#64748b', textAlign: 'center', fontFamily: 'monospace' }}>
         3.2 TB/s
       </div>
     </div>
@@ -323,8 +323,8 @@ export function BatteryPowerModule() {
       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)'
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <span style={{ fontSize: '9px', fontWeight: 800, color: '#38bdf8', letterSpacing: '1px' }}>SOLID-STATE POWER</span>
-        <span style={{ fontSize: '8px', color: '#4ade80', fontFamily: 'monospace', fontWeight: 'bold' }}>800V DC</span>
+        <span style={{ fontSize: '12px', fontWeight: 800, color: '#38bdf8', letterSpacing: '1px' }}>SOLID-STATE POWER</span>
+        <span style={{ fontSize: '11px', color: '#4ade80', fontFamily: 'monospace', fontWeight: 'bold' }}>800V DC</span>
       </div>
 
       {/* Battery Cell Bars */}
@@ -350,7 +350,7 @@ export function BatteryPowerModule() {
         ))}
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '8px', color: '#94a3b8' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#94a3b8' }}>
         <span>PMIC: 12-PHASE REGULATOR</span>
         <span style={{ color: '#38bdf8' }}>CAPACITY 98%</span>
       </div>
@@ -373,8 +373,8 @@ export function ThermalCoolingModule() {
       justifyContent: 'space-between'
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <span style={{ fontSize: '9px', fontWeight: 800, color: '#fb923c' }}>VAPOR CHAMBER</span>
-        <span style={{ fontSize: '7px', color: '#fdba74', fontFamily: 'monospace' }}>450W TDP DISSIPATION</span>
+        <span style={{ fontSize: '12px', fontWeight: 800, color: '#fb923c' }}>VAPOR CHAMBER</span>
+        <span style={{ fontSize: '11px', color: '#fdba74', fontFamily: 'monospace' }}>450W TDP DISSIPATION</span>
       </div>
 
       {/* Micro-fins */}
@@ -389,7 +389,7 @@ export function ThermalCoolingModule() {
         ))}
       </div>
 
-      <div style={{ fontSize: '7px', color: '#a8a29e', textAlign: 'center' }}>
+      <div style={{ fontSize: '11px', color: '#a8a29e', textAlign: 'center' }}>
         DUAL CLOSED-LOOP MICRO-CHANNEL COOLING
       </div>
     </div>
@@ -452,7 +452,7 @@ export function PelvisAndLegsModule() {
       {/* Pelvis Frame */}
       <path d="M 40 10 L 180 10 L 160 55 L 60 55 Z" fill="#111c2c" stroke="#38bdf8" strokeWidth="1.2" strokeOpacity="0.5" />
       <circle cx="110" cy="30" r="10" fill="#0369a1" />
-      <text x="110" y="33" fill="#fff" fontSize="6" textAnchor="middle" fontWeight="bold">IMU</text>
+      <text x="110" y="33" fill="#fff" fontSize="11" textAnchor="middle" fontWeight="bold">IMU</text>
 
       {/* Left Hip Joint */}
       <circle cx="65" cy="55" r="16" fill="#0b1320" stroke="#38bdf8" strokeWidth="1.2" />

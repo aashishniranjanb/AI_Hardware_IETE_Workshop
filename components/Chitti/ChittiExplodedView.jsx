@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import {
   HeadAssembly,
@@ -11,16 +11,38 @@ import {
   RoboticArmModule,
   PelvisAndLegsModule
 } from './ChittiParts';
-import { ChittiCallouts } from './ChittiCallouts';
+import { ChittiCalloutColumn } from './ChittiCallouts';
+import { ChittiLeaderLines } from './ChittiLeaderLines';
 import { ChittiDataFlow } from './ChittiDataFlow';
+
+// Native size of the robot assembly; it is scaled to fit the centre cell.
+const ROBOT_W = 580;
+const ROBOT_H = 760;
 
 export function ChittiExplodedView({
   sceneMode,
   selectedSubsystem,
   onSelectSubsystem,
-  onScanComplete
+  onScanComplete,
+  children
 }) {
   const containerRef = useRef(null);
+  const fitRef = useRef(null);
+  const [robotScale, setRobotScale] = useState(0.8);
+
+  useLayoutEffect(() => {
+    const el = fitRef.current;
+    if (!el) return;
+    const update = () => {
+      const w = el.clientWidth, h = el.clientHeight;
+      if (w && h) setRobotScale(Math.min(w / ROBOT_W, h / ROBOT_H, 1.1));
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    window.addEventListener('resize', update);
+    return () => { ro.disconnect(); window.removeEventListener('resize', update); };
+  }, []);
   const scanLineRef = useRef(null);
 
   const isExploded = sceneMode === 'exploded' || sceneMode === 'data-flow';
@@ -76,6 +98,12 @@ export function ChittiExplodedView({
       ref={containerRef}
       className={`chitti-stage ${isExploded ? 'is-exploded' : ''} ${selectedSubsystem ? 'is-subsystem-isolated' : ''}`}
     >
+      {isExploded && (
+        <ChittiCalloutColumn side="left" selectedSubsystem={selectedSubsystem} onSelectSubsystem={onSelectSubsystem} />
+      )}
+
+      <div ref={fitRef} className="chitti-robot-fit">
+      <div className="chitti-robot-scaler" style={{ width: ROBOT_W, height: ROBOT_H, transform: `translate(-50%, -50%) scale(${robotScale})` }}>
       {/* 3D Viewport container */}
       <div className="chitti-viewport-3d">
         {/* Scanning Laser Beam */}
@@ -106,7 +134,7 @@ export function ChittiExplodedView({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '8px',
+              fontSize: '11px',
               fontFamily: 'monospace',
               color: '#38bdf8'
             }}>
@@ -158,7 +186,7 @@ export function ChittiExplodedView({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '8px',
+              fontSize: '11px',
               fontWeight: 800,
               color: '#fff',
               letterSpacing: '1px'
@@ -183,17 +211,26 @@ export function ChittiExplodedView({
           </div>
         </div>
 
-        {/* Exploded Engineering Callout Cards */}
-        {isExploded && (
-          <ChittiCallouts
-            selectedSubsystem={selectedSubsystem}
-            onSelectSubsystem={onSelectSubsystem}
-          />
-        )}
-
         {/* Animated Data Flow Energy Lines */}
         {isDataFlow && <ChittiDataFlow />}
       </div>
+      </div>
+      </div>
+
+      {isExploded && (
+        <ChittiCalloutColumn side="right" selectedSubsystem={selectedSubsystem} onSelectSubsystem={onSelectSubsystem} />
+      )}
+
+      {/* Solid leader lines measured from the live layout */}
+      <ChittiLeaderLines
+        stageRef={containerRef}
+        active={isExploded}
+        selectedSubsystem={selectedSubsystem}
+        layoutKey={`${sceneMode}-${robotScale.toFixed(3)}`}
+      />
+
+      {/* Subsystem dock + detail drawer (bottom row of the stage) */}
+      <div className="chitti-stage-footer">{children}</div>
     </div>
   );
 }

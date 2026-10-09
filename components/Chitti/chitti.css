@@ -33,7 +33,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.22em;
   color: #38bdf8;
@@ -81,7 +81,7 @@
 }
 
 .challenge-lbl {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.2em;
   color: #38bdf8;
@@ -145,7 +145,7 @@
   color: #cbd5e1;
   border-radius: 10px;
   padding: 10px 14px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   display: flex;
@@ -165,7 +165,7 @@
 .keyboard-hints {
   display: flex;
   gap: 12px;
-  font-size: 11px;
+  font-size: 12px;
   color: #64748b;
   letter-spacing: 0.06em;
   padding-top: 12px;
@@ -178,7 +178,7 @@
   padding: 2px 6px;
   color: #94a3b8;
   font-weight: 700;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 /* Status / telemetry badge */
@@ -186,7 +186,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 11px;
+  font-size: 12px;
   font-family: monospace;
   color: #38bdf8;
   padding: 8px 14px;
@@ -555,7 +555,7 @@
 }
 
 .callout-badge {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.14em;
   color: #38bdf8;
@@ -563,20 +563,20 @@
 }
 
 .callout-detail-spec {
-  font-size: 9px;
+  font-size: 12px;
   color: #64748b;
   font-family: monospace;
 }
 
 .callout-sub {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   color: #e2e8f0;
   line-height: 1.25;
 }
 
 .callout-role {
-  font-size: 10px;
+  font-size: 12px;
   color: #94a3b8;
   margin-top: 4px;
   line-height: 1.3;
@@ -618,7 +618,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 11px;
+  font-size: 12px;
   font-family: monospace;
   color: #7dd3fc;
   box-shadow: 0 0 35px rgba(56, 189, 248, 0.2);
@@ -651,7 +651,7 @@
 }
 
 .dock-label {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.16em;
   color: #64748b;
@@ -666,7 +666,7 @@
   color: #94a3b8;
   border-radius: 20px;
   padding: 6px 12px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   cursor: pointer;
@@ -718,7 +718,7 @@
 
 .drawer-info h4 span {
   color: #38bdf8;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.1em;
 }
 
@@ -735,7 +735,7 @@
   border-radius: 8px;
   padding: 8px 12px;
   font-family: monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: #38bdf8;
   white-space: nowrap;
 }
@@ -760,7 +760,7 @@
   border-radius: 10px;
   background: rgba(56, 189, 248, 0.04);
   border-left: 3px solid #38bdf8;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.45;
   color: #94a3b8;
 }
@@ -770,3 +770,186 @@
   display: block;
   margin-bottom: 2px;
 }
+
+/* =========================================================================
+   EXPLORE VIEW REPAIR (Step: Slide 02)
+   Root causes fixed here:
+   - callout cards were absolutely positioned in % of a fixed 580×760 robot
+     box (designed for 1920 wide) → they piled onto the robot at 1366×768;
+   - leader dots used CSS r inside a 100×100 non-uniformly stretched SVG →
+     giant ellipses; lines were hard-coded % and did not follow the parts;
+   - inline 7vh/5vw padding measured the window, not the 16:9 frame;
+   - legacy global `.chitti-scene { display:flex; gap:6vw }` still applied.
+   ========================================================================= */
+.scene.chitti-scene {
+  display: block;
+  gap: 0;
+  padding: 6cqh 3.5cqw 2.5cqh;
+}
+
+.chitti-cmd-col {
+  width: 400px;
+  min-width: 380px;
+  padding: 2cqh 0 1cqh 0;
+}
+
+.chitti-stage {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "left robot right"
+    "foot foot foot";
+  column-gap: 14px;
+  row-gap: 8px;
+  align-items: center;
+  perspective: none;
+  min-width: 0;
+  margin-left: 16px;
+}
+
+.chitti-robot-fit {
+  grid-area: robot;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  perspective: 1200px;
+}
+
+.chitti-robot-scaler {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.chitti-robot-scaler .chitti-viewport-3d {
+  width: 580px;
+  height: 760px;
+}
+
+/* Callout columns */
+.callout-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  width: 200px;
+  z-index: 40;
+  position: relative;
+}
+.callout-column-left { grid-area: left; }
+.callout-column-right { grid-area: right; }
+
+.chitti-stage .callout-card {
+  position: relative;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-body);
+  color: var(--c-text);
+  padding: 9px 12px;
+  border-radius: var(--r-md);
+  background: rgba(10, 18, 32, 0.92);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transform: none;
+  animation: callout-in 0.45s var(--ease-out) both;
+}
+.callout-column-left .callout-card:nth-child(2), .callout-column-right .callout-card:nth-child(2) { animation-delay: 0.05s; }
+.callout-column-left .callout-card:nth-child(3), .callout-column-right .callout-card:nth-child(3) { animation-delay: 0.1s; }
+.callout-column-left .callout-card:nth-child(4), .callout-column-right .callout-card:nth-child(4) { animation-delay: 0.15s; }
+.callout-column-right .callout-card:nth-child(5) { animation-delay: 0.2s; }
+@keyframes callout-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.chitti-stage .callout-card:hover { border-color: var(--c-sky); background: rgba(15, 28, 50, 0.96); transform: none; box-shadow: 0 0 18px rgba(56, 189, 248, 0.25); }
+.chitti-stage .callout-card:focus-visible { outline: 2px solid var(--c-sky); outline-offset: 2px; }
+.chitti-stage .callout-card.is-active { border-color: var(--c-cyan); box-shadow: 0 0 24px rgba(39, 215, 255, 0.4); transform: none; }
+.chitti-stage .callout-title-row { justify-content: flex-start; gap: 7px; margin-bottom: 3px; color: var(--c-sky); }
+.chitti-stage .callout-badge { font-size: 13px; letter-spacing: 0.1em; color: var(--c-sky); }
+.chitti-stage .callout-sub { font-size: 13px; font-weight: 600; color: #E2E8F0; }
+.chitti-stage .callout-detail-spec { display: block; margin-top: 3px; font-size: 12px; color: var(--c-muted); font-family: var(--font-mono); }
+
+/* Leader lines (pixel-space SVG, solid) */
+.chitti-stage .callout-lines-svg {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  z-index: 35;
+  pointer-events: none;
+  overflow: visible;
+}
+.chitti-stage .leader-path { stroke: rgba(56, 189, 248, 0.55); stroke-width: 1.5; stroke-dasharray: none; fill: none; opacity: 1; filter: none; transition: stroke 0.25s, stroke-width 0.25s, opacity 0.25s; }
+.chitti-stage .leader-end { fill: rgba(56, 189, 248, 0.8); }
+.chitti-stage .leader-node-dot { fill: var(--c-bg-deep); stroke: var(--c-sky); stroke-width: 2; r: unset; }
+.chitti-stage .leader.is-active .leader-path { stroke: var(--c-cyan); stroke-width: 2.5; }
+.chitti-stage .leader.is-active .leader-node-dot { fill: var(--c-cyan); }
+.chitti-stage .leader.is-dim { opacity: 0.25; }
+
+/* Footer row: subsystem dock + detail drawer, clear of the deck controls */
+.chitti-stage-footer {
+  grid-area: foot;
+  position: relative;
+  padding-right: 150px;
+  z-index: 45;
+}
+.chitti-stage-footer .subsystem-dock {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  transform: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  width: auto;
+  max-width: none;
+}
+.chitti-stage-footer .dock-label { font-size: 12px; }
+.chitti-stage-footer .dock-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; }
+.chitti-stage-footer .dock-pill:focus-visible { outline: 2px solid var(--c-sky); outline-offset: 2px; }
+.chitti-stage-footer .subsystem-detail-drawer {
+  position: absolute;
+  left: 0;
+  right: 150px;
+  bottom: calc(100% + 8px);
+  width: auto;
+  transform: none;
+}
+.chitti-stage-footer .drawer-info h4 { display: flex; align-items: center; gap: 8px; }
+.drawer-insight { display: flex; align-items: flex-start; gap: 6px; color: var(--c-sky); margin-top: 4px; font-style: italic; }
+.drawer-close { display: grid; place-items: center; }
+.btn-sec, .btn-primary-explode { display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.btn-sec:focus-visible, .btn-primary-explode:focus-visible { outline: 2px solid var(--c-sky); outline-offset: 2px; }
+.btn-primary-explode:disabled { opacity: 0.6; cursor: progress; }
+
+/* Left command column: fits the 16:9 frame at 1366×768 */
+.chitti-cmd-col { width: 420px; min-width: 400px; }
+.chitti-cmd-col .chitti-title { font-size: 38px; line-height: 1.02; margin: 12px 0 14px; }
+.chitti-cmd-col .challenge-box { padding: 14px 18px; }
+.chitti-cmd-col .challenge-q { font-size: 17px; margin: 6px 0 6px; }
+.chitti-cmd-col .chitti-actions { margin-top: 14px; gap: 8px; }
+.chitti-cmd-col .btn-primary-explode { padding: 12px 18px; }
+.chitti-cmd-col .btn-row-secondary { gap: 8px; }
+.chitti-cmd-col .btn-sec { padding: 8px 10px; white-space: nowrap; flex: 1; }
+.chitti-cmd-col .telemetry-indicator { padding: 6px 12px; }
+.chitti-cmd-col .mental-model-hook { margin-top: 10px; font-size: 13px; line-height: 1.4; }
+/* The shortcut hints duplicated the [S]/[E]/[R] labels already on the buttons */
+.chitti-cmd-col .keyboard-hints { display: none; }
+/* Drawer sits between the two callout columns (never over a card) */
+.chitti-stage-footer .subsystem-detail-drawer { left: 214px; right: 214px; }
+.chitti-stage-footer .subsystem-detail-drawer {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 12px 40px 12px 16px;
+}
+.chitti-stage-footer .drawer-info h4 { font-size: 15px; flex-wrap: wrap; }
+.chitti-stage-footer .drawer-info p { font-size: 13px; line-height: 1.4; }
+.chitti-stage-footer .drawer-specs { font-size: 12px; white-space: normal; }
+.chitti-stage-footer .drawer-close { position: absolute; top: 8px; right: 8px; }

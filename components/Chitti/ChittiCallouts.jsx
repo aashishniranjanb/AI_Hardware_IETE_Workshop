@@ -1,69 +1,37 @@
 import React from 'react';
 import { SUBSYSTEMS } from './subsystemsData';
+import { SubsystemIcon } from './subsystemIcons';
 
-export function ChittiCallouts({ selectedSubsystem, onSelectSubsystem }) {
+// Cards sit in two columns beside the robot; leader lines are drawn by
+// ChittiLeaderLines from the real card and part positions.
+export const LEFT_IDS = ['communication', 'thermal', 'power', 'sensors'];
+export const RIGHT_IDS = ['vision', 'audio', 'compute', 'memory', 'actuation'];
+
+export function ChittiCalloutColumn({ side, selectedSubsystem, onSelectSubsystem }) {
+  const ids = side === 'left' ? LEFT_IDS : RIGHT_IDS;
   return (
-    <div className="callouts-container">
-      {/* Dynamic SVG Leader Lines */}
-      <svg className="callout-lines-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-        {SUBSYSTEMS.map((sub) => {
-          const isSelected = selectedSubsystem === sub.id;
-          // Approximate leader line targets relative to stage dimensions
-          const target = getCalloutCardCenter(sub.id);
-          return (
-            <g key={sub.id}>
-              <line
-                x1={`${sub.anchor.x}%`}
-                y1={`${sub.anchor.y}%`}
-                x2={`${target.x}%`}
-                y2={`${target.y}%`}
-                className={`leader-path ${isSelected ? 'active' : ''}`}
-              />
-              <circle
-                cx={`${sub.anchor.x}%`}
-                cy={`${sub.anchor.y}%`}
-                className="leader-node-dot"
-              />
-            </g>
-          );
-        })}
-      </svg>
-
-      {/* Floating Subsystem Engineering Cards */}
-      {SUBSYSTEMS.map((sub) => {
+    <div className={`callout-column callout-column-${side}`}>
+      {ids.map((id) => {
+        const sub = SUBSYSTEMS.find((s) => s.id === id);
         const isSelected = selectedSubsystem === sub.id;
         return (
-          <div
+          <button
             key={sub.id}
-            className={`callout-card ${sub.posClass} ${isSelected ? 'is-active' : ''}`}
+            type="button"
+            data-subsystem={sub.id}
+            className={`callout-card ${isSelected ? 'is-active' : ''}`}
             onClick={() => onSelectSubsystem(isSelected ? null : sub.id)}
-            role="button"
-            tabIndex={0}
+            aria-pressed={isSelected}
           >
             <div className="callout-title-row">
+              <SubsystemIcon id={sub.id} size={16} />
               <span className="callout-badge">{sub.name}</span>
-              <span className="callout-detail-spec">{sub.spec.split('+')[0]}</span>
             </div>
             <div className="callout-sub">{sub.subtitle}</div>
-            <div className="callout-role">{sub.role}</div>
-          </div>
+            <div className="callout-detail-spec">{sub.spec}</div>
+          </button>
         );
       })}
     </div>
   );
-}
-
-function getCalloutCardCenter(id) {
-  switch (id) {
-    case 'vision': return { x: 74, y: 10 };
-    case 'audio': return { x: 88, y: 19 };
-    case 'compute': return { x: 91, y: 31 };
-    case 'memory': return { x: 90, y: 44 };
-    case 'communication': return { x: 38, y: 14 };
-    case 'thermal': return { x: 30, y: 28 };
-    case 'power': return { x: 29, y: 52 };
-    case 'actuation': return { x: 80, y: 66 };
-    case 'sensors': return { x: 32, y: 69 };
-    default: return { x: 50, y: 50 };
-  }
 }

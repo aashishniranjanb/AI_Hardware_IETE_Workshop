@@ -1,5 +1,7 @@
 import React from 'react';
 import { SUBSYSTEMS } from './subsystemsData';
+import { SubsystemIcon } from './subsystemIcons';
+import { Lightbulb, X } from 'lucide-react';
 
 export function SubsystemStrip({ selectedSubsystem, onSelectSubsystem }) {
   const activeSub = SUBSYSTEMS.find((s) => s.id === selectedSubsystem);
@@ -11,11 +13,11 @@ export function SubsystemStrip({ selectedSubsystem, onSelectSubsystem }) {
         <div className="subsystem-detail-drawer">
           <div className="drawer-info">
             <h4>
-              {activeSub.name} <span>// {activeSub.subtitle}</span>
+              <SubsystemIcon id={activeSub.id} size={18} /> {activeSub.name} <span>// {activeSub.subtitle}</span>
             </h4>
             <p>{activeSub.role}</p>
-            <p style={{ color: '#38bdf8', marginTop: '4px', fontStyle: 'italic' }}>
-              💡 {activeSub.questionAnswer}
+            <p className="drawer-insight">
+              <Lightbulb size={14} aria-hidden="true" /> {activeSub.questionAnswer}
             </p>
           </div>
           <div className="drawer-specs">
@@ -25,8 +27,9 @@ export function SubsystemStrip({ selectedSubsystem, onSelectSubsystem }) {
             className="drawer-close"
             onClick={() => onSelectSubsystem(null)}
             title="Close Drawer"
+            aria-label="Close subsystem details"
           >
-            ✕
+            <X size={16} aria-hidden="true" />
           </button>
         </div>
       )}
@@ -41,7 +44,9 @@ export function SubsystemStrip({ selectedSubsystem, onSelectSubsystem }) {
               key={sub.id}
               className={`dock-pill ${isActive ? 'active' : ''}`}
               onClick={() => onSelectSubsystem(isActive ? null : sub.id)}
+              aria-pressed={isActive}
             >
+              <SubsystemIcon id={sub.id} size={14} />
               {sub.name}
             </button>
           );
