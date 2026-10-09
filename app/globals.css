@@ -193,23 +193,21 @@ html, body {
   mask-image: linear-gradient(to bottom,transparent,black 25%,black 75%,transparent);
   pointer-events: none;
 }
-.title-copy { position: absolute; left: 7vw; top: 19vh; z-index: 3; }
+.title-copy { position: absolute; left: 7cqw; top: 19cqh; z-index: 3; }
 .title-kicker, .mission-kicker, .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .22em; color: #67b4ff; }
-.title-main { font-family: 'Space Grotesk'; font-size: clamp(52px, 8vw, 130px); line-height: .88; margin: 18px 0 14px; font-weight: 800; letter-spacing: -.06em; }
+.title-main { font-family: 'Space Grotesk'; font-size: clamp(52px, 8cqw, 130px); line-height: .88; margin: 18px 0 14px; font-weight: 800; letter-spacing: -.06em; }
 .title-main span, .mission-title span, .system-title span { color: #58aaff; }
-.title-sub { font-size: clamp(16px, 1.8vw, 26px); font-weight: 600; letter-spacing: .08em; max-width: 720px; color: #dce6f4; }
+.title-sub { font-size: clamp(16px, 1.8cqw, 26px); font-weight: 600; letter-spacing: .08em; max-width: 720px; color: #dce6f4; }
 .event-meta { margin-top: 25px; font-size: 11px; letter-spacing: .15em; color: #7e8da7; }
-.hero-visual { position: absolute; right: 4vw; top: 17vh; width: 42vw; height: 65vh; }
-.hero-chip { position: absolute; left: 50%; top: 45%; width: min(24vw, 320px); height: min(24vw, 320px); transform: translate(-50%, -50%); border-radius: 28px; background: linear-gradient(145deg, #182b48, #07101f); border: 1px solid #355477; box-shadow: 0 0 90px rgba(48,148,255,.2), inset 0 0 60px rgba(50,135,255,.08); display: grid; place-items: center; }
+.hero-visual { position: absolute; right: 4cqw; top: 13cqh; width: 42cqw; height: 74cqh; }
+.hero-chip { position: absolute; left: 50%; top: 45%; width: min(20cqw, 280px); height: min(20cqw, 280px); transform: translate(-50%, -50%); border-radius: 28px; background: linear-gradient(145deg, #182b48, #07101f); border: 1px solid #355477; box-shadow: 0 0 90px rgba(48,148,255,.2), inset 0 0 60px rgba(50,135,255,.08); display: grid; place-items: center; }
 .chip-core { width: 48%; height: 48%; border: 1px solid #5caeff; background: radial-gradient(circle, #173b68, #07101e 70%); display: grid; place-items: center; box-shadow: 0 0 45px rgba(67,170,255,.3); }
 .chip-label { font-family: 'Space Grotesk'; font-size: 54px; font-weight: 800; color: #d9efff; }
 .chip-line { position: absolute; width: 70%; height: 1px; background: #4da3ff; opacity: .25; }
 .orbit { position: absolute; border: 1px solid rgba(91,170,255,.18); border-radius: 50%; left: 50%; top: 45%; transform: translate(-50%, -50%) rotate(25deg); }
 .orbit-a { width: 75%; height: 43%; }
 .orbit-b { width: 88%; height: 55%; transform: translate(-50%, -50%) rotate(-35deg); }
-.particle { position: absolute; left: 50%; top: 50%; width: 4px; height: 4px; background: #65b6ff; border-radius: 50%; box-shadow: 0 0 10px #65b6ff; transform: rotate(calc(var(--i) * 16deg)) translateX(14vw); }
-.hero-path { position: absolute; bottom: 2%; left: 10%; right: 10%; display: flex; justify-content: space-between; align-items: center; color: #8ea3bd; font-size: 22px; }
-.hero-path i { font-style: normal; color: #3e78ad; }
+.particle { position: absolute; left: 50%; top: 50%; width: 4px; height: 4px; background: #65b6ff; border-radius: 50%; box-shadow: 0 0 10px #65b6ff; transform: rotate(calc(var(--i) * 16deg)) translateX(13cqw); }
 .chitti-scene { display: flex; align-items: center; gap: 6vw; }
 .left-column { width: 55%; position: relative; z-index: 5; }
 .mission-title { font-family: 'Space Grotesk'; font-size: clamp(40px, 5.5vw, 84px); line-height: .95; letter-spacing: -.05em; margin: 18px 0 28px; }

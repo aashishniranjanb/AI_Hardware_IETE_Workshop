@@ -2,7 +2,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import gsap from 'gsap';
-import { ChevronLeft, ChevronRight, Maximize2, Play, RotateCcw } from 'lucide-react';
+import { Bot, Brain, ChevronLeft, ChevronRight, Cpu, Maximize2, Server, Zap } from 'lucide-react';
 import { ChittiScene } from '../components/Chitti/ChittiScene';
 import { SystemScene } from '../components/MentalModel/SystemScene';
 import { ComputeEngineScene } from '../components/ComputeEngine/ComputeEngineScene';
@@ -20,7 +20,7 @@ import { FirstFPGAProgramScene } from '../components/FirstFPGAProgram/FirstFPGAP
 import { AIAcceleratorScene } from '../components/AIAccelerator/AIAcceleratorScene';
 import { RTLBuildScene } from '../components/RTLBuild/RTLBuildScene';
 import { DeckNavContext, DeckEntryContext, useDeckNavigation } from '../components/deck/DeckNavigation';
-import { sceneEnter, sceneExit, restoreMotionMode, toggleMotionMode } from '../components/deck/motion';
+import { prefersReducedMotion, sceneEnter, sceneExit, restoreMotionMode, toggleMotionMode } from '../components/deck/motion';
 
 const scenes = [
   { id: 'title', kicker: 'IETE CLUB PRESENTS', title: 'AI HARDWARE', subtitle: 'FROM INTELLIGENT ROBOTS TO AI SUPERCOMPUTERS', type: 'title' },
@@ -42,33 +42,113 @@ const scenes = [
   { id: 'rtl_build', kicker: 'WRITE THE RTL', title: 'WRITE THE RTL', subtitle: 'FROM AI ARCHITECTURE TO FPGA HARDWARE', type: 'rtl_build' }
 ];
 
+// Circuit traces radiating from the chip (viewBox 0 0 600 600, chip centred at 300,300).
+const CHIP_TRACES = [
+  'M300 170 V110 H220 V40', 'M340 170 V90 H430 V30', 'M260 170 V130 H140',
+  'M430 260 H500 V200 H580', 'M430 340 H520 V420 H590', 'M430 300 H560',
+  'M300 430 V500 H380 V570', 'M260 430 V520 H150', 'M340 430 V470 H470',
+  'M170 260 H90 V180', 'M170 340 H70 V430 H20', 'M170 300 H40',
+];
+const JOURNEY = [
+  { Icon: Bot, label: 'ROBOT' },
+  { Icon: Brain, label: 'INTELLIGENCE' },
+  { Icon: Zap, label: 'COMPUTE' },
+  { Icon: Cpu, label: 'AI CHIP' },
+  { Icon: Server, label: 'SUPERCOMPUTER' },
+];
+const DECODE_CHARS = '01<>/#*+=ABCDEFHKMNPRSTVXZ';
+
 function TitleScene() {
   const ref = useRef(null);
   useEffect(() => {
+    const reduced = prefersReducedMotion();
+    const timers = [];
     const ctx = gsap.context(() => {
-      gsap.fromTo('.title-kicker', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: .7, ease: 'power3.out' });
-      gsap.fromTo('.title-main', { y: 40, opacity: 0, scale: .96 }, { y: 0, opacity: 1, scale: 1, duration: 1.1, delay: .15, ease: 'power4.out' });
-      gsap.fromTo('.title-sub', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .8, delay: .45, ease: 'power3.out' });
-      gsap.fromTo('.hero-chip', { scale: .75, opacity: 0, rotate: -8 }, { scale: 1, opacity: 1, rotate: 0, duration: 1.3, delay: .35, ease: 'back.out(1.4)' });
-      gsap.to('.particle', { y: -18, x: 'random(-30,30)', opacity: 'random(.35,1)', duration: 'random(1.4,2.4)', repeat: -1, yoyo: true, stagger: .08, ease: 'sine.inOut' });
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      tl.fromTo('.title-kicker', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: .7 })
+        .fromTo('.hero-chip', { scale: .7, opacity: 0, rotate: -6 }, { scale: 1, opacity: 1, rotate: 0, duration: 1.1, ease: 'back.out(1.5)' }, .1)
+        .fromTo('.title-main', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .8 }, .2);
+
+      // Title "decode": each letter scrambles, then locks in left -> right.
+      if (!reduced) {
+        gsap.utils.toArray('.title-char').forEach((el, i) => {
+          const final = el.dataset.char;
+          const state = { t: 0 };
+          tl.to(state, {
+            t: 1, duration: .55, ease: 'none',
+            onUpdate: () => { el.textContent = state.t < 1 ? DECODE_CHARS[(Math.random() * DECODE_CHARS.length) | 0] : final; },
+            onComplete: () => { el.textContent = final; },
+          }, .25 + i * .06);
+        });
+      }
+
+      // Circuit traces draw into the chip, pins appear, then the chip powers on.
+      const traces = gsap.utils.toArray('.hero-trace');
+      traces.forEach((p) => { const l = p.getTotalLength(); gsap.set(p, { strokeDasharray: l, strokeDashoffset: l }); });
+      tl.to(traces, { strokeDashoffset: 0, duration: reduced ? .2 : 1, stagger: reduced ? 0 : .05, ease: 'power2.inOut' }, .5)
+        .fromTo('.hero-pin', { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: .3, stagger: { each: .015, from: 'center' } }, .7)
+        .fromTo('.chip-core', { boxShadow: '0 0 0px rgba(67,170,255,0)' }, { boxShadow: '0 0 70px rgba(67,170,255,.55)', duration: .5, yoyo: true, repeat: 1, ease: 'sine.inOut' }, 1.4)
+        .fromTo('.chip-label', { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: .6, ease: 'back.out(2)' }, 1.4)
+        .fromTo('.title-sub', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .8 }, 1.1)
+        .fromTo('.event-meta', { opacity: 0 }, { opacity: 1, duration: .6 }, 1.4);
+
+      // Journey: icons rise in, connectors draw, then each step lights up in order.
+      tl.fromTo('.journey-step', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .45, stagger: .18 }, 1.6)
+        .fromTo('.journey-link', { scaleX: 0 }, { scaleX: 1, duration: .35, stagger: .18, ease: 'power2.inOut' }, 1.75)
+        .add(() => {
+          ref.current?.querySelectorAll('.journey-step').forEach((el, i) => {
+            timers.push(setTimeout(() => el.classList.add('is-lit'), reduced ? 0 : i * 160));
+          });
+        }, 2.2);
+
+      if (!reduced) {
+        // Ambient: signal pulses travel along the traces; particles drift; orbits turn slowly.
+        gsap.utils.toArray('.hero-pulse').forEach((p, i) => {
+          const len = p.getTotalLength();
+          gsap.fromTo(p, { strokeDasharray: `14 ${len}`, strokeDashoffset: len + 14 }, {
+            strokeDashoffset: 0, duration: gsap.utils.random(1.6, 2.6), repeat: -1, delay: 2 + i * .23, ease: 'none',
+          });
+        });
+        gsap.to('.particle', { y: -18, x: 'random(-30,30)', opacity: 'random(.35,1)', duration: 'random(1.4,2.4)', repeat: -1, yoyo: true, stagger: .08, ease: 'sine.inOut' });
+        gsap.to('.orbit-a', { rotate: '+=360', duration: 60, repeat: -1, ease: 'none' });
+        gsap.to('.orbit-b', { rotate: '-=360', duration: 80, repeat: -1, ease: 'none' });
+      }
     }, ref);
-    return () => ctx.revert();
+    return () => { timers.forEach(clearTimeout); ctx.revert(); };
   }, []);
+
+  const word = (text) => text.split('').map((c, i) => <span key={i} className="title-char" data-char={c}>{c}</span>);
+
   return <section ref={ref} className="scene title-scene">
     <div className="ambient-grid" />
     <div className="title-copy">
       <div className="title-kicker">IETE CLUB PRESENTS • HANDS-ON WORKSHOP</div>
-      <h1 className="title-main">AI <span>HARDWARE</span></h1>
+      <h1 className="title-main" aria-label="AI Hardware">{word('AI')} <span>{word('HARDWARE')}</span></h1>
       <div className="title-sub">FROM INTELLIGENT ROBOTS TO AI SUPERCOMPUTERS</div>
       <div className="event-meta">09 OCTOBER 2026&nbsp;&nbsp;•&nbsp;&nbsp;VLSI LAB&nbsp;&nbsp;•&nbsp;&nbsp;SRMIST VADAPALANI</div>
+      <div className="hero-path" aria-label="From robots to supercomputers">
+        {JOURNEY.map(({ Icon, label }, i) => <React.Fragment key={label}>
+          {i > 0 && <span className="journey-link" />}
+          <div className="journey-step">
+            <span className="journey-icon"><Icon size={26} strokeWidth={1.6} /></span>
+            <span className="journey-label">{label}</span>
+          </div>
+        </React.Fragment>)}
+      </div>
     </div>
     <div className="hero-visual">
       <div className="orbit orbit-a" /><div className="orbit orbit-b" />
+      <svg className="hero-traces" viewBox="0 0 600 600" aria-hidden="true">
+        {CHIP_TRACES.map((d, i) => <g key={i}>
+          <path className="hero-trace" d={d} />
+          <path className="hero-pulse" d={d} />
+        </g>)}
+      </svg>
       <div className="hero-chip">
+        {Array.from({ length: 28 }).map((_, i) => <span key={i} className={`hero-pin side-${Math.floor(i / 7)}`} style={{ '--k': i % 7 }} />)}
         <div className="chip-core"><div className="chip-label">AI</div><div className="chip-line" /></div>
         {Array.from({ length: 22 }).map((_, i) => <span key={i} className="particle" style={{ '--i': i }} />)}
       </div>
-      <div className="hero-path"><span>🤖</span><i>→</i><span>🧠</span><i>→</i><span>⚡</span><i>→</i><span>▦</span></div>
     </div>
   </section>;
 }
