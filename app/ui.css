@@ -152,7 +152,7 @@
   box-shadow: 0 0 14px rgba(56, 189, 248, 0.6);
 }
 .stage-nav-dot.is-active.is-amber { border-color: var(--c-amber); background: var(--c-amber); box-shadow: var(--glow-amber); }
-.stage-nav.is-compact .stage-nav-dot { width: 22px; height: 22px; font-size: 11px; }
+.stage-nav.is-compact .stage-nav-dot { width: 24px; height: 24px; font-size: 12px; }
 .stage-nav.is-compact .stage-nav-track { gap: 4px; }
 .stage-nav-label {
   font-size: var(--fs-label);
@@ -285,3 +285,7 @@
   transform-origin: left center;
   border-radius: 2px;
 }
+
+/* Line icons that replaced emoji (components/deck/GlyphIcon.jsx) */
+.inline-icon { display: inline-block; vertical-align: -0.18em; margin: 0 0.15em; flex: 0 0 auto; }
+.glyph-icon { display: inline-block; vertical-align: middle; }

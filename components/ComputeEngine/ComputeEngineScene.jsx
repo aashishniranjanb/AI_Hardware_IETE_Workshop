@@ -116,7 +116,7 @@ export function ComputeEngineScene() {
 
         {/* Interactive Stage Pill Indicator */}
         <StageNavigator
-          stages={STAGES.map((st) => ({ id: st.id, label: st.id }))}
+          stages={STAGES}
           currentStage={stageIndex}
           onStageChange={(idx) => {
             setStageIndex(idx);

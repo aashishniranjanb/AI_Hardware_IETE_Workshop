@@ -51,7 +51,7 @@ export function Stage1MoreLogic({ a, b }) {
         <div className="net-gate-box" style={{ borderColor: '#27D7FF' }}>
           <div>
             <div style={{ fontSize: '12px', fontWeight: 800, color: '#27D7FF' }}>AND GATE</div>
-            <div style={{ fontSize: '11px', color: '#8B98A8' }}>A({a}) · B({b})</div>
+            <div style={{ fontSize: '12px', color: '#8B98A8' }}>A({a}) · B({b})</div>
           </div>
           <div style={{ fontSize: '22px', fontWeight: 800, color: (a & b) ? '#27D7FF' : '#64748B' }}>
             {a & b}
@@ -61,7 +61,7 @@ export function Stage1MoreLogic({ a, b }) {
         <div className="net-gate-box" style={{ borderColor: '#4B8DFF' }}>
           <div>
             <div style={{ fontSize: '12px', fontWeight: 800, color: '#4B8DFF' }}>OR GATE</div>
-            <div style={{ fontSize: '11px', color: '#8B98A8' }}>A({a}) + B({b})</div>
+            <div style={{ fontSize: '12px', color: '#8B98A8' }}>A({a}) + B({b})</div>
           </div>
           <div style={{ fontSize: '22px', fontWeight: 800, color: (a | b) ? '#4B8DFF' : '#64748B' }}>
             {a | b}
@@ -71,7 +71,7 @@ export function Stage1MoreLogic({ a, b }) {
         <div className="net-gate-box" style={{ borderColor: '#8A7CFF' }}>
           <div>
             <div style={{ fontSize: '12px', fontWeight: 800, color: '#8A7CFF' }}>NOT GATE</div>
-            <div style={{ fontSize: '11px', color: '#8B98A8' }}>Ā (Invert A={a})</div>
+            <div style={{ fontSize: '12px', color: '#8B98A8' }}>Ā (Invert A={a})</div>
           </div>
           <div style={{ fontSize: '22px', fontWeight: 800, color: (1 - a) ? '#8A7CFF' : '#64748B' }}>
             {1 - a}
@@ -81,7 +81,7 @@ export function Stage1MoreLogic({ a, b }) {
         <div className="net-gate-box" style={{ borderColor: '#57E6A5' }}>
           <div>
             <div style={{ fontSize: '12px', fontWeight: 800, color: '#57E6A5' }}>XOR GATE</div>
-            <div style={{ fontSize: '11px', color: '#8B98A8' }}>A({a}) ⊕ B({b})</div>
+            <div style={{ fontSize: '12px', color: '#8B98A8' }}>A({a}) ⊕ B({b})</div>
           </div>
           <div style={{ fontSize: '22px', fontWeight: 800, color: (a ^ b) ? '#57E6A5' : '#64748B' }}>
             {a ^ b}
@@ -106,8 +106,8 @@ export function Stage2ProgrammableConnections() {
           {/* Input lines */}
           <line x1="20" y1="40" x2="80" y2="40" stroke="#27D7FF" strokeWidth="3" />
           <line x1="20" y1="120" x2="80" y2="120" stroke="#27D7FF" strokeWidth="3" />
-          <text x="15" y="35" fill="#8B98A8" fontSize="10">INPUT A</text>
-          <text x="15" y="115" fill="#8B98A8" fontSize="10">INPUT B</text>
+          <text x="15" y="35" fill="#8B98A8" fontSize="12">INPUT A</text>
+          <text x="15" y="115" fill="#8B98A8" fontSize="12">INPUT B</text>
 
           {/* Switch 1 */}
           <line x1="80" y1="40" x2="160" y2="40" stroke={sw1 ? "#27D7FF" : "#334155"} strokeWidth={sw1 ? "3" : "1"} />
@@ -126,7 +126,7 @@ export function Stage2ProgrammableConnections() {
           <div style={{ fontSize: '13px', fontWeight: 800, color: '#27D7FF' }}>
             CLICK SWITCHES TO TOGGLE CONNECTIONS
           </div>
-          <div style={{ fontSize: '11px', color: '#8B98A8', lineHeight: 1.6 }}>
+          <div style={{ fontSize: '12px', color: '#8B98A8', lineHeight: 1.6 }}>
             Top Switch: <strong style={{ color: sw1 ? '#27D7FF' : '#64748B' }}>{sw1 ? "CONNECTED (ON)" : "OPEN (OFF)"}</strong><br />
             Cross Switch: <strong style={{ color: sw2 ? '#57E6A5' : '#64748B' }}>{sw2 ? "CONNECTED (ON)" : "OPEN (OFF)"}</strong><br />
             We don't remake silicon. We change the state of switches to route signals.
@@ -176,14 +176,14 @@ export function Stage4PLAvsPAL() {
         <div className="pl-card is-pla">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ fontSize: '16px', fontWeight: 800, color: '#27D7FF' }}>PLA</span>
-            <span style={{ fontSize: '10px', color: '#27D7FF', fontWeight: 700 }}>PROGRAMMABLE LOGIC ARRAY</span>
+            <span style={{ fontSize: '12px', color: '#27D7FF', fontWeight: 700 }}>PROGRAMMABLE LOGIC ARRAY</span>
           </div>
           <div className="pl-block-diagram">
             <div className="pl-strip prog">PROGRAMMABLE AND ARRAY</div>
             <div style={{ textAlign: 'center', color: '#64748B', fontSize: '12px' }}>↓</div>
             <div className="pl-strip prog">PROGRAMMABLE OR ARRAY</div>
           </div>
-          <div style={{ fontSize: '11px', color: '#8B98A8', marginTop: '6px' }}>
+          <div style={{ fontSize: '12px', color: '#8B98A8', marginTop: '6px' }}>
             Both planes are programmable. Maximum flexibility, but higher silicon cost and higher propagation delay.
           </div>
         </div>
@@ -192,14 +192,14 @@ export function Stage4PLAvsPAL() {
         <div className="pl-card is-pal">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ fontSize: '16px', fontWeight: 800, color: '#8A7CFF' }}>PAL</span>
-            <span style={{ fontSize: '10px', color: '#8A7CFF', fontWeight: 700 }}>PROGRAMMABLE ARRAY LOGIC</span>
+            <span style={{ fontSize: '12px', color: '#8A7CFF', fontWeight: 700 }}>PROGRAMMABLE ARRAY LOGIC</span>
           </div>
           <div className="pl-block-diagram">
             <div className="pl-strip prog" style={{ borderColor: '#8A7CFF', color: '#8A7CFF' }}>PROGRAMMABLE AND ARRAY</div>
             <div style={{ textAlign: 'center', color: '#64748B', fontSize: '12px' }}>↓</div>
             <div className="pl-strip fixed">FIXED OR ARRAY (LOCKED)</div>
           </div>
-          <div style={{ fontSize: '11px', color: '#8B98A8', marginTop: '6px' }}>
+          <div style={{ fontSize: '12px', color: '#8B98A8', marginTop: '6px' }}>
             OR plane is hardwired. Simpler, faster, cheaper. Became the industry standard for glue logic.
           </div>
         </div>
@@ -304,23 +304,23 @@ export function Stage8RTLtoBitstream() {
     <div className="t-wrap">
       <div className="rtl-pipeline-chain">
         <div className="rtl-pipe-card">
-          <span style={{ fontSize: '11px', color: '#27D7FF', fontWeight: 800 }}>01. RTL CODE</span>
-          <span style={{ fontFamily: 'monospace', fontSize: '11px', color: '#F4F7FA' }}>assign y = a & b;</span>
+          <span style={{ fontSize: '12px', color: '#27D7FF', fontWeight: 800 }}>01. RTL CODE</span>
+          <span style={{ fontFamily: 'monospace', fontSize: '12px', color: '#F4F7FA' }}>assign y = a & b;</span>
         </div>
         <span style={{ color: '#64748B', fontSize: '18px' }}>→</span>
         <div className="rtl-pipe-card">
-          <span style={{ fontSize: '11px', color: '#4B8DFF', fontWeight: 800 }}>02. SYNTHESIS</span>
-          <span style={{ fontSize: '11px', color: '#8B98A8' }}>Yosys Logic Gates</span>
+          <span style={{ fontSize: '12px', color: '#4B8DFF', fontWeight: 800 }}>02. SYNTHESIS</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>Yosys Logic Gates</span>
         </div>
         <span style={{ color: '#64748B', fontSize: '18px' }}>→</span>
         <div className="rtl-pipe-card">
-          <span style={{ fontSize: '11px', color: '#8A7CFF', fontWeight: 800 }}>03. PLACE & ROUTE</span>
-          <span style={{ fontSize: '11px', color: '#8B98A8' }}>nextpnr Grid Routing</span>
+          <span style={{ fontSize: '12px', color: '#8A7CFF', fontWeight: 800 }}>03. PLACE & ROUTE</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>nextpnr Grid Routing</span>
         </div>
         <span style={{ color: '#64748B', fontSize: '18px' }}>→</span>
         <div className="rtl-pipe-card active-step">
-          <span style={{ fontSize: '11px', color: '#57E6A5', fontWeight: 800 }}>04. BITSTREAM</span>
-          <span style={{ fontFamily: 'monospace', fontSize: '11px', color: '#57E6A5' }}>0110100110...</span>
+          <span style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>04. BITSTREAM</span>
+          <span style={{ fontFamily: 'monospace', fontSize: '12px', color: '#57E6A5' }}>0110100110...</span>
         </div>
       </div>
       <div style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 600, marginTop: '10px' }}>

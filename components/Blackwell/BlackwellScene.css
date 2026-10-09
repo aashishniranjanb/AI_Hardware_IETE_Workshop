@@ -103,7 +103,7 @@
   border-radius: 4px;
   background: #0B1120;
   border: 1px solid #1E293B;
-  font-size: 10px;
+  font-size: 12px;
   display: flex;
   gap: 6px;
 }
@@ -147,7 +147,7 @@
 .bw-sub-header {
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   color: #8B98A8;
   letter-spacing: 0.12em;
@@ -186,7 +186,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   box-shadow: 0 0 10px rgba(75, 141, 255, 0.2);
 }
@@ -221,7 +221,7 @@
 
 .die-label {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
   color: #27D7FF;
@@ -243,7 +243,7 @@
 }
 
 .die-subtext {
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 700;
   color: #64748B;
 }
@@ -254,13 +254,13 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   color: #57E6A5;
 }
 
 .bridge-text {
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   white-space: nowrap;
 }
@@ -290,7 +290,7 @@
 }
 
 .pin-bus-label {
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.12em;
   color: #64748B;
@@ -314,7 +314,7 @@
 .bw-callout-badge {
   padding: 6px 18px;
   border-radius: 20px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.08em;
   background: #0B1120;
@@ -362,7 +362,7 @@
 .gpu-card-header {
   display: flex;
   justify-content: space-between;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
 }
 
@@ -400,7 +400,7 @@
 }
 
 .core-stat {
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 700;
   color: #64748B;
 }
@@ -410,7 +410,7 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   color: #4B8DFF;
   background: #020617;
@@ -457,7 +457,7 @@
   background: #0B1120;
   border: 1px solid #27D7FF;
   border-radius: 20px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
   color: #F4F7FA;
@@ -512,7 +512,7 @@
 }
 
 .node-number {
-  font-size: 7px;
+  font-size: 11px;
   font-weight: 800;
   color: #64748B;
 }
@@ -536,7 +536,7 @@
 }
 
 .stat-desc {
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   color: #8B98A8;
 }
@@ -567,7 +567,7 @@
 .rack-crown {
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
   border-bottom: 1px solid #1E293B;
@@ -597,7 +597,7 @@
 }
 
 .manifold-label {
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 800;
   color: #57E6A5;
   letter-spacing: 0.1em;
@@ -641,13 +641,13 @@
 
 .tray-name {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
   color: #F4F7FA;
 }
 
 .tray-contents {
-  font-size: 9px;
+  font-size: 12px;
   color: #64748B;
   font-weight: 600;
 }
@@ -661,7 +661,7 @@
 }
 
 .substation-text {
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   color: #FFB84D;
   letter-spacing: 0.08em;
@@ -670,7 +670,7 @@
 .rack-callout-strip .callout-pill {
   padding: 6px 18px;
   border-radius: 20px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   background: #0B1120;
   border: 1px solid #27D7FF;
@@ -696,7 +696,7 @@
   background: #0B1120;
   border: 1px solid #27D7FF;
   border-radius: 20px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   color: #27D7FF;
 }
@@ -730,7 +730,7 @@
 }
 
 .rack-mini-top {
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   color: #64748B;
   text-align: center;
@@ -751,7 +751,7 @@
 .mini-switch { border-color: #8A7CFF; background: #1E1B4B; }
 
 .rack-mini-bottom {
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 800;
   color: #57E6A5;
   text-align: center;
@@ -767,7 +767,7 @@
 }
 
 .spine-label {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
   color: #8A7CFF;
@@ -783,7 +783,7 @@
 }
 
 .floor-label {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
   color: #57E6A5;
@@ -830,7 +830,7 @@
 }
 
 .zoom-tag {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.2em;
   color: #FFB84D;
@@ -893,7 +893,7 @@
 }
 
 .op-label {
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   color: #8B98A8;
 }
@@ -920,7 +920,7 @@
   background: #0B1120;
   border: 1px solid #1E293B;
   border-radius: 4px;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   color: #64748B;
 }
@@ -945,7 +945,7 @@
   background: #020617;
   border: 1px solid #27D7FF;
   border-radius: 20px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   color: #27D7FF;
   display: flex;
@@ -984,7 +984,7 @@
 .progression-step-btn {
   background: transparent;
   border: none;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: #64748B;
@@ -1007,14 +1007,14 @@
 
 .step-divider {
   color: #334155;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 /* NVL72 rack: 18 compute + 9 switch trays laid out in columns so the full
    enclosure fits the 16:9 frame (was 27 stacked rows ≈ 970px tall). */
 .rack-trays-bay .tray-group.compute-group {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 4px 8px;
 }
 .rack-trays-bay .tray-group.switch-group {
@@ -1026,3 +1026,18 @@
 .rack-trays-bay .switch-group .tray-contents { white-space: normal; line-height: 1.15; }
 .bw-rack-container .rack-chassis-frame { padding: 10px 14px; gap: 8px; }
 .bw-rack-container .rack-tray { padding: 3px 10px; }
+.rack-tray-legend {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #C9D4E3;
+  padding: 2px 2px 4px;
+}
+.rack-tray-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend-swatch { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.legend-swatch.compute { background: #27D7FF; }
+.legend-swatch.switch { background: #8A7CFF; }
+.rack-trays-bay .tray-name { white-space: nowrap; }

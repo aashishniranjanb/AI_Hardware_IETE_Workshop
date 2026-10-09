@@ -1,13 +1,14 @@
 import React from 'react';
+import { InlineIcon } from '../deck/GlyphIcon';
 import { MEMORY_LEVELS } from './memoryData';
 
 export function MemoryHierarchy({ activeTier = null, onSelectTier = null, large = false }) {
   return (
     <div className={`memory-hierarchy-container ${large ? 'is-large' : ''}`}>
       <div className="hierarchy-axis-indicator">
-        <span className="axis-label-fast">⚡ CLOSER • FASTER • SMALLER</span>
+        <span className="axis-label-fast"><InlineIcon glyph="⚡" /> CLOSER • FASTER • SMALLER</span>
         <div className="axis-gradient-bar" />
-        <span className="axis-label-large">FARTHER • SLOWER • LARGER 💾</span>
+        <span className="axis-label-large">FARTHER • SLOWER • LARGER <InlineIcon glyph="💾" /></span>
       </div>
 
       <div className="hierarchy-tiers-stack">

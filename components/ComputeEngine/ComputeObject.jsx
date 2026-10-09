@@ -1,4 +1,5 @@
 import React from 'react';
+import { GlyphIcon } from '../deck/GlyphIcon';
 import { CPUVisual } from './CPUVisual';
 import { GPUVisual } from './GPUVisual';
 import { NPUVisual } from './NPUVisual';
@@ -29,7 +30,7 @@ export function ComputeObject({ activeArch, stage }) {
           <div className="silicon-die-cavity">
             {stage === 'compute' && (
               <div className="generic-compute-die">
-                <div className="core-chip-icon">▦</div>
+                <div className="core-chip-icon"><GlyphIcon glyph="▦" size={22} /></div>
                 <div className="chip-laser-label">CENTRAL COMPUTE ENGINE</div>
                 <div className="chip-laser-sub">THE HEART OF INTELLIGENCE</div>
                 <div className="die-active-glow-ring" />

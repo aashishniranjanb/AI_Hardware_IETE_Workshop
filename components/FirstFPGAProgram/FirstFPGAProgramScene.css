@@ -79,7 +79,7 @@
 }
 
 .ff-accent-logo {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   background: rgba(39, 215, 255, 0.12);
@@ -187,7 +187,7 @@
   padding: 8px 16px;
   background: rgba(255, 255, 255, 0.03);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 11px;
+  font-size: 12px;
   color: #8B98A8;
   font-family: monospace;
 }
@@ -295,7 +295,7 @@
   background: transparent;
   border: none;
   color: #8B98A8;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   padding: 5px 9px;
@@ -318,5 +318,5 @@
 
 .ff-divider {
   color: rgba(255, 255, 255, 0.15);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
 }

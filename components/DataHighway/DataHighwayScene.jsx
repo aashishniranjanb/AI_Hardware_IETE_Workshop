@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { GlyphIcon, InlineIcon } from '../deck/GlyphIcon';
 import { stageEnter } from '../deck/motion';
 import { StageNavigator } from '../deck/StageNavigator';
 import { useStageNavigation } from '../deck/DeckNavigation';
@@ -100,7 +101,7 @@ export function DataHighwayScene() {
             </svg>
             <DataNode type="hbm" label="WIDE MEMORY BUS" sublabel="HBM3e INTERPOSER" color="#60A5FA" icon="💾" isHighlighted={true} />
             <div className="callout-pill accent-cyan" style={{ marginTop: 10 }}>
-              <span>⚡ MORE PHYSICAL LANES → DIRECT MULTIPLICATION OF BANDWIDTH ⚡</span>
+              <span><InlineIcon glyph="⚡" /> MORE PHYSICAL LANES → DIRECT MULTIPLICATION OF BANDWIDTH</span>
             </div>
           </div>
         )}
@@ -130,7 +131,7 @@ export function DataHighwayScene() {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
             <GPUCluster mode="dual" isNVLink={false} />
             <div className="callout-pill accent-amber">
-              <span>⚠️ THROUGH PCIe, PEER ACCELERATORS HIT A BOTTLENECK (~64 GB/s)</span>
+              <span><InlineIcon glyph="⚠️" /> THROUGH PCIe, PEER ACCELERATORS HIT A BOTTLENECK (~64 GB/s)</span>
             </div>
           </div>
         )}
@@ -140,7 +141,7 @@ export function DataHighwayScene() {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
             <GPUCluster mode="dual" isNVLink={true} />
             <div className="callout-pill accent-blue">
-              <span>⚡ NVLINK DELIVERS UP TO 1.8 TB/s DIRECT MEMORY ACCESS BETWEEN GPUS ⚡</span>
+              <span><InlineIcon glyph="⚡" /> NVLINK DELIVERS UP TO 1.8 TB/s DIRECT MEMORY ACCESS BETWEEN GPUS</span>
             </div>
           </div>
         )}
@@ -168,7 +169,7 @@ export function DataHighwayScene() {
               {INTERCONNECT_TIERS.map((tier) => (
                 <div key={tier.id} className="tier-column-card" style={{ borderColor: tier.color }}>
                   <div className="tier-icon-circle" style={{ color: tier.color }}>
-                    {tier.icon}
+                    <GlyphIcon glyph={tier.icon} size={18} />
                   </div>
                   <h3 className="tier-tech-title">{tier.name}</h3>
                   <div className="tier-scope-tag" style={{ color: tier.color }}>
@@ -228,7 +229,7 @@ export function DataHighwayScene() {
 
             <div className="blackwell-system-preview-rack">
               <div className="blackwell-header-badge">
-                <span>⚡ NEXT STAGE: NVIDIA BLACKWELL & GB200 NVL72 ⚡</span>
+                <span><InlineIcon glyph="⚡" /> NEXT STAGE: NVIDIA BLACKWELL & GB200 NVL72</span>
               </div>
 
               <div className="blackwell-scale-stat">

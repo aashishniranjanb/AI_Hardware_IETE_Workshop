@@ -27,8 +27,8 @@ export function StageTheArchitecture() {
         {blocks.map((b, idx) => (
           <React.Fragment key={idx}>
             <div className="rb-card" style={{ padding: '12px 10px', minWidth: '110px', textAlign: 'center', borderColor: b.color }}>
-              <div style={{ fontSize: '11px', fontWeight: 900, color: b.color }}>{b.name}</div>
-              <div style={{ fontSize: '9px', color: '#8B98A8', marginTop: '2px' }}>{b.tag}</div>
+              <div style={{ fontSize: '12px', fontWeight: 900, color: b.color }}>{b.name}</div>
+              <div style={{ fontSize: '12px', color: '#8B98A8', marginTop: '2px' }}>{b.tag}</div>
             </div>
             {idx < blocks.length - 1 && <span style={{ fontSize: '14px', color: '#4B8DFF' }}>→</span>}
           </React.Fragment>
@@ -58,8 +58,8 @@ export function StageDecompose() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '12px', width: '100%', maxWidth: '960px' }}>
         {parts.map(p => (
           <div key={p.title} className="rb-card" style={{ textAlign: 'center', borderColor: p.color }}>
-            <div style={{ fontSize: '11px', fontWeight: 900, color: p.color }}>{p.title}</div>
-            <div style={{ fontSize: '10px', color: '#F4F7FA', marginTop: '6px' }}>{p.desc}</div>
+            <div style={{ fontSize: '12px', fontWeight: 900, color: p.color }}>{p.title}</div>
+            <div style={{ fontSize: '12px', color: '#F4F7FA', marginTop: '6px' }}>{p.desc}</div>
           </div>
         ))}
       </div>
@@ -73,7 +73,7 @@ export function StageRTLMeaning() {
     <div className="rb-wrap">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '28px', alignItems: 'center', maxWidth: '880px', width: '100%' }}>
         <div className="rb-card" style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '11px', color: '#27D7FF', fontWeight: 800 }}>REGISTERS (FLIP-FLOPS)</div>
+          <div style={{ fontSize: '12px', color: '#27D7FF', fontWeight: 800 }}>REGISTERS (FLIP-FLOPS)</div>
           <div style={{ fontSize: '18px', fontWeight: 900, color: '#F4F7FA', margin: '6px 0' }}>STATE STORAGE</div>
           <div style={{ fontSize: '12px', color: '#8B98A8' }}>
             Store data synchronous to clock edges (`posedge clk`). Holds accumulator states, inputs, and outputs.
@@ -82,11 +82,11 @@ export function StageRTLMeaning() {
 
         <div style={{ textAlign: 'center' }}>
           <div style={{ fontSize: '28px', color: '#57E6A5' }}>+</div>
-          <div style={{ fontSize: '10px', fontWeight: 800, color: '#57E6A5' }}>CONNECTS<br />TO</div>
+          <div style={{ fontSize: '12px', fontWeight: 800, color: '#57E6A5' }}>CONNECTS<br />TO</div>
         </div>
 
         <div className="rb-card" style={{ textAlign: 'center', borderColor: '#57E6A5' }}>
-          <div style={{ fontSize: '11px', color: '#57E6A5', fontWeight: 800 }}>COMBINATIONAL LOGIC</div>
+          <div style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>COMBINATIONAL LOGIC</div>
           <div style={{ fontSize: '18px', fontWeight: 900, color: '#57E6A5', margin: '6px 0' }}>BOOLEAN TRANSFORMS</div>
           <div style={{ fontSize: '12px', color: '#F4F7FA' }}>
             Multipliers, adders, multiplexers, and comparators that transform values between clock ticks.
@@ -179,24 +179,24 @@ export function StageCompleteRTL() {
     <div className="rb-wrap">
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px', width: '100%', maxWidth: '920px' }}>
         <div className="rb-card" style={{ textAlign: 'center', borderColor: '#27D7FF' }}>
-          <div style={{ fontSize: '11px', color: '#27D7FF', fontWeight: 800 }}>WEIGHT ROM</div>
+          <div style={{ fontSize: '12px', color: '#27D7FF', fontWeight: 800 }}>WEIGHT ROM</div>
           <div style={{ fontSize: '14px', fontWeight: 900, color: '#F4F7FA' }}>bram_weights.v</div>
-          <div style={{ fontSize: '10px', color: '#8B98A8' }}>Synchronous ROM tables</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8' }}>Synchronous ROM tables</div>
         </div>
         <div className="rb-card" style={{ textAlign: 'center', borderColor: '#8A7CFF' }}>
-          <div style={{ fontSize: '11px', color: '#8A7CFF', fontWeight: 800 }}>MAC ARRAYS</div>
+          <div style={{ fontSize: '12px', color: '#8A7CFF', fontWeight: 800 }}>MAC ARRAYS</div>
           <div style={{ fontSize: '14px', fontWeight: 900, color: '#F4F7FA' }}>mac_engine.v</div>
-          <div style={{ fontSize: '10px', color: '#8B98A8' }}>Parallel multiplier slices</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8' }}>Parallel multiplier slices</div>
         </div>
         <div className="rb-card" style={{ textAlign: 'center', borderColor: '#57E6A5' }}>
-          <div style={{ fontSize: '11px', color: '#57E6A5', fontWeight: 800 }}>ACTIVATION</div>
+          <div style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>ACTIVATION</div>
           <div style={{ fontSize: '14px', fontWeight: 900, color: '#F4F7FA' }}>relu_layer.v</div>
-          <div style={{ fontSize: '10px', color: '#8B98A8' }}>Nonlinear thresholding</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8' }}>Nonlinear thresholding</div>
         </div>
         <div className="rb-card" style={{ textAlign: 'center', borderColor: '#FFB84D' }}>
-          <div style={{ fontSize: '11px', color: '#FFB84D', fontWeight: 800 }}>CONTROLLER</div>
+          <div style={{ fontSize: '12px', color: '#FFB84D', fontWeight: 800 }}>CONTROLLER</div>
           <div style={{ fontSize: '14px', fontWeight: 900, color: '#F4F7FA' }}>neural_fsm.v</div>
-          <div style={{ fontSize: '10px', color: '#8B98A8' }}>Datapath scheduler</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8' }}>Datapath scheduler</div>
         </div>
       </div>
       <div style={{ marginTop: '20px', fontSize: '13px', color: '#57E6A5', fontWeight: 800 }}>
@@ -212,23 +212,23 @@ export function StageRTLToYosys() {
     <div className="rb-wrap">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '24px', alignItems: 'center', maxWidth: '880px', width: '100%' }}>
         <div className="rb-card">
-          <div style={{ fontSize: '11px', color: '#8A7CFF', fontWeight: 800 }}>INPUT: SOURCE RTL</div>
+          <div style={{ fontSize: '12px', color: '#8A7CFF', fontWeight: 800 }}>INPUT: SOURCE RTL</div>
           <div style={{ fontSize: '15px', fontWeight: 900, color: '#F4F7FA' }}>ai_accelerator_top.v</div>
-          <div style={{ fontSize: '11px', color: '#8B98A8' }}>Human-readable Verilog modules & FSMs</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8' }}>Human-readable Verilog modules & FSMs</div>
         </div>
 
         <div style={{ textAlign: 'center' }}>
           <div style={{ background: 'rgba(39, 215, 255, 0.15)', border: '1.5px solid #27D7FF', padding: '10px 18px', borderRadius: '8px' }}>
             <div style={{ fontSize: '12px', fontWeight: 900, color: '#27D7FF' }}>YOSYS SYNTHESIS</div>
-            <div style={{ fontSize: '9px', color: '#8B98A8' }}>`yosys -p "synth_ice40"`</div>
+            <div style={{ fontSize: '12px', color: '#8B98A8' }}>`yosys -p "synth_ice40"`</div>
           </div>
           <div style={{ fontSize: '20px', color: '#27D7FF', marginTop: '4px' }}>→</div>
         </div>
 
         <div className="rb-card" style={{ borderColor: '#57E6A5' }}>
-          <div style={{ fontSize: '11px', color: '#57E6A5', fontWeight: 800 }}>OUTPUT: GATE NETLIST</div>
+          <div style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>OUTPUT: GATE NETLIST</div>
           <div style={{ fontSize: '15px', fontWeight: 900, color: '#57E6A5' }}>accelerator.json</div>
-          <div style={{ fontSize: '11px', color: '#F4F7FA' }}>
+          <div style={{ fontSize: '12px', color: '#F4F7FA' }}>
             Mapped to iCE40 primitive cells: SB_LUT4, SB_DFF, SB_MAC16 DSPs, and SB_RAM40_4K BRAMs
           </div>
         </div>
@@ -243,23 +243,23 @@ export function StageNextpnr() {
     <div className="rb-wrap">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '24px', alignItems: 'center', maxWidth: '880px', width: '100%' }}>
         <div className="rb-card">
-          <div style={{ fontSize: '11px', color: '#27D7FF', fontWeight: 800 }}>INPUT: GATE NETLIST</div>
+          <div style={{ fontSize: '12px', color: '#27D7FF', fontWeight: 800 }}>INPUT: GATE NETLIST</div>
           <div style={{ fontSize: '15px', fontWeight: 900, color: '#F4F7FA' }}>accelerator.json</div>
-          <div style={{ fontSize: '11px', color: '#8B98A8' }}>Unplaced gates & nets</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8' }}>Unplaced gates & nets</div>
         </div>
 
         <div style={{ textAlign: 'center' }}>
           <div style={{ background: 'rgba(87, 230, 165, 0.15)', border: '1.5px solid #57E6A5', padding: '10px 18px', borderRadius: '8px' }}>
             <div style={{ fontSize: '12px', fontWeight: 900, color: '#57E6A5' }}>NEXTPNR-iCE40</div>
-            <div style={{ fontSize: '9px', color: '#8B98A8' }}>Placement & Routing</div>
+            <div style={{ fontSize: '12px', color: '#8B98A8' }}>Placement & Routing</div>
           </div>
           <div style={{ fontSize: '20px', color: '#57E6A5', marginTop: '4px' }}>→</div>
         </div>
 
         <div className="rb-card" style={{ borderColor: '#57E6A5' }}>
-          <div style={{ fontSize: '11px', color: '#57E6A5', fontWeight: 800 }}>OUTPUT: PLACED SILICON</div>
+          <div style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>OUTPUT: PLACED SILICON</div>
           <div style={{ fontSize: '15px', fontWeight: 900, color: '#57E6A5' }}>accelerator.asc</div>
-          <div style={{ fontSize: '11px', color: '#F4F7FA' }}>
+          <div style={{ fontSize: '12px', color: '#F4F7FA' }}>
             Exact physical coordinates & copper wire routes inside iCE40UP5K die
           </div>
         </div>
@@ -299,26 +299,26 @@ export function StageProgram() {
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '14px', maxWidth: '850px', width: '100%', justifyContent: 'center' }}>
         <div className="rb-card" style={{ minWidth: '130px', textAlign: 'center', borderColor: '#27D7FF' }}>
-          <div style={{ fontSize: '11px', color: '#27D7FF', fontWeight: 800 }}>LAPTOP</div>
-          <div style={{ fontSize: '9px', color: '#8B98A8' }}>USB Driver</div>
+          <div style={{ fontSize: '12px', color: '#27D7FF', fontWeight: 800 }}>LAPTOP</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8' }}>USB Driver</div>
         </div>
         <span style={{ fontSize: '18px', color: '#4B8DFF' }}>→</span>
         <div className="rb-card" style={{ minWidth: '130px', textAlign: 'center', borderColor: '#8A7CFF' }}>
-          <div style={{ fontSize: '11px', color: '#8A7CFF', fontWeight: 800 }}>USB CABLE</div>
-          <div style={{ fontSize: '9px', color: '#8B98A8' }}>Type-C</div>
+          <div style={{ fontSize: '12px', color: '#8A7CFF', fontWeight: 800 }}>USB CABLE</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8' }}>Type-C</div>
         </div>
         <span style={{ fontSize: '18px', color: '#4B8DFF' }}>→</span>
         <div className="rb-card" style={{ minWidth: '150px', textAlign: 'center', borderColor: '#57E6A5' }}>
-          <div style={{ fontSize: '11px', color: '#57E6A5', fontWeight: 900 }}>ONBOARD FT232H</div>
-          <div style={{ fontSize: '9px', color: '#57E6A5' }}>Integrated Bridge</div>
+          <div style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 900 }}>ONBOARD FT232H</div>
+          <div style={{ fontSize: '12px', color: '#57E6A5' }}>Integrated Bridge</div>
         </div>
         <span style={{ fontSize: '18px', color: '#4B8DFF' }}>→</span>
         <div className="rb-card" style={{ minWidth: '130px', textAlign: 'center', borderColor: '#FFB84D' }}>
-          <div style={{ fontSize: '11px', color: '#FFB84D', fontWeight: 800 }}>iCE40UP5K</div>
-          <div style={{ fontSize: '9px', color: '#8B98A8' }}>SRAM Fabric</div>
+          <div style={{ fontSize: '12px', color: '#FFB84D', fontWeight: 800 }}>iCE40UP5K</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8' }}>SRAM Fabric</div>
         </div>
       </div>
-      <div style={{ marginTop: '16px', fontSize: '11px', color: '#57E6A5', fontWeight: 700 }}>
+      <div style={{ marginTop: '16px', fontSize: '12px', color: '#57E6A5', fontWeight: 700 }}>
         NO EXTERNAL DONGLE REQUIRED • PROGRAMMED DIRECTLY OVER USB
       </div>
     </div>
@@ -338,7 +338,7 @@ export function StageFullFlow() {
         {steps.map((st, i) => (
           <React.Fragment key={st}>
             <div className="rb-card" style={{ padding: '12px 14px', textAlign: 'center', borderColor: '#27D7FF' }}>
-              <div style={{ fontSize: '11px', fontWeight: 900, color: '#27D7FF' }}>{st}</div>
+              <div style={{ fontSize: '12px', fontWeight: 900, color: '#27D7FF' }}>{st}</div>
             </div>
             {i < steps.length - 1 && <span style={{ fontSize: '14px', color: '#57E6A5' }}>→</span>}
           </React.Fragment>
@@ -354,7 +354,7 @@ export function StageKeyDistinction() {
     <div className="rb-wrap">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '28px', alignItems: 'center', maxWidth: '880px', width: '100%' }}>
         <div className="rb-card" style={{ borderColor: '#EF4444', textAlign: 'center' }}>
-          <div style={{ fontSize: '11px', color: '#EF4444', fontWeight: 800 }}>COMMON MISCONCEPTION</div>
+          <div style={{ fontSize: '12px', color: '#EF4444', fontWeight: 800 }}>COMMON MISCONCEPTION</div>
           <div style={{ fontSize: '18px', fontWeight: 900, color: '#EF4444', margin: '8px 0', textDecoration: 'line-through' }}>
             PYTHON → FPGA
           </div>
@@ -366,7 +366,7 @@ export function StageKeyDistinction() {
         <div style={{ fontSize: '32px', color: '#8B98A8', fontWeight: 900 }}>≠</div>
 
         <div className="rb-card" style={{ borderColor: '#57E6A5', textAlign: 'center' }}>
-          <div style={{ fontSize: '11px', color: '#57E6A5', fontWeight: 800 }}>WHAT WE ACTUALLY DO</div>
+          <div style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>WHAT WE ACTUALLY DO</div>
           <div style={{ fontSize: '18px', fontWeight: 900, color: '#57E6A5', margin: '8px 0' }}>
             RTL → BITSTREAM → FPGA
           </div>
@@ -397,7 +397,7 @@ export function StageFinalMentalModel() {
         {pyramid.map((lvl, idx) => (
           <div key={lvl.name} className="rb-card" style={{ padding: '8px 18px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderColor: lvl.color }}>
             <span style={{ fontSize: '12px', fontWeight: 900, color: lvl.color }}>{idx + 1}. {lvl.name}</span>
-            <span style={{ fontSize: '11px', color: '#8B98A8' }}>{lvl.role}</span>
+            <span style={{ fontSize: '12px', color: '#8B98A8' }}>{lvl.role}</span>
           </div>
         ))}
       </div>

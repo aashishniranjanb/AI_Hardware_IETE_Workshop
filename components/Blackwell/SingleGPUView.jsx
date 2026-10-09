@@ -1,4 +1,5 @@
 import React from 'react';
+import { InlineIcon } from '../deck/GlyphIcon';
 
 export function SingleGPUView({ showMemory = false }) {
   return (
@@ -88,7 +89,7 @@ export function SingleGPUView({ showMemory = false }) {
 
       {showMemory && (
         <div className="bw-callout-badge accent-cyan">
-          <span>⚡ 192 GB TOTAL HBM3e CAPACITY @ 8.0 TB/s ULTRA-WIDE BANDWIDTH ⚡</span>
+          <span><InlineIcon glyph="⚡" /> 192 GB TOTAL HBM3e CAPACITY @ 8.0 TB/s ULTRA-WIDE BANDWIDTH</span>
         </div>
       )}
     </div>

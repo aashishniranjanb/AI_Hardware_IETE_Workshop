@@ -87,7 +87,7 @@
 
 .dh-nav-pill {
   padding: 5px 12px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   border-radius: 20px;
@@ -151,7 +151,7 @@
 .node-header {
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
 }
 
@@ -169,7 +169,7 @@
 }
 
 .node-sublabel {
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 600;
   color: #94A3B8;
 }
@@ -208,7 +208,7 @@
   background: #0F172A;
   border: 1px solid rgba(96, 165, 250, 0.4);
   border-radius: 20px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   color: #60A5FA;
   letter-spacing: 0.08em;
@@ -256,7 +256,7 @@
 }
 
 .hbm-tag {
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   color: #60A5FA;
   background: #0F172A;
@@ -341,7 +341,7 @@
 .noc-die-header {
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.12em;
   color: #64748B;
@@ -386,13 +386,13 @@
 }
 
 .router-label {
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 800;
   color: #38BDF8;
 }
 
 .tile-subsystem {
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   padding: 2px 6px;
   border-radius: 3px;
@@ -406,7 +406,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .noc-badge {
@@ -439,7 +439,7 @@
   display: flex;
   gap: 12px;
   align-items: center;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
 }
@@ -466,7 +466,7 @@
 }
 
 .rack-title {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   color: #64748B;
   text-align: center;
@@ -483,7 +483,7 @@
   border-radius: 4px;
   padding: 4px;
   text-align: center;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   color: #A855F7;
 }
@@ -521,7 +521,7 @@
 }
 
 .switch-bandwidth {
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   color: #94A3B8;
 }
@@ -591,7 +591,7 @@
 }
 
 .tier-scope-tag {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
   padding: 3px 8px;
   border-radius: 4px;
@@ -606,20 +606,20 @@
 }
 
 .stat-label {
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 800;
   color: #64748B;
   letter-spacing: 0.1em;
 }
 
 .stat-val {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   color: #F8FAFC;
 }
 
 .tier-role-text {
-  font-size: 10px;
+  font-size: 12px;
   color: #94A3B8;
   line-height: 1.35;
   margin: 0;
@@ -689,7 +689,7 @@
   border: 1px solid #1E293B;
   border-radius: 20px;
   padding: 6px 14px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   color: #CBD5E1;
 }
@@ -710,3 +710,6 @@
   align-items: center;
   gap: 8px;
 }
+
+/* Projector readability */
+.data-highway-scene .stat-label, .stat-label { font-size: 12px; }

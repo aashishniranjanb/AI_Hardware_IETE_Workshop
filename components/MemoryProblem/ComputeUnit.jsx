@@ -1,4 +1,5 @@
 import React from 'react';
+import { GlyphIcon, InlineIcon } from '../deck/GlyphIcon';
 
 export function ComputeUnit({ state = 'active', customTitle = 'AI COMPUTE ENGINE', compact = false }) {
   const isWaiting = state === 'waiting' || state === 'starved';
@@ -9,7 +10,7 @@ export function ComputeUnit({ state = 'active', customTitle = 'AI COMPUTE ENGINE
         <div className="mp-package-header">
           <span className="mp-die-id">COMPUTE SILICON DIE • TSMC 3nm CLASS</span>
           <span className="mp-utilization-badge">
-            {isWaiting ? '⚠️ 4% UTILIZATION (STARVED)' : '⚡ 98% UTILIZATION (SATURATED)'}
+            {isWaiting ? <><InlineIcon glyph="⚠️" /> 4% UTILIZATION (STARVED)</> : <><InlineIcon glyph="⚡" /> 98% UTILIZATION (SATURATED)</>}
           </span>
         </div>
 
@@ -37,7 +38,7 @@ export function ComputeUnit({ state = 'active', customTitle = 'AI COMPUTE ENGINE
           {isWaiting && !compact && (
             <div className="mp-starvation-overlay">
               <div className="mp-amber-warning-box">
-                <span className="warning-icon">⏸</span>
+                <span className="warning-icon"><GlyphIcon glyph="⏸" size={26} /></span>
                 <span className="warning-title">WAITING FOR DATA...</span>
                 <span className="warning-sub">ZERO MEMORY TRANSFERS IN FLIGHT</span>
               </div>

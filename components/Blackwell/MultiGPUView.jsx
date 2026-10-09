@@ -1,4 +1,5 @@
 import React from 'react';
+import { InlineIcon } from '../deck/GlyphIcon';
 
 export function MultiGPUView({ showNVLink = false }) {
   return (
@@ -75,7 +76,7 @@ export function MultiGPUView({ showNVLink = false }) {
 
       {showNVLink && (
         <div className="bw-callout-badge accent-blue">
-          <span>⚡ ALL-TO-ALL NVLINK: 4 ACCELERATORS OPERATING AS A SINGLE LOGICAL COMPUTE POOL ⚡</span>
+          <span><InlineIcon glyph="⚡" /> ALL-TO-ALL NVLINK: 4 ACCELERATORS OPERATING AS A SINGLE LOGICAL COMPUTE POOL</span>
         </div>
       )}
     </div>

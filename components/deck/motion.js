@@ -93,9 +93,77 @@ export const reveal = staggerReveal;
  * primary diagram, with their own children staggered in afterwards.
  * Call inside the scene's gsap.context so cleanup reverts it.
  */
-export function stageEnter(rootSelectorOrEl, { stagger = true } = {}) {
+/**
+ * Fit-to-space: when a stage's main viewport holds a single diagram that is
+ * much smaller than the room available, enlarge it (CSS zoom, so layout and
+ * text scale together and nothing can overflow) up to `max`.
+ */
+export function fitStage(root, { max = 1.35, min = 1.06 } = {}) {
+  if (!root || root.children.length !== 1) return;
+  const child = root.children[0];
+  if (getComputedStyle(child).position === 'absolute') return;
+  child.style.zoom = '';
+  const cs = getComputedStyle(root);
+  const availW = root.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  const availH = root.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+  // Measure the visible content, not a full-width block wrapper.
+  let w = child.offsetWidth;
+  let h = child.offsetHeight;
+  if (child.children.length) {
+    let l = Infinity, r = -Infinity, t = Infinity, b = -Infinity;
+    for (const k of child.children) {
+      const rc = k.getBoundingClientRect();
+      if (!rc.width && !rc.height) continue;
+      l = Math.min(l, rc.left); r = Math.max(r, rc.right); t = Math.min(t, rc.top); b = Math.max(b, rc.bottom);
+    }
+    if (r > l) w = Math.min(w, r - l);
+    if (b > t) h = Math.min(h, b - t);
+  }
+  if (!w || !h || availW <= 0 || availH <= 0) return;
+  let ratio = Math.min(max, (availW * 0.96) / w, (availH * 0.94) / h);
+  if (ratio < min) return;
+  // Verify against the real layout (wrappers may have fixed sizes) and back off.
+  const box = root.getBoundingClientRect();
+  const limit = {
+    left: box.left + parseFloat(cs.paddingLeft) - 1,
+    right: box.right - parseFloat(cs.paddingRight) + 1,
+    top: box.top + parseFloat(cs.paddingTop) - 1,
+    bottom: box.bottom - parseFloat(cs.paddingBottom) + 1,
+  };
+  const fits = () => {
+    const rc = child.getBoundingClientRect();
+    return rc.left >= limit.left && rc.right <= limit.right && rc.top >= limit.top && rc.bottom <= limit.bottom
+      && root.scrollHeight <= root.clientHeight + 1 && root.scrollWidth <= root.clientWidth + 1;
+  };
+  const start = ratio;
+  while (ratio >= min) {
+    child.style.zoom = String(Math.round(ratio * 100) / 100);
+    if (fits()) return;
+    ratio -= 0.05;
+  }
+  child.style.zoom = '';
+
+  // Stretched wrapper (fills the viewport, content centred inside): enlarge
+  // its children together instead of the wrapper box.
+  const kids = Array.from(child.children).filter((k) => getComputedStyle(k).position !== 'absolute');
+  if (!kids.length) return;
+  const kidsFit = () => kids.every((k) => {
+    const rc = k.getBoundingClientRect();
+    return rc.left >= limit.left && rc.right <= limit.right && rc.top >= limit.top && rc.bottom <= limit.bottom;
+  }) && root.scrollHeight <= root.clientHeight + 1 && child.scrollHeight <= child.clientHeight + 1;
+  ratio = start;
+  while (ratio >= min) {
+    kids.forEach((k) => { k.style.zoom = String(Math.round(ratio * 100) / 100); });
+    if (kidsFit()) return;
+    ratio -= 0.05;
+  }
+  kids.forEach((k) => { k.style.zoom = ''; });
+}
+
+export function stageEnter(rootSelectorOrEl, { stagger = true, fit = true } = {}) {
   const tl = gsap.timeline();
   const root = typeof rootSelectorOrEl === 'string' ? gsap.utils.toArray(rootSelectorOrEl) : [rootSelectorOrEl];
+  if (fit) root.forEach((r) => fitStage(r));
   const kids = root.flatMap((r) => (r ? Array.from(r.children) : []));
   if (!kids.length) return tl;
   tl.add(scaleIn(kids, { duration: rm(0.5, 0.15) }));

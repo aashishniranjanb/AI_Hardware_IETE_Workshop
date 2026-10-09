@@ -1,4 +1,5 @@
 import React from 'react';
+import { GlyphIcon } from '../deck/GlyphIcon';
 
 export function DataNode({
   type = 'gpu',
@@ -21,7 +22,7 @@ export function DataNode({
     >
       <div className="node-substrate-edge" />
       <div className="node-header">
-        <span className="node-icon" style={{ color }}>{icon}</span>
+        <span className="node-icon" style={{ color }}><GlyphIcon glyph={icon} size={20} /></span>
         <span className="node-badge" style={{ color }}>{badge}</span>
       </div>
 

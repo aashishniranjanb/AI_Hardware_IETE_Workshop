@@ -29,7 +29,7 @@ export function StageWhyBlink() {
           <React.Fragment key={st.title}>
             <div className="ff-flow-node" style={{ borderColor: st.color }}>
               <div style={{ fontSize: '13px', fontWeight: 800, color: st.color }}>{st.title}</div>
-              <div style={{ fontSize: '11px', color: '#8B98A8', marginTop: '4px' }}>{st.desc}</div>
+              <div style={{ fontSize: '12px', color: '#8B98A8', marginTop: '4px' }}>{st.desc}</div>
             </div>
             {i < steps.length - 1 && <span className="ff-flow-arrow">→</span>}
           </React.Fragment>
@@ -154,11 +154,11 @@ export function StageClock() {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
           <div className="ff-card" style={{ minWidth: '220px', textAlign: 'center' }}>
-            <div style={{ fontSize: '11px', color: '#8B98A8', fontWeight: 800 }}>COUNTER ACCUMULATOR</div>
+            <div style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800 }}>COUNTER ACCUMULATOR</div>
             <div style={{ fontSize: '32px', fontFamily: 'monospace', fontWeight: 900, color: '#27D7FF', marginTop: '6px' }}>
               0x{tick.toString(16).toUpperCase()}
             </div>
-            <div style={{ fontSize: '11px', color: '#57E6A5', marginTop: '4px' }}>
+            <div style={{ fontSize: '12px', color: '#57E6A5', marginTop: '4px' }}>
               INCREMENTS EVERY posedge clk
             </div>
           </div>
@@ -166,11 +166,11 @@ export function StageClock() {
           <div style={{ fontSize: '28px', color: '#8A7CFF' }}>→</div>
 
           <div className="ff-card" style={{ minWidth: '220px', textAlign: 'center' }}>
-            <div style={{ fontSize: '11px', color: '#8B98A8', fontWeight: 800 }}>LED OUTPUT BIT (MSB)</div>
+            <div style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800 }}>LED OUTPUT BIT (MSB)</div>
             <div style={{ fontSize: '32px', fontFamily: 'monospace', fontWeight: 900, color: ledState ? '#57E6A5' : '#64748B', marginTop: '6px' }}>
               {ledState ? 'HIGH (1)' : 'LOW (0)'}
             </div>
-            <div style={{ fontSize: '11px', color: ledState ? '#57E6A5' : '#8B98A8', marginTop: '4px' }}>
+            <div style={{ fontSize: '12px', color: ledState ? '#57E6A5' : '#8B98A8', marginTop: '4px' }}>
               {ledState ? 'LED ON' : 'LED OFF'}
             </div>
           </div>
@@ -186,7 +186,7 @@ export function StageSynthesis() {
     <div className="ff-wrap">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '20px', alignItems: 'center', width: '100%', maxWidth: '960px' }}>
         <div className="ff-card">
-          <div style={{ fontSize: '11px', color: '#8A7CFF', fontWeight: 800 }}>INPUT: RTL VERILOG</div>
+          <div style={{ fontSize: '12px', color: '#8A7CFF', fontWeight: 800 }}>INPUT: RTL VERILOG</div>
           <div style={{ fontSize: '14px', fontWeight: 800, color: '#F4F7FA' }}>blinky.v</div>
           <div style={{ fontSize: '12px', color: '#8B98A8', lineHeight: 1.5 }}>
             Human-readable logic statements:<br />
@@ -198,13 +198,13 @@ export function StageSynthesis() {
         <div style={{ textAlign: 'center' }}>
           <div style={{ background: 'rgba(39, 215, 255, 0.15)', border: '1.5px solid #27D7FF', padding: '12px 18px', borderRadius: '8px' }}>
             <div style={{ fontSize: '12px', fontWeight: 900, color: '#27D7FF' }}>YOSYS SYNTHESIS</div>
-            <div style={{ fontSize: '10px', color: '#8B98A8' }}>Logic Decomposition</div>
+            <div style={{ fontSize: '12px', color: '#8B98A8' }}>Logic Decomposition</div>
           </div>
           <div style={{ fontSize: '20px', color: '#27D7FF', marginTop: '4px' }}>→</div>
         </div>
 
         <div className="ff-card" style={{ borderColor: 'rgba(87, 230, 165, 0.4)' }}>
-          <div style={{ fontSize: '11px', color: '#57E6A5', fontWeight: 800 }}>OUTPUT: GATE-LEVEL NETLIST</div>
+          <div style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>OUTPUT: GATE-LEVEL NETLIST</div>
           <div style={{ fontSize: '14px', fontWeight: 800, color: '#57E6A5' }}>iCE40 Primitive Cell Targets</div>
           <div style={{ fontSize: '12px', color: '#F4F7FA', lineHeight: 1.5 }}>
             • <strong>24 × SB_DFF</strong> (Flip-Flops)<br />
@@ -224,7 +224,7 @@ export function StagePlaceRoute() {
       <div style={{ display: 'flex', gap: '30px', alignItems: 'center', maxWidth: '950px', width: '100%' }}>
         <svg width="340" height="260" viewBox="0 0 340 260">
           <rect x="10" y="10" width="320" height="240" rx="8" fill="#0A111E" stroke="#27D7FF" strokeWidth="1.5" />
-          <text x="170" y="30" fill="#27D7FF" fontSize="11" fontWeight="800" textAnchor="middle">iCE40UP5K SILICON FABRIC (PLB GRID)</text>
+          <text x="170" y="30" fill="#27D7FF" fontSize="12" fontWeight="800" textAnchor="middle">iCE40UP5K SILICON FABRIC (PLB GRID)</text>
           
           {/* Grid of Logic blocks */}
           {Array.from({ length: 4 }).map((_, r) => (
@@ -249,7 +249,7 @@ export function StagePlaceRoute() {
           {/* Routed tracks */}
           <path d="M 66 63 L 240 63 L 240 155 L 140 155" fill="none" stroke="#57E6A5" strokeWidth="2" strokeDasharray="3 3" />
           <circle cx="140" cy="155" r="4" fill="#27D7FF" />
-          <text x="170" y="240" fill="#8B98A8" fontSize="9" textAnchor="middle">NEXTPNR DETERMINES OPTIMAL DELAY ROUTING</text>
+          <text x="170" y="240" fill="#8B98A8" fontSize="12" textAnchor="middle">NEXTPNR DETERMINES OPTIMAL DELAY ROUTING</text>
         </svg>
 
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -260,7 +260,7 @@ export function StagePlaceRoute() {
             <strong>1. Placement:</strong> Assigns each LUT and Flip-Flop to exact physical slices (X/Y coordinates) inside the FPGA die.<br />
             <strong>2. Routing:</strong> Finds continuous physical copper tracks through the programmable switch matrices to connect clock, carry chain, and output.
           </div>
-          <div style={{ fontSize: '11px', color: '#27D7FF', fontWeight: 700 }}>
+          <div style={{ fontSize: '12px', color: '#27D7FF', fontWeight: 700 }}>
             Timing Closure: Verified to satisfy target oscillator frequency.
           </div>
         </div>
@@ -279,7 +279,7 @@ export function StageBitstream() {
       </div>
 
       <div className="ff-card" style={{ maxWidth: '780px', width: '100%', background: '#090E17', borderColor: '#4B8DFF' }}>
-        <div style={{ fontSize: '11px', color: '#8B98A8', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '8px' }}>
+        <div style={{ fontSize: '12px', color: '#8B98A8', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '8px' }}>
           BINARY BITSTREAM CONTENT (HEX VIEW)
         </div>
         <div style={{ fontFamily: 'monospace', fontSize: '13px', color: '#57E6A5', lineHeight: 1.8, letterSpacing: '0.05em' }}>
@@ -288,7 +288,7 @@ export function StageBitstream() {
           54 69 74 61 6e 20 63 6f 6e 66 69 67 75 72 65 64<br />
           00 12 34 56 78 9a bc de f0 11 22 33 44 55 66 77
         </div>
-        <div style={{ fontSize: '11px', color: '#8B98A8', marginTop: '6px' }}>
+        <div style={{ fontSize: '12px', color: '#8B98A8', marginTop: '6px' }}>
           This binary sequence sets every SRAM configuration bit inside the chip to close the exact switches required.
         </div>
       </div>
@@ -312,28 +312,28 @@ export function StageProgram() {
       <div className="ff-flow-container" style={{ maxWidth: '900px' }}>
         <div className="ff-flow-node" style={{ borderColor: '#27D7FF' }}>
           <div style={{ fontSize: '12px', color: '#27D7FF', fontWeight: 800 }}>LAPTOP</div>
-          <div style={{ fontSize: '10px', color: '#8B98A8', marginTop: '4px' }}>iceprog blinky.bin</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8', marginTop: '4px' }}>iceprog blinky.bin</div>
         </div>
 
         <span className="ff-flow-arrow">→</span>
 
         <div className="ff-flow-node" style={{ borderColor: '#8A7CFF' }}>
           <div style={{ fontSize: '12px', color: '#8A7CFF', fontWeight: 800 }}>USB CABLE</div>
-          <div style={{ fontSize: '10px', color: '#8B98A8', marginTop: '4px' }}>Standard Type-C</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8', marginTop: '4px' }}>Standard Type-C</div>
         </div>
 
         <span className="ff-flow-arrow">→</span>
 
         <div className="ff-flow-node active" style={{ borderColor: '#57E6A5' }}>
           <div style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 900 }}>ONBOARD FT232H</div>
-          <div style={{ fontSize: '10px', color: '#8B98A8', marginTop: '4px' }}>Hardware Bridge</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8', marginTop: '4px' }}>Hardware Bridge</div>
         </div>
 
         <span className="ff-flow-arrow">→</span>
 
         <div className="ff-flow-node" style={{ borderColor: '#FFB84D' }}>
           <div style={{ fontSize: '12px', color: '#FFB84D', fontWeight: 800 }}>iCE40UP5K</div>
-          <div style={{ fontSize: '10px', color: '#8B98A8', marginTop: '4px' }}>FPGA SRAM Config</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8', marginTop: '4px' }}>FPGA SRAM Config</div>
         </div>
       </div>
 
@@ -350,7 +350,7 @@ export function StageConfigured() {
     <div className="ff-wrap">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', maxWidth: '850px', width: '100%' }}>
         <div className="ff-card">
-          <div style={{ fontSize: '11px', color: '#8B98A8', fontWeight: 800 }}>BEFORE FLASHING</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800 }}>BEFORE FLASHING</div>
           <div style={{ fontSize: '16px', fontWeight: 800, color: '#F4F7FA' }}>Unconfigured SRAM Fabric</div>
           <div style={{ fontSize: '12px', color: '#8B98A8', lineHeight: 1.6 }}>
             The FPGA is blank silicon. All switch transistors are floating open. No circuit is active.
@@ -358,7 +358,7 @@ export function StageConfigured() {
         </div>
 
         <div className="ff-card" style={{ borderColor: '#57E6A5' }}>
-          <div style={{ fontSize: '11px', color: '#57E6A5', fontWeight: 800 }}>AFTER FLASHING (NOW)</div>
+          <div style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>AFTER FLASHING (NOW)</div>
           <div style={{ fontSize: '16px', fontWeight: 800, color: '#57E6A5' }}>Dedicated Blinker Circuit</div>
           <div style={{ fontSize: '12px', color: '#F4F7FA', lineHeight: 1.6 }}>
             The switches are locked closed by SRAM cells. The 24-bit counter is physically wired to the oscillator and output pin.
@@ -432,7 +432,7 @@ export function StageNowReplace() {
     <div className="ff-wrap">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '20px', alignItems: 'center', width: '100%', maxWidth: '900px' }}>
         <div className="ff-card">
-          <div style={{ fontSize: '11px', color: '#8B98A8', fontWeight: 800 }}>STEP 1: SANITY TEST</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800 }}>STEP 1: SANITY TEST</div>
           <div style={{ fontSize: '16px', fontWeight: 900, color: '#27D7FF' }}>24-BIT BLINKER</div>
           <div style={{ fontSize: '12px', color: '#8B98A8' }}>
             ~24 Flip-Flops<br />
@@ -443,11 +443,11 @@ export function StageNowReplace() {
 
         <div style={{ textAlign: 'center' }}>
           <div style={{ fontSize: '28px', color: '#57E6A5' }}>→</div>
-          <div style={{ fontSize: '10px', fontWeight: 800, color: '#57E6A5' }}>SAME FPGA<br />BIGGER LOGIC</div>
+          <div style={{ fontSize: '12px', fontWeight: 800, color: '#57E6A5' }}>SAME FPGA<br />BIGGER LOGIC</div>
         </div>
 
         <div className="ff-card" style={{ borderColor: '#57E6A5' }}>
-          <div style={{ fontSize: '11px', color: '#57E6A5', fontWeight: 800 }}>STEP 2: WORKSHOP GOAL</div>
+          <div style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>STEP 2: WORKSHOP GOAL</div>
           <div style={{ fontSize: '16px', fontWeight: 900, color: '#57E6A5' }}>AI NEURAL ENGINE</div>
           <div style={{ fontSize: '12px', color: '#F4F7FA' }}>
             Parallel MAC arrays<br />
@@ -466,15 +466,15 @@ export function StageAITarget() {
     <div className="ff-wrap">
       <div style={{ display: 'flex', alignItems: 'center', gap: '24px', width: '100%', maxWidth: '920px' }}>
         <div className="ff-card" style={{ minWidth: '180px', textAlign: 'center' }}>
-          <div style={{ fontSize: '11px', color: '#8B98A8', fontWeight: 800 }}>INPUT</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800 }}>INPUT</div>
           <div style={{ fontSize: '18px', fontWeight: 900, color: '#27D7FF', marginTop: '6px' }}>28 × 28 DIGIT</div>
-          <div style={{ fontSize: '11px', color: '#8B98A8', marginTop: '4px' }}>784 Pixel Values</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8', marginTop: '4px' }}>784 Pixel Values</div>
         </div>
 
         <div style={{ fontSize: '24px', color: '#57E6A5' }}>→</div>
 
         <div className="ff-card" style={{ flex: 1, borderColor: '#57E6A5', textAlign: 'center' }}>
-          <div style={{ fontSize: '11px', color: '#57E6A5', fontWeight: 800 }}>ON-CHIP HARDWARE</div>
+          <div style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>ON-CHIP HARDWARE</div>
           <div style={{ fontSize: '18px', fontWeight: 900, color: '#57E6A5', marginTop: '6px' }}>PARALLEL MAC ARRAY</div>
           <div style={{ fontSize: '12px', color: '#F4F7FA', marginTop: '4px' }}>
             Matrix Multiply • INT8 Weights • Pipelined Accumulation
@@ -484,9 +484,9 @@ export function StageAITarget() {
         <div style={{ fontSize: '24px', color: '#57E6A5' }}>→</div>
 
         <div className="ff-card" style={{ minWidth: '180px', textAlign: 'center' }}>
-          <div style={{ fontSize: '11px', color: '#8B98A8', fontWeight: 800 }}>OUTPUT</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800 }}>OUTPUT</div>
           <div style={{ fontSize: '28px', fontWeight: 900, color: '#57E6A5', marginTop: '6px' }}>CLASSIFIER: 7</div>
-          <div style={{ fontSize: '11px', color: '#8B98A8', marginTop: '4px' }}>ArgMax Class 0–9</div>
+          <div style={{ fontSize: '12px', color: '#8B98A8', marginTop: '4px' }}>ArgMax Class 0–9</div>
         </div>
       </div>
     </div>

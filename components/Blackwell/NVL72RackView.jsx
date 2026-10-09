@@ -18,6 +18,10 @@ export function NVL72RackView() {
           </div>
 
           <div className="rack-trays-bay">
+            <div className="rack-tray-legend">
+              <span><i className="legend-swatch compute" /> COMPUTE TRAY ×18 — EACH: 4× BLACKWELL + 2× GRACE CPU</span>
+              <span><i className="legend-swatch switch" /> NVLINK SWITCH TRAY ×9 — EACH: 72 NVLINK PORTS • 14.4 TB/s</span>
+            </div>
             {/* Top Compute Trays (Trays 1 to 9) */}
             <div className="tray-group compute-group">
               {Array.from({ length: 9 }).map((_, i) => (
@@ -25,7 +29,6 @@ export function NVL72RackView() {
                   <div className="tray-front">
                     <span className="tray-led" />
                     <span className="tray-name">COMPUTE TRAY {String(i + 1).padStart(2, '0')}</span>
-                    <span className="tray-contents">4x BLACKWELL + 2x GRACE CPU</span>
                   </div>
                   <div className="tray-coldplate-indicator" />
                 </div>
@@ -38,8 +41,7 @@ export function NVL72RackView() {
                 <div key={i} className="rack-tray switch-tray">
                   <div className="tray-front">
                     <span className="tray-led switch-led" />
-                    <span className="tray-name">NVLINK SWITCH TRAY {String(i + 1).padStart(2, '0')}</span>
-                    <span className="tray-contents">72 NVLINK PORTS • 14.4 TB/s</span>
+                    <span className="tray-name">NVLINK SWITCH {String(i + 1).padStart(2, '0')}</span>
                   </div>
                 </div>
               ))}
@@ -52,7 +54,6 @@ export function NVL72RackView() {
                   <div className="tray-front">
                     <span className="tray-led" />
                     <span className="tray-name">COMPUTE TRAY {String(i + 10).padStart(2, '0')}</span>
-                    <span className="tray-contents">4x BLACKWELL + 2x GRACE CPU</span>
                   </div>
                   <div className="tray-coldplate-indicator" />
                 </div>

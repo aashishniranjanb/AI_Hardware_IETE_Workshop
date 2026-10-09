@@ -97,7 +97,7 @@
   background: #0B1120;
   border: 1px solid #1E293B;
   border-radius: 4px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   color: #57E6A5;
 }
@@ -150,7 +150,7 @@
 }
 
 .logic-toggle-label {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.15em;
   font-weight: 700;
   color: #8B98A8;
@@ -184,7 +184,7 @@
 }
 
 .res-lbl {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.12em;
 }
@@ -202,7 +202,7 @@
 }
 
 .truth-table-header {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.15em;
   color: #8B98A8;
@@ -259,7 +259,7 @@
 }
 
 .gate-card-eq {
-  font-size: 11px;
+  font-size: 12px;
   font-family: 'Space Grotesk', monospace;
   color: #8B98A8;
 }
@@ -317,7 +317,7 @@
 }
 
 .bit4-unit-title {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   color: #27D7FF;
 }
@@ -337,7 +337,7 @@
   border: 1px solid #334155;
   border-radius: 14px;
   padding: 4px 12px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   color: #8B98A8;
   cursor: pointer;
@@ -443,7 +443,7 @@
 .logic-step-btn {
   background: transparent;
   border: none;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: #64748B;
@@ -466,5 +466,5 @@
 
 .logic-divider {
   color: #334155;
-  font-size: 9px;
+  font-size: 12px;
 }

@@ -9,7 +9,7 @@ export function StageFPGAModel() {
           <div style={{ width: '90px', height: '90px', background: '#0B1120', border: '2px solid #27D7FF', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <span style={{ fontSize: '48px', fontWeight: 900, color: '#27D7FF', fontFamily: 'Space Grotesk' }}>7</span>
           </div>
-          <span style={{ fontSize: '10px', color: '#8B98A8' }}>28×28 PIXELS</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>28×28 PIXELS</span>
         </div>
 
         <span style={{ color: '#64748B', fontSize: '24px' }}>→</span>
@@ -18,7 +18,7 @@ export function StageFPGAModel() {
           <span style={{ fontSize: '16px', fontWeight: 800, color: '#27D7FF' }}>
             MNIST DIGIT CLASSIFIER ARCHITECTURE
           </span>
-          <div style={{ display: 'flex', gap: '10px', fontSize: '11px', color: '#F4F7FA' }}>
+          <div style={{ display: 'flex', gap: '10px', fontSize: '12px', color: '#F4F7FA' }}>
             <div style={{ padding: '6px 12px', background: '#0B1120', border: '1px solid #334155', borderRadius: '6px' }}>
               784 Inputs
             </div>
@@ -32,7 +32,7 @@ export function StageFPGAModel() {
               10 Classes (Digit 7)
             </div>
           </div>
-          <span style={{ fontSize: '11px', color: '#8B98A8', lineHeight: 1.5 }}>
+          <span style={{ fontSize: '12px', color: '#8B98A8', lineHeight: 1.5 }}>
             This is the neural network we want to execute on our FPGA board.
           </span>
         </div>
@@ -49,18 +49,18 @@ export function StageWhyNotDirect() {
         <div style={{ width: '220px', padding: '24px', background: '#0B1120', border: '1px solid #334155', borderRadius: '12px', textAlign: 'center' }}>
           <span style={{ fontSize: '12px', color: '#8A7CFF', fontWeight: 800 }}>HIGH-LEVEL MODEL</span>
           <div style={{ fontSize: '16px', fontWeight: 800, color: '#F4F7FA', marginTop: '6px' }}>PYTHON / PYTORCH</div>
-          <span style={{ fontSize: '10px', color: '#8B98A8' }}>Float32 Tensors & Graphs</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>Float32 Tensors & Graphs</span>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
           <span style={{ fontSize: '32px', fontWeight: 900, color: '#F59E0B' }}>?</span>
-          <span style={{ fontSize: '10px', color: '#8B98A8', fontWeight: 800 }}>TRANSLATION GAP</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800 }}>TRANSLATION GAP</span>
         </div>
 
         <div style={{ width: '220px', padding: '24px', background: '#0B1120', border: '1px solid #27D7FF', borderRadius: '12px', textAlign: 'center' }}>
           <span style={{ fontSize: '12px', color: '#27D7FF', fontWeight: 800 }}>DIGITAL HARDWARE</span>
           <div style={{ fontSize: '16px', fontWeight: 800, color: '#F4F7FA', marginTop: '6px' }}>FPGA FABRIC</div>
-          <span style={{ fontSize: '10px', color: '#8B98A8' }}>LUTs, Flip-Flops, Registers</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>LUTs, Flip-Flops, Registers</span>
         </div>
       </div>
       <div style={{ fontSize: '12px', color: '#8B98A8', textAlign: 'center', maxWidth: '600px', lineHeight: 1.6 }}>
@@ -77,9 +77,9 @@ export function StageQuantization() {
     <div className="fb-wrap">
       <div className="quant-compare-container">
         <div className="quant-box">
-          <span style={{ fontSize: '11px', color: '#8B98A8', fontWeight: 800 }}>FLOATING POINT (32-BIT)</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800 }}>FLOATING POINT (32-BIT)</span>
           <span style={{ fontSize: '26px', fontWeight: 800, color: '#F4F7FA', fontFamily: 'Space Grotesk' }}>0.1372</span>
-          <span style={{ fontSize: '10px', color: '#8B98A8' }}>Requires 32-bit floating multiplier</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>Requires 32-bit floating multiplier</span>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
@@ -88,9 +88,9 @@ export function StageQuantization() {
         </div>
 
         <div className="quant-box" style={{ borderColor: '#27D7FF', background: 'rgba(39, 215, 255, 0.08)' }}>
-          <span style={{ fontSize: '11px', color: '#27D7FF', fontWeight: 800 }}>INTEGER (8-BIT)</span>
+          <span style={{ fontSize: '12px', color: '#27D7FF', fontWeight: 800 }}>INTEGER (8-BIT)</span>
           <span style={{ fontSize: '26px', fontWeight: 800, color: '#27D7FF', fontFamily: 'Space Grotesk' }}>+35</span>
-          <span style={{ fontSize: '10px', color: '#57E6A5', fontWeight: 700 }}>4x Memory Reduction • Fast Integer MAC</span>
+          <span style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 700 }}>4x Memory Reduction • Fast Integer MAC</span>
         </div>
       </div>
       <div style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 600 }}>
@@ -105,22 +105,22 @@ export function StageRepresentMath() {
   return (
     <div className="fb-wrap">
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', background: '#020617', border: '2px solid #1E293B', borderRadius: '16px', padding: '26px 40px' }}>
-        <span style={{ fontSize: '11px', color: '#8B98A8', fontWeight: 800, letterSpacing: '0.15em' }}>
+        <span style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800, letterSpacing: '0.15em' }}>
           NEURAL MATHEMATICAL FORMULA
         </span>
         <span style={{ fontSize: '32px', fontFamily: 'Space Grotesk', fontWeight: 900, color: '#27D7FF' }}>
           y = Σ(wᵢ × xᵢ) + b
         </span>
         <div style={{ display: 'flex', gap: '16px', marginTop: '6px' }}>
-          <div style={{ padding: '6px 14px', background: '#0B1120', border: '1px solid #27D7FF', borderRadius: '6px', fontSize: '11px', color: '#27D7FF', fontWeight: 800 }}>
+          <div style={{ padding: '6px 14px', background: '#0B1120', border: '1px solid #27D7FF', borderRadius: '6px', fontSize: '12px', color: '#27D7FF', fontWeight: 800 }}>
             MULTIPLY (w × x)
           </div>
           <span style={{ color: '#64748B', fontSize: '18px' }}>+</span>
-          <div style={{ padding: '6px 14px', background: '#0B1120', border: '1px solid #57E6A5', borderRadius: '6px', fontSize: '11px', color: '#57E6A5', fontWeight: 800 }}>
+          <div style={{ padding: '6px 14px', background: '#0B1120', border: '1px solid #57E6A5', borderRadius: '6px', fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>
             ACCUMULATE (Σ)
           </div>
           <span style={{ color: '#64748B', fontSize: '18px' }}>+</span>
-          <div style={{ padding: '6px 14px', background: '#0B1120', border: '1px solid #F59E0B', borderRadius: '6px', fontSize: '11px', color: '#F59E0B', fontWeight: 800 }}>
+          <div style={{ padding: '6px 14px', background: '#0B1120', border: '1px solid #F59E0B', borderRadius: '6px', fontSize: '12px', color: '#F59E0B', fontWeight: 800 }}>
             BIAS (b)
           </div>
         </div>
@@ -138,10 +138,10 @@ export function StageOneMAC() {
     <div className="fb-wrap">
       <div className="mac-diagram-box">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <div style={{ padding: '6px 12px', background: '#0B1120', border: '1px solid #27D7FF', borderRadius: '6px', fontSize: '11px', color: '#27D7FF' }}>
+          <div style={{ padding: '6px 12px', background: '#0B1120', border: '1px solid #27D7FF', borderRadius: '6px', fontSize: '12px', color: '#27D7FF' }}>
             ACTIVATION (x)
           </div>
-          <div style={{ padding: '6px 12px', background: '#0B1120', border: '1px solid #27D7FF', borderRadius: '6px', fontSize: '11px', color: '#27D7FF' }}>
+          <div style={{ padding: '6px 12px', background: '#0B1120', border: '1px solid #27D7FF', borderRadius: '6px', fontSize: '12px', color: '#27D7FF' }}>
             WEIGHT (w)
           </div>
         </div>
@@ -161,7 +161,7 @@ export function StageOneMAC() {
         <span style={{ color: '#64748B', fontSize: '20px' }}>→</span>
 
         <div style={{ padding: '12px 18px', background: '#0B1120', border: '2px solid #57E6A5', borderRadius: '8px', textAlign: 'center' }}>
-          <span style={{ fontSize: '10px', color: '#8B98A8', fontWeight: 800 }}>ACCUMULATOR</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800 }}>ACCUMULATOR</span>
           <div style={{ fontSize: '16px', fontWeight: 800, color: '#57E6A5' }}>REGISTER</div>
         </div>
       </div>
@@ -183,7 +183,7 @@ export function StageParallelMAC() {
         {Array.from({ length: 32 }).map((_, i) => (
           <div key={i} className="parallel-mac-cell">
             <span>MAC</span>
-            <span style={{ fontSize: '7px', opacity: 0.7 }}>[{i}]</span>
+            <span style={{ fontSize: '11px', opacity: 0.7 }}>[{i}]</span>
           </div>
         ))}
       </div>
@@ -218,21 +218,21 @@ export function StageSynthesisView() {
     <div className="fb-wrap">
       <div className="synth-split-view">
         <div style={{ padding: '16px 20px', background: '#0B1120', border: '1px solid #334155', borderRadius: '10px', textAlign: 'center' }}>
-          <span style={{ fontSize: '11px', color: '#8B98A8' }}>INPUT</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>INPUT</span>
           <div style={{ fontSize: '14px', fontWeight: 800, color: '#F4F7FA' }}>VERILOG RTL CODE</div>
         </div>
 
         <span style={{ color: '#64748B', fontSize: '20px' }}>→</span>
 
         <div style={{ padding: '16px 20px', background: '#0B1120', border: '2px solid #27D7FF', borderRadius: '10px', textAlign: 'center' }}>
-          <span style={{ fontSize: '11px', color: '#27D7FF', fontWeight: 800 }}>YOSYS SYNTHESIS</span>
+          <span style={{ fontSize: '12px', color: '#27D7FF', fontWeight: 800 }}>YOSYS SYNTHESIS</span>
           <div style={{ fontSize: '14px', fontWeight: 800, color: '#27D7FF' }}>LOGIC INFERENCE</div>
         </div>
 
         <span style={{ color: '#64748B', fontSize: '20px' }}>→</span>
 
         <div style={{ padding: '16px 20px', background: '#0B1120', border: '1px solid #57E6A5', borderRadius: '10px', textAlign: 'center' }}>
-          <span style={{ fontSize: '11px', color: '#57E6A5', fontWeight: 800 }}>OUTPUT</span>
+          <span style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>OUTPUT</span>
           <div style={{ fontSize: '14px', fontWeight: 800, color: '#57E6A5' }}>iCE40 LUTs + DFFs</div>
         </div>
       </div>
@@ -274,13 +274,13 @@ export function StageBitstreamView() {
   return (
     <div className="fb-wrap">
       <div className="bitstream-stream-box">
-        <span style={{ fontSize: '11px', color: '#8B98A8', fontWeight: 800, letterSpacing: '0.15em' }}>
+        <span style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800, letterSpacing: '0.15em' }}>
           GENERATING RAW BINARY BITSTREAM (.bin)
         </span>
         <div className="bitstream-code-line">
           10100110 01101001 11001011 00110101 11100010
         </div>
-        <div style={{ fontSize: '11px', color: '#8B98A8', textAlign: 'center', maxWidth: '520px', lineHeight: 1.5 }}>
+        <div style={{ fontSize: '12px', color: '#8B98A8', textAlign: 'center', maxWidth: '520px', lineHeight: 1.5 }}>
           The bitstream is the raw binary pattern of 1s and 0s that controls SRAM switch-matrix pass transistors and initializes LUT memory truth tables.
         </div>
       </div>
@@ -294,21 +294,21 @@ export function StageProgramFPGA() {
     <div className="fb-wrap">
       <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
         <div style={{ padding: '16px 20px', background: '#0B1120', border: '1px solid #334155', borderRadius: '10px', textAlign: 'center' }}>
-          <span style={{ fontSize: '10px', color: '#8B98A8' }}>SOURCE</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>SOURCE</span>
           <div style={{ fontSize: '14px', fontWeight: 800, color: '#F4F7FA' }}>LAPTOP TOOLCHAIN</div>
         </div>
 
         <span style={{ color: '#64748B', fontSize: '20px' }}>→</span>
 
         <div style={{ padding: '16px 20px', background: '#0B1120', border: '1px solid #27D7FF', borderRadius: '10px', textAlign: 'center' }}>
-          <span style={{ fontSize: '10px', color: '#27D7FF' }}>USB INTERFACE</span>
+          <span style={{ fontSize: '12px', color: '#27D7FF' }}>USB INTERFACE</span>
           <div style={{ fontSize: '14px', fontWeight: 800, color: '#27D7FF' }}>FT232H HIGH-SPEED SPI</div>
         </div>
 
         <span style={{ color: '#64748B', fontSize: '20px' }}>→</span>
 
         <div style={{ padding: '16px 20px', background: '#0B1120', border: '2px solid #57E6A5', borderRadius: '10px', textAlign: 'center' }}>
-          <span style={{ fontSize: '10px', color: '#57E6A5', fontWeight: 800 }}>DESTINATION</span>
+          <span style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>DESTINATION</span>
           <div style={{ fontSize: '14px', fontWeight: 800, color: '#57E6A5' }}>iCE40UP5K SRAM</div>
         </div>
       </div>
@@ -327,8 +327,8 @@ export function StageVSDSquadronBoard() {
         <svg width="180" height="180" viewBox="0 0 180 180">
           <rect x="15" y="15" width="150" height="150" rx="8" fill="#082F49" stroke="#27D7FF" strokeWidth="2" />
           <rect x="55" y="55" width="70" height="70" rx="4" fill="#020617" stroke="#27D7FF" strokeWidth="2" />
-          <text x="90" y="90" fill="#27D7FF" fontSize="10" fontWeight="800" textAnchor="middle">iCE40UP5K</text>
-          <text x="90" y="105" fill="#8B98A8" fontSize="8" textAnchor="middle">FPGA CORE</text>
+          <text x="90" y="90" fill="#27D7FF" fontSize="12" fontWeight="800" textAnchor="middle">iCE40UP5K</text>
+          <text x="90" y="105" fill="#8B98A8" fontSize="11" textAnchor="middle">FPGA CORE</text>
           <rect x="70" y="8" width="40" height="12" rx="2" fill="#334155" />
         </svg>
 
@@ -358,43 +358,43 @@ export function StageCompleteFPGAPipeline() {
       </div>
       <div className="complete-pipeline-strip">
         <div className="pipeline-tiny-node">
-          <span style={{ fontSize: '9px', color: '#8B98A8' }}>01. MODEL</span>
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#F4F7FA' }}>MNIST 784</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>01. MODEL</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#F4F7FA' }}>MNIST 784</span>
         </div>
         <span style={{ color: '#64748B' }}>→</span>
         <div className="pipeline-tiny-node">
-          <span style={{ fontSize: '9px', color: '#8B98A8' }}>02. QUANT</span>
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#F4F7FA' }}>INT8 TENSORS</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>02. QUANT</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#F4F7FA' }}>INT8 TENSORS</span>
         </div>
         <span style={{ color: '#64748B' }}>→</span>
         <div className="pipeline-tiny-node">
-          <span style={{ fontSize: '9px', color: '#8B98A8' }}>03. MAC</span>
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#F4F7FA' }}>PARALLEL ARRAY</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>03. MAC</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#F4F7FA' }}>PARALLEL ARRAY</span>
         </div>
         <span style={{ color: '#64748B' }}>→</span>
         <div className="pipeline-tiny-node">
-          <span style={{ fontSize: '9px', color: '#8B98A8' }}>04. RTL</span>
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#F4F7FA' }}>VERILOG CODE</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>04. RTL</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#F4F7FA' }}>VERILOG CODE</span>
         </div>
         <span style={{ color: '#64748B' }}>→</span>
         <div className="pipeline-tiny-node">
-          <span style={{ fontSize: '9px', color: '#8B98A8' }}>05. SYNTH</span>
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#F4F7FA' }}>YOSYS NETLIST</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>05. SYNTH</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#F4F7FA' }}>YOSYS NETLIST</span>
         </div>
         <span style={{ color: '#64748B' }}>→</span>
         <div className="pipeline-tiny-node">
-          <span style={{ fontSize: '9px', color: '#8B98A8' }}>06. PnR</span>
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#F4F7FA' }}>NEXTPNR LAYOUT</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>06. PnR</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#F4F7FA' }}>NEXTPNR LAYOUT</span>
         </div>
         <span style={{ color: '#64748B' }}>→</span>
         <div className="pipeline-tiny-node">
-          <span style={{ fontSize: '9px', color: '#8B98A8' }}>07. BINARY</span>
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#F4F7FA' }}>BITSTREAM</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>07. BINARY</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#F4F7FA' }}>BITSTREAM</span>
         </div>
         <span style={{ color: '#64748B' }}>→</span>
         <div className="pipeline-tiny-node" style={{ borderColor: '#27D7FF', background: 'rgba(39, 215, 255, 0.1)' }}>
-          <span style={{ fontSize: '9px', color: '#27D7FF', fontWeight: 800 }}>08. SILICON</span>
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#27D7FF' }}>iCE40UP5K</span>
+          <span style={{ fontSize: '12px', color: '#27D7FF', fontWeight: 800 }}>08. SILICON</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#27D7FF' }}>iCE40UP5K</span>
         </div>
       </div>
     </div>

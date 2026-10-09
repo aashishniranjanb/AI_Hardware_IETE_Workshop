@@ -7,7 +7,7 @@ export function StageOneTask() {
       <div className="single-task-card">
         <div className="digit-scan-frame">
           <span className="digit-glyph">7</span>
-          <span style={{ fontSize: '9px', color: '#8B98A8', fontWeight: 800 }}>MNIST 28×28</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800 }}>MNIST 28×28</span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <span style={{ fontSize: '13px', fontWeight: 800, color: '#27D7FF', letterSpacing: '0.15em' }}>
@@ -34,30 +34,30 @@ export function StageCommonPipeline() {
       </div>
       <div className="common-pipeline-chain">
         <div className="common-pipe-node">
-          <span style={{ fontSize: '10px', color: '#27D7FF', fontWeight: 800 }}>01. INPUT</span>
+          <span style={{ fontSize: '12px', color: '#27D7FF', fontWeight: 800 }}>01. INPUT</span>
           <span style={{ fontSize: '14px', fontWeight: 800, color: '#F4F7FA' }}>28×28 IMAGE</span>
-          <span style={{ fontSize: '9px', color: '#8B98A8' }}>784 Grayscale Pixels</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>784 Grayscale Pixels</span>
         </div>
         <span style={{ color: '#64748B', fontSize: '20px' }}>→</span>
         <div className="common-pipe-node">
-          <span style={{ fontSize: '10px', color: '#4B8DFF', fontWeight: 800 }}>02. PREPROCESS</span>
+          <span style={{ fontSize: '12px', color: '#4B8DFF', fontWeight: 800 }}>02. PREPROCESS</span>
           <span style={{ fontSize: '14px', fontWeight: 800, color: '#F4F7FA' }}>NORMALIZE</span>
-          <span style={{ fontSize: '9px', color: '#8B98A8' }}>Scale to 0..255 / INT8</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>Scale to 0..255 / INT8</span>
         </div>
         <span style={{ color: '#64748B', fontSize: '20px' }}>→</span>
         <div className="common-pipe-node">
-          <span style={{ fontSize: '10px', color: '#8A7CFF', fontWeight: 800 }}>03. COMPUTE</span>
+          <span style={{ fontSize: '12px', color: '#8A7CFF', fontWeight: 800 }}>03. COMPUTE</span>
           <span style={{ fontSize: '14px', fontWeight: 800, color: '#F4F7FA' }}>NEURAL MODEL</span>
-          <span style={{ fontSize: '9px', color: '#8B98A8' }}>Matrix Mult + Activations</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>Matrix Mult + Activations</span>
         </div>
         <span style={{ color: '#64748B', fontSize: '20px' }}>→</span>
         <div className="common-pipe-node" style={{ borderColor: '#57E6A5' }}>
-          <span style={{ fontSize: '10px', color: '#57E6A5', fontWeight: 800 }}>04. OUTPUT</span>
+          <span style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>04. OUTPUT</span>
           <span style={{ fontSize: '14px', fontWeight: 800, color: '#57E6A5' }}>DIGIT 0–9</span>
-          <span style={{ fontSize: '9px', color: '#57E6A5' }}>Class Probabilities</span>
+          <span style={{ fontSize: '12px', color: '#57E6A5' }}>Class Probabilities</span>
         </div>
       </div>
-      <div style={{ fontSize: '11px', color: '#8B98A8', textAlign: 'center', maxWidth: '600px', lineHeight: 1.6 }}>
+      <div style={{ fontSize: '12px', color: '#8B98A8', textAlign: 'center', maxWidth: '600px', lineHeight: 1.6 }}>
         The high-level algorithm remains conceptually identical across every platform: image data in, matrix math in the middle, predicted digit out.
       </div>
     </div>
@@ -71,59 +71,59 @@ export function StageModelArchitecture() {
       <div className="nn-model-matrix">
         {/* Layer 0: Input */}
         <div className="nn-layer-col">
-          <span style={{ fontSize: '11px', color: '#27D7FF', fontWeight: 800 }}>INPUT LAYER</span>
+          <span style={{ fontSize: '12px', color: '#27D7FF', fontWeight: 800 }}>INPUT LAYER</span>
           <span style={{ fontSize: '14px', fontWeight: 800, color: '#F4F7FA' }}>784 NODES</span>
           <div className="nn-nodes-strip">
             {Array.from({ length: 6 }).map((_, i) => (
               <div key={i} className="nn-node-dot active-node" />
             ))}
           </div>
-          <span style={{ fontSize: '9px', color: '#8B98A8' }}>28×28 Pixels</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>28×28 Pixels</span>
         </div>
 
         <span style={{ color: '#64748B' }}>→</span>
 
         {/* Layer 1: Hidden 32 */}
         <div className="nn-layer-col">
-          <span style={{ fontSize: '11px', color: '#4B8DFF', fontWeight: 800 }}>HIDDEN 1</span>
+          <span style={{ fontSize: '12px', color: '#4B8DFF', fontWeight: 800 }}>HIDDEN 1</span>
           <span style={{ fontSize: '14px', fontWeight: 800, color: '#F4F7FA' }}>32 NODES</span>
           <div className="nn-nodes-strip">
             {Array.from({ length: 5 }).map((_, i) => (
               <div key={i} className="nn-node-dot active-node" style={{ background: '#4B8DFF', borderColor: '#4B8DFF' }} />
             ))}
           </div>
-          <span style={{ fontSize: '9px', color: '#8B98A8' }}>Feature Map</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>Feature Map</span>
         </div>
 
         <span style={{ color: '#64748B' }}>→</span>
 
         {/* Layer 2: Hidden 16 */}
         <div className="nn-layer-col">
-          <span style={{ fontSize: '11px', color: '#8A7CFF', fontWeight: 800 }}>HIDDEN 2</span>
+          <span style={{ fontSize: '12px', color: '#8A7CFF', fontWeight: 800 }}>HIDDEN 2</span>
           <span style={{ fontSize: '14px', fontWeight: 800, color: '#F4F7FA' }}>16 NODES</span>
           <div className="nn-nodes-strip">
             {Array.from({ length: 4 }).map((_, i) => (
               <div key={i} className="nn-node-dot active-node" style={{ background: '#8A7CFF', borderColor: '#8A7CFF' }} />
             ))}
           </div>
-          <span style={{ fontSize: '9px', color: '#8B98A8' }}>Compression</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>Compression</span>
         </div>
 
         <span style={{ color: '#64748B' }}>→</span>
 
         {/* Layer 3: Output 10 */}
         <div className="nn-layer-col">
-          <span style={{ fontSize: '11px', color: '#57E6A5', fontWeight: 800 }}>OUTPUT</span>
+          <span style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>OUTPUT</span>
           <span style={{ fontSize: '14px', fontWeight: 800, color: '#57E6A5' }}>10 CLASSES</span>
           <div className="nn-nodes-strip">
             {Array.from({ length: 4 }).map((_, i) => (
               <div key={i} className="nn-node-dot active-node" style={{ background: i === 2 ? '#57E6A5' : '#1E293B', borderColor: '#57E6A5' }} />
             ))}
           </div>
-          <span style={{ fontSize: '9px', color: '#57E6A5', fontWeight: 800 }}>Digit: 7</span>
+          <span style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800 }}>Digit: 7</span>
         </div>
       </div>
-      <div style={{ fontSize: '11px', color: '#8B98A8', textAlign: 'center', lineHeight: 1.6 }}>
+      <div style={{ fontSize: '12px', color: '#8B98A8', textAlign: 'center', lineHeight: 1.6 }}>
         What are we actually computing? Millions of multiply-accumulate operations: <strong style={{ color: '#F4F7FA' }}>y = ReLU(Σ w · x + b)</strong>
       </div>
     </div>
@@ -139,21 +139,21 @@ export function StageHardwareFork() {
       </div>
       <div className="three-branches-fork">
         <div className="branch-fork-card" style={{ borderColor: '#27D7FF' }}>
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#27D7FF' }}>BRANCH 01</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#27D7FF' }}>BRANCH 01</span>
           <span style={{ fontSize: '18px', fontWeight: 800, color: '#F4F7FA' }}>VSDSQUADRON FPGA</span>
-          <span style={{ fontSize: '11px', color: '#8B98A8' }}>Express computation as parallel Verilog RTL datapaths and configure FPGA cells.</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>Express computation as parallel Verilog RTL datapaths and configure FPGA cells.</span>
         </div>
 
         <div className="branch-fork-card" style={{ borderColor: '#8A7CFF' }}>
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#8A7CFF' }}>BRANCH 02</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#8A7CFF' }}>BRANCH 02</span>
           <span style={{ fontSize: '18px', fontWeight: 800, color: '#F4F7FA' }}>RENESAS V2 AI KIT</span>
-          <span style={{ fontSize: '11px', color: '#8B98A8' }}>Convert quantized INT8 tensors into C arrays executed by microcontroller firmware.</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>Convert quantized INT8 tensors into C arrays executed by microcontroller firmware.</span>
         </div>
 
         <div className="branch-fork-card" style={{ borderColor: '#57E6A5' }}>
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#57E6A5' }}>BRANCH 03</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#57E6A5' }}>BRANCH 03</span>
           <span style={{ fontSize: '18px', fontWeight: 800, color: '#F4F7FA' }}>HELTEC / ESP32</span>
-          <span style={{ fontSize: '11px', color: '#8B98A8' }}>Run TensorFlow Lite Micro FlatBuffers on a dual-core wireless edge device.</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>Run TensorFlow Lite Micro FlatBuffers on a dual-core wireless edge device.</span>
         </div>
       </div>
     </div>
@@ -169,7 +169,7 @@ export function StageFPGAImpl() {
           <div className="digit-scan-frame" style={{ width: '90px', height: '90px' }}>
             <span className="digit-glyph" style={{ fontSize: '42px' }}>7</span>
           </div>
-          <span style={{ fontSize: '10px', color: '#8B98A8', marginTop: '6px' }}>INPUT</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8', marginTop: '6px' }}>INPUT</span>
         </div>
 
         <span style={{ color: '#64748B', fontSize: '20px' }}>→</span>
@@ -192,7 +192,7 @@ export function StageFPGAImpl() {
           <div className="digit-scan-frame" style={{ width: '90px', height: '90px', borderColor: '#57E6A5' }}>
             <span className="digit-glyph" style={{ fontSize: '42px', color: '#57E6A5' }}>7</span>
           </div>
-          <span style={{ fontSize: '10px', color: '#57E6A5', fontWeight: 800, marginTop: '6px' }}>OUTPUT</span>
+          <span style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800, marginTop: '6px' }}>OUTPUT</span>
         </div>
       </div>
       <div style={{ fontSize: '12px', fontWeight: 800, color: '#27D7FF' }}>
@@ -211,7 +211,7 @@ export function StageRenesasImpl() {
           <div className="digit-scan-frame" style={{ width: '90px', height: '90px' }}>
             <span className="digit-glyph" style={{ fontSize: '42px' }}>7</span>
           </div>
-          <span style={{ fontSize: '10px', color: '#8B98A8', marginTop: '6px' }}>INPUT</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8', marginTop: '6px' }}>INPUT</span>
         </div>
 
         <span style={{ color: '#64748B', fontSize: '20px' }}>→</span>
@@ -234,7 +234,7 @@ export function StageRenesasImpl() {
           <div className="digit-scan-frame" style={{ width: '90px', height: '90px', borderColor: '#57E6A5' }}>
             <span className="digit-glyph" style={{ fontSize: '42px', color: '#57E6A5' }}>7</span>
           </div>
-          <span style={{ fontSize: '10px', color: '#57E6A5', fontWeight: 800, marginTop: '6px' }}>OUTPUT</span>
+          <span style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800, marginTop: '6px' }}>OUTPUT</span>
         </div>
       </div>
       <div style={{ fontSize: '12px', fontWeight: 800, color: '#8A7CFF' }}>
@@ -253,7 +253,7 @@ export function StageESP32Impl() {
           <div className="digit-scan-frame" style={{ width: '90px', height: '90px' }}>
             <span className="digit-glyph" style={{ fontSize: '42px' }}>7</span>
           </div>
-          <span style={{ fontSize: '10px', color: '#8B98A8', marginTop: '6px' }}>INPUT</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8', marginTop: '6px' }}>INPUT</span>
         </div>
 
         <span style={{ color: '#64748B', fontSize: '20px' }}>→</span>
@@ -276,7 +276,7 @@ export function StageESP32Impl() {
           <div className="digit-scan-frame" style={{ width: '90px', height: '90px', borderColor: '#57E6A5' }}>
             <span className="digit-glyph" style={{ fontSize: '42px', color: '#57E6A5' }}>7</span>
           </div>
-          <span style={{ fontSize: '10px', color: '#57E6A5', fontWeight: 800, marginTop: '6px' }}>OUTPUT</span>
+          <span style={{ fontSize: '12px', color: '#57E6A5', fontWeight: 800, marginTop: '6px' }}>OUTPUT</span>
         </div>
       </div>
       <div style={{ fontSize: '12px', fontWeight: 800, color: '#57E6A5' }}>
@@ -293,8 +293,8 @@ export function StageThreeWays() {
       <div className="three-cols-grid">
         <div className="col-impl-box" style={{ borderColor: '#27D7FF' }}>
           <span style={{ fontSize: '14px', fontWeight: 800, color: '#27D7FF' }}>VSDSQUADRON FPGA</span>
-          <span style={{ fontSize: '10px', color: '#8B98A8' }}>PARALLEL RTL</span>
-          <div style={{ fontSize: '11px', color: '#F4F7FA', marginTop: '6px' }}>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>PARALLEL RTL</span>
+          <div style={{ fontSize: '12px', color: '#F4F7FA', marginTop: '6px' }}>
             • <strong>Computation:</strong> Custom parallel hardware<br />
             • <strong>Flow:</strong> RTL → Bitstream → Fabric<br />
             • <strong>Advantage:</strong> Deterministic speed<br />
@@ -304,8 +304,8 @@ export function StageThreeWays() {
 
         <div className="col-impl-box" style={{ borderColor: '#8A7CFF' }}>
           <span style={{ fontSize: '14px', fontWeight: 800, color: '#8A7CFF' }}>RENESAS V2 AI KIT</span>
-          <span style={{ fontSize: '10px', color: '#8B98A8' }}>EMBEDDED MCU</span>
-          <div style={{ fontSize: '11px', color: '#F4F7FA', marginTop: '6px' }}>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>EMBEDDED MCU</span>
+          <div style={{ fontSize: '12px', color: '#F4F7FA', marginTop: '6px' }}>
             • <strong>Computation:</strong> MCU firmware loop<br />
             • <strong>Flow:</strong> Model → C Code → Flash<br />
             • <strong>Advantage:</strong> Camera & peripheral integration<br />
@@ -315,8 +315,8 @@ export function StageThreeWays() {
 
         <div className="col-impl-box" style={{ borderColor: '#57E6A5' }}>
           <span style={{ fontSize: '14px', fontWeight: 800, color: '#57E6A5' }}>HELTEC / ESP32 AI</span>
-          <span style={{ fontSize: '10px', color: '#8B98A8' }}>EDGE TINYML</span>
-          <div style={{ fontSize: '11px', color: '#F4F7FA', marginTop: '6px' }}>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>EDGE TINYML</span>
+          <div style={{ fontSize: '12px', color: '#F4F7FA', marginTop: '6px' }}>
             • <strong>Computation:</strong> TFLite Micro runtime<br />
             • <strong>Flow:</strong> Model → Firmware → Flash<br />
             • <strong>Advantage:</strong> Wireless & battery-capable<br />
@@ -337,28 +337,28 @@ export function StageWhatChanges() {
       </div>
       <div className="dimensions-radar-grid">
         <div className="dimension-item-card">
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#27D7FF' }}>1. COMPUTE PARADIGM</span>
-          <span style={{ fontSize: '11px', color: '#8B98A8' }}>Dedicated parallel circuits vs sequential instruction fetches.</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#27D7FF' }}>1. COMPUTE PARADIGM</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>Dedicated parallel circuits vs sequential instruction fetches.</span>
         </div>
         <div className="dimension-item-card">
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#4B8DFF' }}>2. MEMORY HIERARCHY</span>
-          <span style={{ fontSize: '11px', color: '#8B98A8' }}>On-chip block RAM vs MCU internal SRAM & Flash memory.</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#4B8DFF' }}>2. MEMORY HIERARCHY</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>On-chip block RAM vs MCU internal SRAM & Flash memory.</span>
         </div>
         <div className="dimension-item-card">
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#8A7CFF' }}>3. PARALLELISM</span>
-          <span style={{ fontSize: '11px', color: '#8B98A8' }}>Truly simultaneous hardware MACs vs time-sliced ALU operations.</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#8A7CFF' }}>3. PARALLELISM</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>Truly simultaneous hardware MACs vs time-sliced ALU operations.</span>
         </div>
         <div className="dimension-item-card">
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#57E6A5' }}>4. POWER & THERMAL</span>
-          <span style={{ fontSize: '11px', color: '#8B98A8' }}>Targeting ultra-low milli-Watts for edge battery nodes.</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#57E6A5' }}>4. POWER & THERMAL</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>Targeting ultra-low milli-Watts for edge battery nodes.</span>
         </div>
         <div className="dimension-item-card">
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#FFB84D' }}>5. DETERMINISM & LATENCY</span>
-          <span style={{ fontSize: '11px', color: '#8B98A8' }}>Zero-jitter clock-cycle timing vs OS and firmware latency.</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#FFB84D' }}>5. DETERMINISM & LATENCY</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>Zero-jitter clock-cycle timing vs OS and firmware latency.</span>
         </div>
         <div className="dimension-item-card">
-          <span style={{ fontSize: '11px', fontWeight: 800, color: '#27D7FF' }}>6. DEVELOPMENT EFFORT</span>
-          <span style={{ fontSize: '11px', color: '#8B98A8' }}>RTL digital design vs standard C/C++ firmware compilation.</span>
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#27D7FF' }}>6. DEVELOPMENT EFFORT</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>RTL digital design vs standard C/C++ firmware compilation.</span>
         </div>
       </div>
     </div>
@@ -379,13 +379,13 @@ export function StageHardwareIsChoice() {
           </span>
         </div>
         <div style={{ flex: 1.2, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <div style={{ padding: '8px 12px', background: '#0B1120', border: '1px solid #27D7FF', borderRadius: '6px', fontSize: '11px' }}>
+          <div style={{ padding: '8px 12px', background: '#0B1120', border: '1px solid #27D7FF', borderRadius: '6px', fontSize: '12px' }}>
             <strong style={{ color: '#27D7FF' }}>FPGA:</strong> Maximum parallelism, custom datapaths, zero instruction overhead.
           </div>
-          <div style={{ padding: '8px 12px', background: '#0B1120', border: '1px solid #8A7CFF', borderRadius: '6px', fontSize: '11px' }}>
+          <div style={{ padding: '8px 12px', background: '#0B1120', border: '1px solid #8A7CFF', borderRadius: '6px', fontSize: '12px' }}>
             <strong style={{ color: '#8A7CFF' }}>RENESAS MCU:</strong> Direct camera sensor ingest, rich industrial peripherals.
           </div>
-          <div style={{ padding: '8px 12px', background: '#0B1120', border: '1px solid #57E6A5', borderRadius: '6px', fontSize: '11px' }}>
+          <div style={{ padding: '8px 12px', background: '#0B1120', border: '1px solid #57E6A5', borderRadius: '6px', fontSize: '12px' }}>
             <strong style={{ color: '#57E6A5' }}>ESP32:</strong> Ultra-low cost, battery operation, wireless Wi-Fi/Bluetooth telemetry.
           </div>
         </div>
@@ -401,7 +401,7 @@ export function StageSameInput() {
       <div style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
         <div className="digit-scan-frame" style={{ width: '130px', height: '130px' }}>
           <span className="digit-glyph" style={{ fontSize: '64px' }}>7</span>
-          <span style={{ fontSize: '10px', color: '#8B98A8', fontWeight: 800 }}>ONE IMAGE INPUT</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 800 }}>ONE IMAGE INPUT</span>
         </div>
 
         <span style={{ color: '#64748B', fontSize: '28px' }}>→</span>
@@ -438,7 +438,7 @@ export function StageSameResult() {
           THE ALGORITHM STAYS THE SAME.<br />
           <span style={{ color: '#27D7FF' }}>THE HARDWARE CHANGES.</span>
         </div>
-        <div style={{ fontSize: '11px', color: '#8B98A8', textAlign: 'center', maxWidth: '520px' }}>
+        <div style={{ fontSize: '12px', color: '#8B98A8', textAlign: 'center', maxWidth: '520px' }}>
           From custom hardware logic gates to microcontrollers and edge sensors, the exact same mathematical classification was achieved.
         </div>
       </div>

@@ -38,28 +38,28 @@ export function StageLogicToolkit() {
           <span className="gate-card-title">AND GATE</span>
           <span className="gate-card-eq">A · B</span>
           <div className={`gate-output-pill ${andOut ? 'is-high' : ''}`}>{andOut}</div>
-          <span style={{ fontSize: '10px', color: '#64748B' }}>High only when BOTH are 1</span>
+          <span style={{ fontSize: '12px', color: '#64748B' }}>High only when BOTH are 1</span>
         </div>
 
         <div className="gate-card">
           <span className="gate-card-title">OR GATE</span>
           <span className="gate-card-eq">A + B</span>
           <div className={`gate-output-pill ${orOut ? 'is-high' : ''}`}>{orOut}</div>
-          <span style={{ fontSize: '10px', color: '#64748B' }}>High if EITHER is 1</span>
+          <span style={{ fontSize: '12px', color: '#64748B' }}>High if EITHER is 1</span>
         </div>
 
         <div className="gate-card">
           <span className="gate-card-title">NOT GATE</span>
           <span className="gate-card-eq">Ā (Inverts A)</span>
           <div className={`gate-output-pill ${notOut ? 'is-high' : ''}`}>{notOut}</div>
-          <span style={{ fontSize: '10px', color: '#64748B' }}>Inverts binary state</span>
+          <span style={{ fontSize: '12px', color: '#64748B' }}>Inverts binary state</span>
         </div>
 
         <div className="gate-card">
           <span className="gate-card-title" style={{ color: '#57E6A5' }}>XOR GATE</span>
           <span className="gate-card-eq">A ⊕ B</span>
           <div className={`gate-output-pill ${xorOut ? 'is-high' : ''}`} style={{ borderColor: xorOut ? '#57E6A5' : '', color: xorOut ? '#57E6A5' : '' }}>{xorOut}</div>
-          <span style={{ fontSize: '10px', color: '#57E6A5' }}>High if inputs DIFFER</span>
+          <span style={{ fontSize: '12px', color: '#57E6A5' }}>High if inputs DIFFER</span>
         </div>
       </div>
       <div style={{ fontSize: '12px', color: '#8B98A8', fontWeight: 700 }}>
@@ -117,7 +117,7 @@ export function StageXORAndCombination() {
         <div className="circuit-result-badge highlight-sum" style={{ minWidth: '200px' }}>
           <span className="res-lbl">BINARY MATH</span>
           <span className="res-val" style={{ fontSize: '26px' }}>{carry}{sum}₂</span>
-          <span style={{ fontSize: '11px', color: '#8B98A8', marginTop: '4px' }}>Decimal: {carry * 2 + sum}</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8', marginTop: '4px' }}>Decimal: {carry * 2 + sum}</span>
         </div>
       </div>
     </div>
@@ -164,13 +164,13 @@ export function StageHalfAdder() {
             <rect x="90" y="20" width="70" height="50" rx="6" fill="#0B1120" stroke="#27D7FF" strokeWidth="2" />
             <text x="125" y="50" fill="#27D7FF" fontSize="12" fontWeight="800" textAnchor="middle">XOR</text>
             <line x1="160" y1="45" x2="240" y2="45" stroke={sum ? "#27D7FF" : "#334155"} strokeWidth="3" />
-            <text x="210" y="35" fill="#27D7FF" fontSize="11" fontWeight="700">SUM</text>
+            <text x="210" y="35" fill="#27D7FF" fontSize="12" fontWeight="700">SUM</text>
 
             {/* AND Gate for CARRY */}
             <rect x="90" y="95" width="70" height="45" rx="6" fill="#0B1120" stroke="#F59E0B" strokeWidth="2" />
             <text x="125" y="122" fill="#F59E0B" fontSize="12" fontWeight="800" textAnchor="middle">AND</text>
             <line x1="160" y1="117" x2="240" y2="117" stroke={carry ? "#F59E0B" : "#334155"} strokeWidth="3" />
-            <text x="210" y="110" fill="#F59E0B" fontSize="11" fontWeight="700">CARRY</text>
+            <text x="210" y="110" fill="#F59E0B" fontSize="12" fontWeight="700">CARRY</text>
           </svg>
 
           {/* Results */}
@@ -264,7 +264,7 @@ export function StageFullAdder() {
           <div style={{ fontFamily: 'Space Grotesk', fontSize: '18px', color: '#F4F7FA' }}>
             Total = {total} (Binary: <span style={{ color: '#F59E0B' }}>{cout}</span><span style={{ color: '#27D7FF' }}>{sum}₂</span>)
           </div>
-          <div style={{ fontSize: '11px', color: '#8B98A8', marginTop: '10px', lineHeight: 1.5 }}>
+          <div style={{ fontSize: '12px', color: '#8B98A8', marginTop: '10px', lineHeight: 1.5 }}>
             Because the Full Adder accepts an incoming <strong>Carry-In (Cin)</strong>, we can chain multiple full adders to add numbers of any bit-width.
           </div>
         </div>
@@ -289,8 +289,8 @@ export function StageChainedAdders() {
         ].map((unit) => (
           <div key={unit.bit} className="bit4-unit-box">
             <span className="bit4-unit-title">STAGE [{unit.bit}]</span>
-            <div style={{ fontSize: '11px', color: '#8B98A8' }}>A{unit.bit} + B{unit.bit}</div>
-            <div style={{ fontSize: '10px', color: '#F59E0B', fontWeight: 700 }}>
+            <div style={{ fontSize: '12px', color: '#8B98A8' }}>A{unit.bit} + B{unit.bit}</div>
+            <div style={{ fontSize: '12px', color: '#F59E0B', fontWeight: 700 }}>
               {unit.cin} → {unit.cout}
             </div>
             <div style={{ fontSize: '16px', fontWeight: 800, color: '#27D7FF' }}>
@@ -299,7 +299,7 @@ export function StageChainedAdders() {
           </div>
         ))}
       </div>
-      <div style={{ fontSize: '11px', color: '#8B98A8', maxWidth: '600px', textAlign: 'center', lineHeight: 1.6 }}>
+      <div style={{ fontSize: '12px', color: '#8B98A8', maxWidth: '600px', textAlign: 'center', lineHeight: 1.6 }}>
         Each stage computes its sum and forwards its carry to the next stage on the left.<br />
         By chaining 4 full adders together, we can add two 4-bit numbers (0 to 15).
       </div>
@@ -375,10 +375,10 @@ export function StageFourBitAdder() {
         ].map((stage) => (
           <div key={stage.bit} className="bit4-unit-box">
             <span className="bit4-unit-title">FA STAGE [{stage.bit}]</span>
-            <div style={{ fontSize: '10px', color: '#8B98A8' }}>
+            <div style={{ fontSize: '12px', color: '#8B98A8' }}>
               A={stage.a} + B={stage.b}
             </div>
-            <div style={{ fontSize: '9px', color: '#F59E0B' }}>
+            <div style={{ fontSize: '12px', color: '#F59E0B' }}>
               Cin={stage.cin} → Cout={stage.cout}
             </div>
             <div style={{ marginTop: '4px', fontSize: '16px', fontWeight: 800, color: '#27D7FF' }}>
@@ -427,7 +427,7 @@ export function StageScaleArithmetic() {
           <div style={{ fontSize: '15px', fontWeight: 800, color: '#27D7FF' }}>
             MULTIPLEXED DIGITAL ENGINE
           </div>
-          <div style={{ fontSize: '11px', color: '#8B98A8', lineHeight: 1.6 }}>
+          <div style={{ fontSize: '12px', color: '#8B98A8', lineHeight: 1.6 }}>
             What if we feed inputs A and B into ALL of these circuits simultaneously, and use an <strong>Operation Code (Opcode)</strong> to choose which result reaches the output?
           </div>
           <div style={{ padding: '8px 14px', background: 'rgba(39, 215, 255, 0.1)', borderRadius: '6px', fontSize: '12px', fontWeight: 800, color: '#57E6A5' }}>
@@ -473,11 +473,11 @@ export function StageALU() {
         {/* Inputs */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <span style={{ fontSize: '11px', fontWeight: 800, color: '#27D7FF' }}>A: {valA}</span>
+            <span style={{ fontSize: '12px', fontWeight: 800, color: '#27D7FF' }}>A: {valA}</span>
             <input type="range" min="0" max="15" value={valA} onChange={(e) => setValA(Number(e.target.value))} style={{ width: '90px', accentColor: '#27D7FF' }} />
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <span style={{ fontSize: '11px', fontWeight: 800, color: '#57E6A5' }}>B: {valB}</span>
+            <span style={{ fontSize: '12px', fontWeight: 800, color: '#57E6A5' }}>B: {valB}</span>
             <input type="range" min="0" max="15" value={valB} onChange={(e) => setValB(Number(e.target.value))} style={{ width: '90px', accentColor: '#57E6A5' }} />
           </div>
         </div>
@@ -486,14 +486,14 @@ export function StageALU() {
         <svg width="220" height="160" viewBox="0 0 220 160">
           <polygon points="20,20 180,50 180,110 20,140 20,95 50,80 20,65" fill="#0B1120" stroke="#27D7FF" strokeWidth="2.5" />
           <text x="95" y="85" fill="#27D7FF" fontSize="16" fontWeight="800" textAnchor="middle">ALU</text>
-          <text x="95" y="105" fill="#8B98A8" fontSize="10" textAnchor="middle">OP: {op}</text>
+          <text x="95" y="105" fill="#8B98A8" fontSize="12" textAnchor="middle">OP: {op}</text>
         </svg>
 
         {/* Output */}
         <div className="circuit-result-badge highlight-sum" style={{ minWidth: '180px' }}>
           <span className="res-lbl">{op} RESULT</span>
           <span className="res-val">{result}</span>
-          <span style={{ fontSize: '11px', color: '#8B98A8', marginTop: '4px' }}>
+          <span style={{ fontSize: '12px', color: '#8B98A8', marginTop: '4px' }}>
             Binary: {result.toString(2).padStart(4, '0')}₂
           </span>
         </div>
@@ -508,17 +508,17 @@ export function StageFromALUToComputer() {
     <div className="stage-wrap">
       <div className="system-cpu-block">
         <div className="cpu-module-box">
-          <span style={{ fontSize: '11px', color: '#8B98A8' }}>INPUT / REGISTERS</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>INPUT / REGISTERS</span>
           <span style={{ fontSize: '13px', fontWeight: 800, color: '#F4F7FA' }}>R0, R1, R2</span>
         </div>
         <span style={{ color: '#64748B', fontSize: '20px' }}>→</span>
         <div className="cpu-module-box" style={{ borderColor: '#27D7FF', background: 'rgba(39, 215, 255, 0.08)' }}>
-          <span style={{ fontSize: '11px', color: '#27D7FF' }}>COMPUTE CORE</span>
+          <span style={{ fontSize: '12px', color: '#27D7FF' }}>COMPUTE CORE</span>
           <span style={{ fontSize: '15px', fontWeight: 800, color: '#27D7FF' }}>ALU</span>
         </div>
         <span style={{ color: '#64748B', fontSize: '20px' }}>→</span>
         <div className="cpu-module-box">
-          <span style={{ fontSize: '11px', color: '#8B98A8' }}>STORAGE</span>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>STORAGE</span>
           <span style={{ fontSize: '13px', fontWeight: 800, color: '#F4F7FA' }}>DATA MEMORY</span>
         </div>
       </div>
@@ -573,24 +573,24 @@ export function StageHardwareHandoff() {
       <div className="handoff-platforms-grid">
         <div className="handoff-card" style={{ borderColor: '#27D7FF' }}>
           <span style={{ fontSize: '13px', fontWeight: 800, color: '#27D7FF' }}>VSDSQUADRON FPGA</span>
-          <span style={{ fontSize: '10px', color: '#8B98A8' }}>RTL SYNTHESIS</span>
-          <div style={{ fontSize: '11px', color: '#F4F7FA', textAlign: 'center' }}>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>RTL SYNTHESIS</span>
+          <div style={{ fontSize: '12px', color: '#F4F7FA', textAlign: 'center' }}>
             Synthesize ALU Verilog directly into physical LUT logic.
           </div>
         </div>
 
         <div className="handoff-card" style={{ borderColor: '#8A7CFF' }}>
           <span style={{ fontSize: '13px', fontWeight: 800, color: '#8A7CFF' }}>RENESAS V2 MCU</span>
-          <span style={{ fontSize: '10px', color: '#8B98A8' }}>EMBEDDED AI KIT</span>
-          <div style={{ fontSize: '11px', color: '#F4F7FA', textAlign: 'center' }}>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>EMBEDDED AI KIT</span>
+          <div style={{ fontSize: '12px', color: '#F4F7FA', textAlign: 'center' }}>
             Compile quantized neural kernels for on-chip MCU execution.
           </div>
         </div>
 
         <div className="handoff-card" style={{ borderColor: '#57E6A5' }}>
           <span style={{ fontSize: '13px', fontWeight: 800, color: '#57E6A5' }}>HELTEC / ESP32</span>
-          <span style={{ fontSize: '10px', color: '#8B98A8' }}>TINYML SENSOR</span>
-          <div style={{ fontSize: '11px', color: '#F4F7FA', textAlign: 'center' }}>
+          <span style={{ fontSize: '12px', color: '#8B98A8' }}>TINYML SENSOR</span>
+          <div style={{ fontSize: '12px', color: '#F4F7FA', textAlign: 'center' }}>
             Run real-time edge classification with wireless connectivity.
           </div>
         </div>
