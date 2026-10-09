@@ -44,11 +44,17 @@ export function applyMotionMode(mode) {
   } catch {}
 }
 
+/**
+ * This is a presenter-driven deck, so it starts in FULL motion even when the
+ * OS asks for reduced motion (projector laptops often have Windows "animation
+ * effects" switched off). The presenter's saved choice (M key) always wins.
+ */
 export function restoreMotionMode() {
+  let saved = null;
   try {
-    const saved = localStorage.getItem('deck-motion');
-    if (saved === 'full' || saved === 'reduced') document.documentElement.dataset.motion = saved;
+    saved = localStorage.getItem('deck-motion');
   } catch {}
+  document.documentElement.dataset.motion = saved === 'reduced' ? 'reduced' : 'full';
 }
 
 /** Toggle relative to what is currently in effect; returns the new mode. */
@@ -121,6 +127,30 @@ export function fitStage(root, { max = 1.35, min = 1.06 } = {}) {
   }
   if (!w || !h || availW <= 0 || availH <= 0) return;
   let ratio = Math.min(max, (availW * 0.96) / w, (availH * 0.94) / h);
+  if (ratio < 0.98) {
+    // Oversized content: shrink just enough to fit (never below 0.8) instead of clipping.
+    const box0 = root.getBoundingClientRect();
+    const zNow = parseFloat(getComputedStyle(root).zoom) || 1;
+    const shrink = Math.max(0.8, Math.min(1, (box0.height / zNow - 8) / (child.scrollHeight || h), ratio));
+    child.style.zoom = String(Math.round(shrink * 100) / 100);
+    const fitDown = () => {
+      // The viewport itself may have grown past the 16:9 frame, so cap by the frame too.
+      const frame = root.closest('.presentation-viewport')?.getBoundingClientRect();
+      const lim = Math.min(
+        root.getBoundingClientRect().bottom - parseFloat(getComputedStyle(root).paddingBottom) + 1,
+        frame ? frame.bottom - 12 : Infinity
+      );
+      let z = parseFloat(child.style.zoom) || 1;
+      while (child.getBoundingClientRect().bottom > lim && z > 0.75) {
+        z = Math.round((z - 0.03) * 100) / 100;
+        child.style.zoom = String(z);
+      }
+    };
+    fitDown();
+    setTimeout(fitDown, 700);
+    setTimeout(fitDown, 1400);
+    return;
+  }
   if (ratio < min) return;
   // Verify against the real layout (wrappers may have fixed sizes) and back off.
   const box = root.getBoundingClientRect();
@@ -136,9 +166,25 @@ export function fitStage(root, { max = 1.35, min = 1.06 } = {}) {
       && root.scrollHeight <= root.clientHeight + 1 && root.scrollWidth <= root.clientWidth + 1;
   };
   const start = ratio;
+  // Elements with CSS size transitions (e.g. the compute package) are still
+  // mid-transition at stage entry, so re-validate once they have settled.
+  const recheck = () => {
+    const z = parseFloat(child.style.zoom) || 1;
+    if (z <= 1 || fits()) return;
+    let r = z;
+    while (r > 1) {
+      r = Math.max(1, r - 0.05);
+      child.style.zoom = r > 1 ? String(Math.round(r * 100) / 100) : '';
+      if (fits()) return;
+    }
+  };
+  const scheduleRecheck = () => {
+    setTimeout(recheck, 700);
+    setTimeout(recheck, 1400);
+  };
   while (ratio >= min) {
     child.style.zoom = String(Math.round(ratio * 100) / 100);
-    if (fits()) return;
+    if (fits()) { scheduleRecheck(); return; }
     ratio -= 0.05;
   }
   child.style.zoom = '';

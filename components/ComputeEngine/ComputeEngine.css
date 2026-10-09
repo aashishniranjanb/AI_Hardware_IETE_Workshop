@@ -1110,3 +1110,22 @@
 .engine-tile .engine-trait { font-size: 12px; color: var(--c-muted); text-align: center; line-height: 1.25; }
 .engine-tile.engine-fpga { color: var(--c-violet-2); }
 .engine-tile.engine-tpu { color: #F97316; }
+
+/* TPU systolic dataflow (TPUVisual.jsx): GSAP owns cell colours + token motion,
+   so the old CSS keyframe pulse is disabled to avoid fighting it. */
+.systolic-grid { position: relative; overflow: hidden; }
+.systolic-cell { animation: none; transition: none; }
+.systolic-cell .cell-op { font: 800 12px var(--font-mono); color: rgba(255, 237, 213, 0.75); }
+.systolic-cell.is-mac { background: #EA580C; border-color: #F97316; box-shadow: 0 0 14px rgba(249, 115, 22, 0.7); }
+.systolic-cell.is-done { background: #7C2D12; border-color: #C2410C; }
+.sys-token {
+  position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%;
+  opacity: 0; pointer-events: none; z-index: 2;
+}
+.sys-act { left: -14%; background: var(--c-cyan); box-shadow: 0 0 8px var(--c-cyan); }
+.sys-wgt { top: -16%; background: var(--c-amber-soft); box-shadow: 0 0 8px var(--c-amber); }
+/* Compact grid so the caption + OCS bar fit inside the fixed-height TPU die
+   (they were clipped by the die's overflow:hidden). */
+.tpu-die .systolic-grid { gap: 4px; padding: 8px; }
+.tpu-die .systolic-cell { width: 44px; height: 24px; }
+.tpu-die .tpu-systolic-board { gap: 4px; }

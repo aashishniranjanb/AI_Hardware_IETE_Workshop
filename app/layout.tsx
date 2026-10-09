@@ -18,5 +18,6 @@ export const metadata: Metadata = { title: 'AI Hardware — IETE Club', descript
 export const viewport: Viewport = { themeColor: '#05070B' };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en"><body>{children}</body></html>;
+  // data-motion="full": deck starts in full motion (M toggles; saved choice restored on load)
+  return <html lang="en" data-motion="full" suppressHydrationWarning><body>{children}</body></html>;
 }
